@@ -1,0 +1,192 @@
+* {
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+html, body{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.leader-board-wrapper{
+    
+    width: 270px;
+    height: 280px;
+	background:linear-gradient(to top left, rgba(41, 6, 238,.1), rgb(151, 200, 238,.1));
+	color: white;
+	font-size: 12.5px;
+    position: absolute;
+    opacity: 0.5;
+	top: 60px;
+	right: 5px;
+	border-radius: 5px;
+}
+.score-wrapper{
+    margin: 12px;
+}
+.name-wrapper{
+    margin: 12px;
+    flex:3;
+}
+#leader-board{
+    display: flex;
+}
+h3{
+    display: inline
+}
+.text-center{
+    margin: -5px auto;
+    text-align: center;
+}
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background:linear-gradient(to top left, rgba(41, 6, 238,1), rgb(151, 200, 238,1));
+    padding: 8rem;
+}
+.title{
+    width: 500px;
+    height: 250px;
+    
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+.rock{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 550px;
+    height: 350px;
+    z-index: -2;
+    
+}
+
+.box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    text-align: center; 
+}
+
+@-webkit-keyframes bounceOut {
+    from {
+        -webkit-transform: translate(-50%, -50%); 
+    }
+    to {
+        -webkit-transform: translate(-50%, -700%); 
+    }
+ }
+ 
+@keyframes bounceOut {
+    from {
+        transform: translate(-50%, -50%); 
+    }
+    to {
+        transform: translate(-50%, -700%); 
+    }
+ }
+ @-webkit-keyframes fadeIn {
+    0% {opacity: 1;}
+    100% {opacity: 0.4;}
+ }
+ @keyframes fadeIn {
+    0% {opacity: 1;}
+    100% {opacity: 0.4;}
+}
+@-webkit-keyframes fadeOut {
+    0% {opacity: 0; transform: scale(0);}
+    100% {opacity: 1; transform: scale(1.0);}
+ }
+ @keyframes fadeOut {
+    0% {opacity: 0;transform:  scale(0) translate(-50%, -50%);}
+    100% {opacity: 1;transform:  scale(1) translate(-50%, -50%);}
+}
+
+ .bounceOut {
+    -webkit-animation-name: bounceOut;
+    animation-name: bounceOut;
+    animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-duration: 3s;
+ }
+ 
+ .fadeIn{
+    -webkit-animation: fadeIn 15s forwards;;
+    animation: fadeIn 15s forwards;
+ }
+ .fadeOut{
+    -webkit-animation: fadeOut 5s forwards;;
+    animation: fadeOut 5s forwards;
+ }
+.box h1{
+    color: rgb(5, 85, 25);
+    font-weight: 500;
+}
+.box input[type="text"]{
+    border: 0;
+    background: rgba(148, 150, 155, 0.8);
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    border: 2px solid  rgba(148, 150, 155, 0.8);
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: rgb(253, 253, 253);
+    border-radius: 25px;
+    transition: 0.25s;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.box input[type="text"]:focus{
+    width: 220px;
+    border-color: #2ecc71;
+}
+.box button{
+    border: 0;
+    background: linear-gradient(to top left, rgba(5, 95, 10), rgba(13, 216, 47));
+    display: block;
+    margin: -20px auto;
+    text-align: center;
+    border: 2px solid #229451;;
+    padding: 10px 30px;
+    outline: none;
+    color: rgb(252, 252, 252);
+    border-radius: 25px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 15px;
+    font-weight: bold;
+}
+.box button:hover{
+    background:  #2ecc71;
+}
+.hidden {
+    display: none;
+}
+.leaderboard-player1, .leaderboard-player3, .leaderboard-player5, .leaderboard-player7, .leaderboard-player9{
+    margin: 0px auto;
+    color: rgb(252, 253, 253);
+}
+.leaderboard-player2, .leaderboard-player4, .leaderboard-player6, .leaderboard-player8, .leaderboard-player10{
+    margin: 0px auto;
+    color: #bdb9b6;
+}
+.score1, .score3, .score5, .score7, .score9{
+    margin: 0px auto;
+    color: rgb(252, 253, 253); 
+}
+.score2, .score4, .score6, .score8, .score10{
+    margin: 0px auto;
+    color: #bdb9b6;
+}
