@@ -1239,19 +1239,19 @@ class App {
             //     }
             // }
             if (this.fox
-                && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
+                && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 4
             ) {
 
                 if (this.all_player_data[j].mesh.position.x > this.fox.position.x) {
                     //this.all_player_data[j].mesh.position.x += 0.25;
-                    if (this.all_player_data[j].action === 0 && this.all_player_data[j].onplane)
+                    if (this.all_player_data[j].action === 0)
                         this.fox.position.x -= 0.5;
                     else
                         this.fox.position.x -= 0.25
                 }
                 else {
                     //this.all_player_data[j].mesh.position.x -= 0.25;
-                    if (this.all_player_data[j].action === 1 && this.all_player_data[j].onplane)
+                    if (this.all_player_data[j].action === 1)
                         this.fox.position.x += 0.5;
                     else
                         this.fox.position.x += 0.25
