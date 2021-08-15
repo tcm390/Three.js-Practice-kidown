@@ -617,8 +617,6 @@ class App {
         loader.load(
             'Rhand.glb',
             function (gltf) {
-                console.log(gltf.scene)
-
                 self.Rhand = new THREE.Group();
                 const handR = gltf.scene;
                 handR.scale.set(15, 15, 15);
@@ -1341,7 +1339,7 @@ class App {
             //     }
             // }
             if (this.fox
-                && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
+                && this.all_player_data[j].mesh.children[0].position.distanceTo(this.fox.children[0].position) <= 3.7
             ) {
 
                 if (this.all_player_data[j].mesh.position.x > this.fox.position.x) {
