@@ -992,7 +992,8 @@ class App {
 
     render() {
         //this.stats.begin()
-
+        this.right_block = 0;
+        this.left_block = 0;
         const elapsedTime = this.clock.getElapsedTime();
         const deltaTime = elapsedTime - this.previousTime
         this.previousTime = elapsedTime;
@@ -1343,6 +1344,7 @@ class App {
             if (this.fox
                 && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
                 && Math.abs(this.fox.position.y - this.all_player_data[j].mesh.position.y) <= 2
+                && this.fox.onplane
             ) {
 
                 if (this.all_player_data[j].mesh.position.x > this.fox.position.x) {
@@ -1350,6 +1352,7 @@ class App {
                     // if (this.all_player_data[j].animation === 1)
                     //     this.fox.position.x -= 0.5;
                     // else
+                    this.right_block = 1;
                     this.fox.position.x -= 0.25
                 }
                 else {
@@ -1357,6 +1360,7 @@ class App {
                     // if (this.all_player_data[j].animation === 2)
                     //     this.fox.position.x += 0.5;
                     // else
+                    this.left_block = 1;
                     this.fox.position.x += 0.25
                 }
 
@@ -1381,13 +1385,15 @@ class App {
             if (this.left_sw) {
                 this.fox_animation = 1;
                 // this.fox.rotation.y = -Math.PI / 2
-                this.fox.position.x -= 0.25;
+                if (this.left_block === 0)
+                    this.fox.position.x -= 0.25;
                 this.Animate_Character(this.fox, 1, elapsedTime);
             }
             else if (this.right_sw) {
                 this.fox_animation = 2;
                 //this.fox.rotation.y = Math.PI / 2
-                this.fox.position.x += 0.25;
+                if (this.right_block === 0)
+                    this.fox.position.x += 0.25;
                 this.Animate_Character(this.fox, 2, elapsedTime);
             }
             else {
