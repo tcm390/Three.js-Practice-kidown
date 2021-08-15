@@ -1347,17 +1347,17 @@ class App {
 
                 if (this.all_player_data[j].mesh.position.x > this.fox.position.x) {
                     //this.all_player_data[j].mesh.position.x += 0.25;
-                    if (this.all_player_data[j].animation === 1)
-                        this.fox.position.x -= 0.5;
-                    else
-                        this.fox.position.x -= 0.25
+                    // if (this.all_player_data[j].animation === 1)
+                    //     this.fox.position.x -= 0.5;
+                    // else
+                    this.fox.position.x -= 0.25
                 }
                 else {
                     //this.all_player_data[j].mesh.position.x -= 0.25;
-                    if (this.all_player_data[j].animation === 2)
-                        this.fox.position.x += 0.5;
-                    else
-                        this.fox.position.x += 0.25
+                    // if (this.all_player_data[j].animation === 2)
+                    //     this.fox.position.x += 0.5;
+                    // else
+                    this.fox.position.x += 0.25
                 }
 
             }
