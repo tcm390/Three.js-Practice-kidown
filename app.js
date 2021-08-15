@@ -54,6 +54,7 @@ class App {
 
         this.die_sw = 0;
 
+        this.fox_finalpositionx = 0;
 
         this.mixer = [];
 
@@ -471,7 +472,8 @@ class App {
                         }
                     }
                     else if (data.data[i].id === this.myID) {
-                        document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length
+                        document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length;
+                        this.fox_finalpositionx = data.data[i].positionx;
                     }
                     if (i < 10) {
                         document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1) + ' ' + data.data[i].name;
@@ -1005,7 +1007,7 @@ class App {
                 this.fox_score++;
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
-                console.log('test', this.fox.position.x);
+                console.log('test2', this.fox.position.x);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1347,7 +1349,7 @@ class App {
                 && this.all_player_data[j].onplane
             ) {
 
-                if (this.all_player_data[j].mesh.position.x > this.fox.position.x) {
+                if (this.all_player_data[j].mesh.position.x > this.fox_finalpositionx) {
                     //this.all_player_data[j].mesh.position.x += 0.25;
                     // if (this.all_player_data[j].animation === 1)
                     //     this.fox.position.x -= 0.5;
