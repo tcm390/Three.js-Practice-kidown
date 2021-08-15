@@ -1005,7 +1005,7 @@ class App {
                 this.fox_score++;
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
-                console.log(this.fox.position.x);
+                console.log('test', this.fox.position.x);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1132,7 +1132,7 @@ class App {
                         }
                     }
                     if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id
-                        && Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 3) {
+                        && Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 1.5) {
                         if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
                             this.all_player_data[j].onplane_time = elapsedTime;
 
