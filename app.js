@@ -825,7 +825,7 @@ class App {
         const PI = Math.PI;
         const amp = 5;
         let t = elapsedTime;
-        t *= 25;
+        t *= 20;
         t = t % (2 * PI);
         if (icode === 1 || icode === 2) {
             fox.children[4].position.x = Math.cos(t) * amp;
@@ -1005,7 +1005,7 @@ class App {
                 this.fox_score++;
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
-                console.log('test', this.fox.position.x);
+                console.log(this.fox.position.x);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1132,7 +1132,7 @@ class App {
                         }
                     }
                     if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id
-                        && Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 5) {
+                        && Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 3) {
                         if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
                             this.all_player_data[j].onplane_time = elapsedTime;
 
@@ -1342,7 +1342,7 @@ class App {
             //     }
             // }
             if (this.fox
-                && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3
+                && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
                 && Math.abs(this.fox.position.y - this.all_player_data[j].mesh.position.y) <= 2
                 && this.all_player_data[j].onplane
             ) {
