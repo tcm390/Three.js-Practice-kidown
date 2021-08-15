@@ -813,7 +813,7 @@ class App {
         model.children[2].children[0].children[1].material.color = new THREE.Color(r, g, b);
         model.children[2].children[1].children[1].material.color = new THREE.Color(r, g, b);
 
-        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3, final_positionx: positionx, final_positiony: 20 });
+        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3, final_positionx: positionx });
 
         this.scene.add(model);
 
@@ -1004,7 +1004,7 @@ class App {
                 this.fox_score++;
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
-
+                console.log(this.fox.position.x);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
