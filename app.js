@@ -825,7 +825,7 @@ class App {
         const PI = Math.PI;
         const amp = 5;
         let t = elapsedTime;
-        t *= 20;
+        t *= 25;
         t = t % (2 * PI);
         if (icode === 1 || icode === 2) {
             fox.children[4].position.x = Math.cos(t) * amp;
@@ -1130,7 +1130,8 @@ class App {
                             //this.all_player_data[j].onplane_time = elapsedTime;
                         }
                     }
-                    if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id && Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 3) {
+                    if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id
+                        && Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 5) {
                         if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
                             this.all_player_data[j].onplane_time = elapsedTime;
 
