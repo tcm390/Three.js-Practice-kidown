@@ -88,11 +88,12 @@ class App {
         this.scene = new THREE.Scene();
         //this.scene.background = new THREE.Color(0x000077);
 
-        const ambient = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 1);
+        const ambient = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 0.8);
         this.scene.add(ambient);
 
-        const light = new THREE.DirectionalLight(0xFFFFFF, 1.5);
-        light.position.set(0, 22, -14)
+        const light = new THREE.DirectionalLight(0xFFFFFF, 0.5);
+        // light.position.set(0, 22, -14)
+        light.position.set(0.2, 1, 1);
         this.scene.add(light);
 
         this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -127,6 +128,7 @@ class App {
 
 
             if (this.ready_sw === 1) {
+                this.ready_sw = 0;
                 this.fox_name = document.querySelector('.Name').value
                 this.setListerner();
                 this.load_LifeBar();
@@ -135,6 +137,17 @@ class App {
                 this.box.classList.add('bounceOut');
                 this.leaderboard.classList.remove('hidden');
                 this.fox = this.model.clone();
+                this.fox.children[0].children[1].material = this.model.children[0].children[1].material.clone();
+                this.fox.children[1].children[0].children[1].material = this.model.children[1].children[0].children[1].material.clone();
+                this.fox.children[1].children[1].children[1].material = this.model.children[1].children[1].children[1].material.clone();
+                this.fox.children[2].children[0].children[1].material = this.model.children[2].children[0].children[1].material.clone();
+                this.fox.children[2].children[1].children[1].material = this.model.children[2].children[1].children[1].material.clone();
+                //this.fox.position.x = this.fox_positionx;
+                this.fox.children[0].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
+                this.fox.children[1].children[0].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
+                this.fox.children[1].children[1].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
+                this.fox.children[2].children[0].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
+                this.fox.children[2].children[1].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
                 this.scene.add(this.fox);
                 let initdata = {
                     title: 'init',
@@ -180,7 +193,7 @@ class App {
         this.test_plane_size = null;
 
 
-        let geometry = new THREE.PlaneGeometry(400, 80);
+        let geometry = new THREE.PlaneGeometry(2700, 80);
         let material = new THREE.MeshMatcapMaterial({ color: 0x111188 })
         material.matcap = background_texture;
         const plane = new THREE.Mesh(geometry, material);
@@ -190,14 +203,14 @@ class App {
         geometry = new THREE.ConeGeometry(1.5, 3, 64);
         let metal_material = new THREE.MeshMatcapMaterial()
         metal_material.matcap = ceiling_texture;
-        for (let i = -140; i < 140; i += 3) {
+        for (let i = -1400; i < 1400; i += 3) {
             const cone = new THREE.Mesh(geometry, metal_material);
             cone.rotation.x = Math.PI;
             cone.position.y = 27.5;
             cone.position.x = i;
             this.scene.add(cone);
         }
-        geometry = new THREE.BoxGeometry(300, 1, 3);
+        geometry = new THREE.BoxGeometry(2700, 1, 3);
         const ceiling = new THREE.Mesh(geometry, metal_material);
         ceiling.position.y = 29;
         this.scene.add(ceiling);
@@ -453,7 +466,7 @@ class App {
                                 this.all_player_data[j].final_positiony = data.data[i].positiony;
                                 this.all_player_data[j].animation = data.data[i].animation;
                                 this.all_player_data[j].plane_id = data.data[i].plane_id;
-                                this.all_player_data[j].action = data.data[i].action;
+                                //this.all_player_data[j].action = data.data[i].action;
                             }
                         }
                     }
@@ -554,7 +567,7 @@ class App {
     }
     initial_fox() {
         //######## initial fox attribute #######
-        this.fox_positionx = Math.random() * 12;
+        this.fox_positionx = Math.random() * 2400 - 1200;
         this.fox_r = Math.random();
         this.fox_g = Math.random();
         this.fox_b = Math.random();
@@ -572,11 +585,10 @@ class App {
             // called when the resource is loaded
             function (gltf) {
 
-
                 self.model = new THREE.Group();
                 const body = gltf.scene;
                 body.scale.set(20, 20, 20);
-                body.position.y = 5;
+                body.position.y = -1;
                 self.model.add(body);
 
                 self.loadRhand();
@@ -603,15 +615,43 @@ class App {
         const loader = new GLTFLoader().setPath('./assets/model/');
         const self = this;
         loader.load(
-            'Rhand_ns.glb',
+            'Rhand.glb',
             function (gltf) {
-                const hand = new THREE.Group();
+                console.log(gltf.scene)
+
+                self.Rhand = new THREE.Group();
                 const handR = gltf.scene;
                 handR.scale.set(15, 15, 15);
                 handR.position.z = -7;
                 //handR.position.y = -4;
-                hand.add(handR)
-                self.model.add(hand);
+                self.Rhand.add(handR)
+                self.model.add(self.Rhand);
+                handR.visible = false;
+
+                self.loadRfist();
+            },
+            // called while loading is progressing
+            function (xhr) {
+            },
+            // called when loading has errors
+            function (error) {
+                console.log('An error happened');
+                console.log(error);
+            }
+        );
+    }
+    loadRfist() {
+        const loader = new GLTFLoader().setPath('./assets/model/');
+        const self = this;
+        loader.load(
+            'Rfist.glb',
+            function (gltf) {
+                const handR = gltf.scene;
+                handR.scale.set(15, 15, 15);
+                handR.position.z = -7;
+                //handR.position.y = -4;
+                self.Rhand.add(handR)
+                self.model.add(self.Rhand);
 
 
                 self.loadLhand();
@@ -630,15 +670,40 @@ class App {
         const loader = new GLTFLoader().setPath('./assets/model/');
         const self = this;
         loader.load(
-            'Lhand_ns.glb',
+            'Lhand.glb',
             function (gltf) {
-                const hand = new THREE.Group();
+                self.Lhand = new THREE.Group();
                 const handL = gltf.scene;
                 handL.scale.set(15, 15, 15);
                 handL.position.z = 7;
                 //handL.position.y = -4;
-                hand.add(handL)
-                self.model.add(hand);
+                self.Lhand.add(handL)
+                self.model.add(self.Lhand);
+
+                self.loadLfist();
+            },
+            // called while loading is progressing
+            function (xhr) {
+            },
+            // called when loading has errors
+            function (error) {
+                console.log('An error happened');
+                console.log(error);
+            }
+        );
+    }
+    loadLfist() {
+        const loader = new GLTFLoader().setPath('./assets/model/');
+        const self = this;
+        loader.load(
+            'Lfist.glb',
+            function (gltf) {
+                const handL = gltf.scene;
+                handL.scale.set(15, 15, 15);
+                handL.position.z = 7;
+                //handL.position.y = -4;
+                self.Lhand.add(handL)
+                self.model.add(self.Lhand);
 
                 self.loadhead();
             },
@@ -701,6 +766,7 @@ class App {
                 legL.position.z = -legR.position.z;
                 self.model.add(legL);
                 self.model.scale.set(0.1, 0.1, 0.1);
+                self.model.position.y = 20;
                 self.setsocketListener();
 
             },
@@ -722,11 +788,11 @@ class App {
 
 
         const model = this.model.clone();
-        model.position.x = positionx;
+        //model.position.x = positionx;
         model.position.y = positiony;
         //model.scale.set(0.02, 0.02, 0.02);
 
-        this.scene.add(model);
+
 
         const text2 = document.createElement('div');
         text2.style.position = 'absolute';
@@ -738,9 +804,19 @@ class App {
         text2.style.top = window.innerHeight / 2 + 'px';
         text2.style.left = window.innerWidth / 2 + 'px';
         document.body.appendChild(text2);
+        model.children[0].children[1].material = this.model.children[0].children[1].material.clone();
+        model.children[1].children[0].children[1].material = this.model.children[1].children[0].children[1].material.clone();
+        model.children[1].children[1].children[1].material = this.model.children[1].children[1].children[1].material.clone();
+        model.children[2].children[0].children[1].material = this.model.children[2].children[0].children[1].material.clone();
+        model.children[2].children[1].children[1].material = this.model.children[2].children[1].children[1].material.clone();
+        model.children[0].children[1].material.color = new THREE.Color(r, g, b);
+        model.children[1].children[0].children[1].material.color = new THREE.Color(r, g, b);
+        model.children[1].children[1].children[1].material.color = new THREE.Color(r, g, b);
+        model.children[2].children[0].children[1].material.color = new THREE.Color(r, g, b);
+        model.children[2].children[1].children[1].material.color = new THREE.Color(r, g, b);
 
-        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, actionlist_sequence: 0, action_list: [], action: -1, name_mesh: text2 })
-
+        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3 });
+        this.scene.add(model);
 
 
 
@@ -748,7 +824,7 @@ class App {
     }
     Animate_Character(fox, icode, elapsedTime) {
         const PI = Math.PI;
-        const amp = 4;
+        const amp = 5;
         let t = elapsedTime;
         t *= 20;
         t = t % (2 * PI);
@@ -761,22 +837,27 @@ class App {
 
 
 
-            fox.children[0].position.y = 5 - Math.cos(t * 2) * amp * .2;
+            fox.children[0].position.y = -1 - Math.cos(t * 2) * amp * .2;
             fox.children[0].rotation.y = -Math.cos(t + PI) * amp * .05;
 
+            fox.children[1].children[0].visible = false;
+            fox.children[1].children[1].visible = true;
             fox.children[1].position.x = Math.cos(t) * amp;
             fox.children[1].rotation.x = 0;
             fox.children[1].position.y = fox.children[0].position.y - 4;
             fox.children[1].position.z = fox.children[0].position.z - 1;
 
+            fox.children[2].children[0].visible = false;
+            fox.children[2].children[1].visible = true;
             fox.children[2].position.x = Math.cos(t + PI) * amp;
             fox.children[2].rotation.x = 0;
             fox.children[2].position.y = fox.children[0].position.y - 4;
             fox.children[2].position.z = fox.children[0].position.z + 1;
 
-            fox.children[3].position.y = 7 - Math.cos(t * 2) * amp * .3;
+            fox.children[3].position.y = 1 - Math.cos(t * 2) * amp * .3;
             fox.children[3].rotation.x = Math.cos(t) * amp * .02;
             fox.children[3].rotation.z = 0;
+            fox.children[3].position.x = fox.children[0].position.x + 3;
             //fox.children[3].rotation.y = Math.cos(t) * amp * .01 + Math.PI / 2;
 
 
@@ -802,36 +883,47 @@ class App {
         else {
             if (icode == 0)
                 fox.children[1].rotation.x = 0;
+            fox.children[1].children[0].visible = false;
+            fox.children[1].children[1].visible = true;
             fox.children[1].rotation.z = 0;
-            fox.children[1].position.y = fox.children[0].position.y - 2;
-            fox.children[1].position.x = fox.children[0].position.x;
-            fox.children[1].position.z = fox.children[0].position.z;
+            fox.children[1].position.y = fox.children[0].position.y - 2.5;
+            fox.children[1].position.x = fox.children[0].position.x + 0.5;
+            fox.children[1].position.z = fox.children[0].position.z - 2;
 
             // this.fox.children[2].position.x = 0;
             if (icode == 0)
                 fox.children[2].rotation.x = 0;
+            fox.children[2].children[0].visible = false;
+            fox.children[2].children[1].visible = true;
             fox.children[2].rotation.z = 0;
-            fox.children[2].position.y = fox.children[0].position.y - 2;
-            fox.children[2].position.x = fox.children[0].position.x;
-            fox.children[2].position.z = fox.children[0].position.z;
+            fox.children[2].position.y = fox.children[0].position.y - 2.5;
+            fox.children[2].position.x = fox.children[0].position.x + 0.5;
+            fox.children[2].position.z = fox.children[0].position.z + 2;
 
             fox.children[3].rotation.z = Math.cos(elapsedTime) / 10;
             fox.children[3].rotation.x = 0;
+            fox.children[3].position.y = fox.children[0].position.y + 1.2;
+            fox.children[3].position.x = fox.children[0].position.x + 4;
             //fox.children[3].rotation.y = Math.cos(elapsedTime) / 10 + Math.PI / 2;
 
             fox.children[4].rotation.z = 0;
             fox.children[4].position.y = fox.children[0].position.y + 2;
             fox.children[4].position.x = fox.children[0].position.x;
+            fox.children[4].position.z = fox.children[0].position.z - 4;
 
             fox.children[5].rotation.z = 0;
             fox.children[5].position.y = fox.children[0].position.y + 2;
             fox.children[5].position.x = fox.children[0].position.x;
+            fox.children[5].position.z = fox.children[0].position.z + 4;
 
             fox.rotation.y = -Math.PI / 2;
             if (icode === 3) {
 
-
-
+                fox.children[1].children[0].visible = true;
+                fox.children[1].children[1].visible = false;
+                fox.children[2].children[0].visible = true;
+                fox.children[2].children[1].visible = false;
+                //for (let i = 0; i < 1; i++) {
                 if (Math.floor(fox.children[1].rotation.x * 100) % 13 === 0) {
                     fox.children[1].rotation.x += 0.13;
                 }
@@ -845,11 +937,9 @@ class App {
                 if (fox.children[1].rotation.x > 1) {
                     fox.children[1].rotation.x = 0.9;
                 }
-                fox.children[1].position.z = fox.children[0].position.z - (21 - (21 * (1 - fox.children[1].rotation.x)));
-                fox.children[1].position.y = -0.5 + fox.children[0].position.y + 6 - (12 * (1 - fox.children[1].rotation.x));
-                fox.children[1].position.x = fox.children[0].position.x + 1;
-
-
+                fox.children[1].position.z = -2 + fox.children[0].position.z - (21 - (21 * (1 - fox.children[1].rotation.x)));
+                fox.children[1].position.y = fox.children[0].position.y + 6 - (12 * (1 - fox.children[1].rotation.x));
+                fox.children[1].position.x = fox.children[0].position.x - 1;
 
                 if (Math.floor(fox.children[2].rotation.x * 100) % 13 === 0) {
                     fox.children[2].rotation.x -= 0.13;
@@ -863,9 +953,25 @@ class App {
                 if (fox.children[2].rotation.x > 0) {
                     fox.children[2].rotation.x = -0.13;
                 }
-                fox.children[2].position.z = fox.children[0].position.z + (21 - (21 * (fox.children[2].rotation.x + 1)));
-                fox.children[2].position.y = -0.5 + fox.children[0].position.y + 6 - (12 * (fox.children[2].rotation.x + 1));
-                fox.children[2].position.x = fox.children[0].position.x + 1;
+                fox.children[2].position.z = 2 + fox.children[0].position.z + (21 - (21 * (fox.children[2].rotation.x + 1)));
+                fox.children[2].position.y = fox.children[0].position.y + 6 - (12 * (fox.children[2].rotation.x + 1));
+                fox.children[2].position.x = fox.children[0].position.x - 1;
+                //}
+
+
+
+                // fox.children[4].position.x = Math.cos(t) * amp * 2;
+                // fox.children[4].position.y = Math.max(fox.children[0].position.y - 6, fox.children[4].position.y);
+
+                // fox.children[5].position.x = Math.cos(t) * amp * 2;
+                // fox.children[5].position.y = Math.max(fox.children[0].position.y - 6, fox.children[5].position.y);
+
+
+
+                // fox.children[4].position.z = fox.children[0].position.z - 2;
+                // fox.children[5].position.z = fox.children[0].position.z + 2;
+                // fox.children[4].rotation.z = -0.3;
+                // fox.children[5].rotation.z = -0.3;
 
             }
         }
@@ -992,6 +1098,65 @@ class App {
 
             this.objectsToUpdate[i].mesh.position.y = (elapsedTime - this.objectsToUpdate[i].start_time) * 10 - 22.5;
 
+            if (this.objectsToUpdate[i].mesh.position.y <= 22.5) {
+                if (this.fox) {
+                    if (Math.abs(this.fox.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.4) {
+                        if (this.fox.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
+                            && this.fox.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
+
+                            if (this.fox_plane !== this.objectsToUpdate[i].mesh) {
+                                this.fox_onplane_time = elapsedTime;
+                                this.fox_plane_id = this.objectsToUpdate[i].id;
+                                this.fox_plane_type = this.objectsToUpdate[i].plane_type;
+                                this.fox_plane = this.objectsToUpdate[i].mesh;
+                            }
+                        }
+                    }
+                }
+
+                for (let j = 0; j < this.all_player_data.length; j++) {
+
+                    if (Math.abs(this.all_player_data[j].mesh.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.4) {
+                        if (this.all_player_data[j].mesh.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
+                            && this.all_player_data[j].mesh.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
+                            // if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh) {
+                            //     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                            //     this.all_player_data[j].onplane_time = elapsedTime;
+                            // }
+                            if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
+                                this.all_player_data[j].onplane_time = elapsedTime;
+                            this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                            this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                            //this.all_player_data[j].mesh.positiony = this.objectsToUpdate[i].mesh.position.y + 1;
+                            //this.all_player_data[j].onplane_time = elapsedTime;
+                        }
+                    }
+                    if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id && Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 3) {
+                        if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
+                            this.all_player_data[j].onplane_time = elapsedTime;
+
+                        this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                        this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                    }
+
+                }
+
+
+            }
+            else if (this.objectsToUpdate[i].mesh.position.y > 22.5) {
+                if (this.objectsToUpdate[i].mesh === this.fox_plane) {
+                    this.fox_plane_id = null;
+                    this.fox_plane = null
+                }
+                for (let j = 0; j < this.all_player_data.length; j++) {
+                    if (this.objectsToUpdate[i].mesh === this.all_player_data[j].onplane) {
+                        this.all_player_data[j].onplane = null;
+                        this.all_player_data[j].plane_type = -1;
+                    }
+                }
+                this.scene.remove(this.objectsToUpdate[i].mesh);
+                this.objectsToUpdate.splice(i, 1);
+            }
             //########## deal with left convey ############
             if (this.objectsToUpdate[i].plane_type === 3) {
                 this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 2].rotation.z = elapsedTime * 2;
@@ -1037,69 +1202,6 @@ class App {
                 if (this.objectsToUpdate[i].mesh.rotation.x >= Math.PI * 2)
                     this.objectsToUpdate[i].mesh.rotation.x = 0
             }
-
-
-
-            if (this.objectsToUpdate[i].mesh.position.y <= 22.5) {
-                if (this.fox) {
-                    if (Math.abs(this.fox.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.2) {
-                        if (this.fox.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
-                            && this.fox.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
-
-                            if (this.fox_plane !== this.objectsToUpdate[i].mesh) {
-                                this.fox_onplane_time = elapsedTime;
-                                this.fox_plane_id = this.objectsToUpdate[i].id;
-                                this.fox_plane_type = this.objectsToUpdate[i].plane_type;
-                                this.fox_plane = this.objectsToUpdate[i].mesh;
-                            }
-                        }
-                    }
-                }
-
-                for (let j = 0; j < this.all_player_data.length; j++) {
-
-                    if (Math.abs(this.all_player_data[j].mesh.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.2) {
-                        if (this.all_player_data[j].mesh.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
-                            && this.all_player_data[j].mesh.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
-                            // if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh) {
-                            //     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                            //     this.all_player_data[j].onplane_time = elapsedTime;
-                            // }
-                            if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
-                                this.all_player_data[j].onplane_time = elapsedTime;
-                            this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                            this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                            //this.all_player_data[j].mesh.positiony = this.objectsToUpdate[i].mesh.position.y + 1;
-                            //this.all_player_data[j].onplane_time = elapsedTime;
-                        }
-                    }
-                    if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id && Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 3) {
-                        if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
-                            this.all_player_data[j].onplane_time = elapsedTime;
-
-                        this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                        this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                    }
-
-                }
-
-
-            }
-            else if (this.objectsToUpdate[i].mesh.position.y > 22.5) {
-                if (this.objectsToUpdate[i].mesh === this.fox_plane) {
-                    this.fox_plane_id = null;
-                    this.fox_plane = null
-                }
-                for (let j = 0; j < this.all_player_data.length; j++) {
-                    if (this.objectsToUpdate[i].mesh === this.all_player_data[j].onplane) {
-                        this.all_player_data[j].onplane = null;
-                        this.all_player_data[j].plane_type = -1;
-                    }
-                }
-                this.scene.remove(this.objectsToUpdate[i].mesh);
-                this.objectsToUpdate.splice(i, 1);
-            }
-
 
         }
         //########### handel remote player ##############
@@ -1167,7 +1269,7 @@ class App {
 
                     }
                     else if (this.all_player_data[j].plane_type === 2) {
-                        if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.2) {
+                        if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
                             this.all_player_data[j].mesh.position.y -= 0.15;
                         }
                         else {
@@ -1184,11 +1286,11 @@ class App {
 
                     else {
 
-                        if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.2) {
+                        if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
                             this.all_player_data[j].mesh.position.y -= 0.15;
 
                         }
-                        else if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) < 0.2) {
+                        else if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) < 0.4) {
 
                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
 
@@ -1239,7 +1341,7 @@ class App {
             //     }
             // }
             if (this.fox
-                && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 4
+                && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
             ) {
 
                 if (this.all_player_data[j].mesh.position.x > this.fox.position.x) {
@@ -1319,7 +1421,7 @@ class App {
                 if (this.fox_plane_type === 1) {
 
                     //this.spring_audio.pause();
-                    if (this.fox.position.y - this.fox_plane.position.y - 1 < 0.2 && this.spring_sound_play === 0) {
+                    if (this.fox.position.y - this.fox_plane.position.y - 1 < 0.4 && this.spring_sound_play === 0) {
                         this.spring_sound_play = 1;
 
                         if (this.fox_life < 10) {
@@ -1327,7 +1429,7 @@ class App {
                             this.fox_life++;
                         }
                     }
-                    else if (this.fox.position.y - this.fox_plane.position.y - 1 >= 0.2 && this.spring_sound_play === 1) {
+                    else if (this.fox.position.y - this.fox_plane.position.y - 1 >= 0.4 && this.spring_sound_play === 1) {
                         this.spring_sound_play = 0;
                     }
                     if (this.spring_sound_play === 1) {
