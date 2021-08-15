@@ -142,7 +142,7 @@ class App {
                 this.fox.children[1].children[1].children[1].material = this.model.children[1].children[1].children[1].material.clone();
                 this.fox.children[2].children[0].children[1].material = this.model.children[2].children[0].children[1].material.clone();
                 this.fox.children[2].children[1].children[1].material = this.model.children[2].children[1].children[1].material.clone();
-                //this.fox.position.x = this.fox_positionx;
+                this.fox.position.x = this.fox_positionx;
                 this.fox.children[0].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
                 this.fox.children[1].children[0].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
                 this.fox.children[1].children[1].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
@@ -786,7 +786,7 @@ class App {
 
 
         const model = this.model.clone();
-        //model.position.x = positionx;
+        model.position.x = positionx;
         model.position.y = positiony;
         //model.scale.set(0.02, 0.02, 0.02);
 
