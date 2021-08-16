@@ -1027,7 +1027,7 @@ class App {
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
                 if (this.all_player_data.length >= 1)
-                    console.log('>4', this.all_player_data[0].mesh.position.y);
+                    console.log('1.5', this.all_player_data[0].mesh.position.y);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1356,7 +1356,7 @@ class App {
                 let test = Math.abs(this.all_player_data[j].final_positiony - this.all_player_data[j].mesh.position.y);
                 if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
                     && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
-                    && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony < 4.5) {
+                    && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony < 1.5) {
                     if (this.all_player_data[j].plane_type === 1) {
 
                         this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
