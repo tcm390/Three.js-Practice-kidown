@@ -999,6 +999,9 @@ class App {
         const elapsedTime = this.clock.getElapsedTime();
         const deltaTime = elapsedTime - this.previousTime
         this.previousTime = elapsedTime;
+        if (Date.now() % 10 === 0) {
+            console.log(Date.now());
+        }
         if (this.fox) {
             if (this.score_time === -1) {
                 this.score_time = elapsedTime;
@@ -1007,7 +1010,7 @@ class App {
                 this.fox_score++;
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
-                console.log(Date.now());
+
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
