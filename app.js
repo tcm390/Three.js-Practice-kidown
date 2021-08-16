@@ -1007,7 +1007,7 @@ class App {
                 this.fox_score++;
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
-                console.log('test5', this.fox.position.x);
+                console.log('test6', this.fox.position.x);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1310,7 +1310,7 @@ class App {
             else if (this.all_player_data[j].onplane) {
                 if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
                     && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
-                    && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony < 4.5) {
+                    && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony < 3) {
                     if (this.all_player_data[j].plane_type === 1) {
 
                         this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
@@ -1320,32 +1320,32 @@ class App {
 
                     }
                     else if (this.all_player_data[j].plane_type === 2) {
-                        // if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
-                        //     this.all_player_data[j].mesh.position.y -= 0.15;
-                        // }
-                        // else {
-                        if (elapsedTime - this.all_player_data[j].onplane_time > 0.1) {
-
+                        if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
                             this.all_player_data[j].mesh.position.y -= 0.15;
-                            this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
                         }
                         else {
-                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
+                            if (elapsedTime - this.all_player_data[j].onplane_time > 0.1) {
+
+                                this.all_player_data[j].mesh.position.y -= 0.15;
+                                this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
+                            }
+                            else {
+                                this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
+                            }
                         }
-                        //}
                     }
 
                     else {
 
-                        // if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
-                        //     this.all_player_data[j].mesh.position.y -= 0.15;
+                        if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
+                            this.all_player_data[j].mesh.position.y -= 0.15;
 
-                        // }
-                        // else if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) < 0.4) {
+                        }
+                        else if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) < 0.4) {
 
-                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
+                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
 
-                        //}
+                        }
                     }
                 }
                 else {
