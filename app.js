@@ -999,9 +999,7 @@ class App {
         const elapsedTime = this.clock.getElapsedTime();
         const deltaTime = elapsedTime - this.previousTime
         this.previousTime = elapsedTime;
-        if (Date.now() / 10 % 10 === 0) {
-            console.log(Date.now());
-        }
+
         if (this.fox) {
             if (this.score_time === -1) {
                 this.score_time = elapsedTime;
