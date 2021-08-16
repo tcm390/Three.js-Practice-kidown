@@ -1356,7 +1356,7 @@ class App {
                 let test = Math.abs(this.all_player_data[j].final_positiony - this.all_player_data[j].mesh.position.y);
                 if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
                     && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
-                    && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony < 3) {
+                    && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony < 4.5) {
                     if (this.all_player_data[j].plane_type === 1) {
 
                         this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
@@ -1410,7 +1410,7 @@ class App {
                     this.all_player_data[j].plane_type = -1;
 
                 }
-                if (Math.abs(this.all_player_data[j].final_positiony - this.all_player_data[j].mesh.position.y) > 4) {
+                if (Math.abs(this.all_player_data[j].final_positiony - this.all_player_data[j].mesh.position.y) >= 4.2) {
                     //this.all_player_data[j].mesh.position.y -= 4.2;
                     // if (this.all_player_data[j].final_positiony < this.all_player_data[j].mesh.position.y)
                     //     this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positiony, 0), 4.2 / test);
