@@ -532,22 +532,7 @@ class App {
             this.right_sw = 0;
 
         })
-        window.addEventListener('blur', (e) => {
-            //window.location.reload();
-            // let data = {
-            //     title: 'player_position_update',
-            //     id: this.myID,
-            //     positionx: this.fox.position.x,
-            //     positiony: -100,
-            //     animation: 0,
-            //     plane_id: -1,
-            //     //plane_type: this.fox_plane_type,
-            //     //onplane_time: this.fox_onplane_time,
-            //     // action: this.fox_action,
-            //     score: this.fox_score
-            // }
-            // this.socket.send(JSON.stringify(data));
-        });
+
 
         window.addEventListener('keydown', (e) => {
             //console.log(e.keyCode)
@@ -1027,7 +1012,7 @@ class App {
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
                 if (this.all_player_data.length >= 1)
-                    console.log('finalx', this.all_player_data[0].mesh.position.y);
+                    console.log('>4', this.all_player_data[0].mesh.position.y);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1356,7 +1341,7 @@ class App {
                 let test = Math.abs(this.all_player_data[j].final_positiony - this.all_player_data[j].mesh.position.y);
                 if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
                     && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
-                    && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony <= 3.2) {
+                    && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony < 3) {
                     if (this.all_player_data[j].plane_type === 1) {
 
                         this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
@@ -1410,16 +1395,13 @@ class App {
                     this.all_player_data[j].plane_type = -1;
 
                 }
-                if (Math.abs(this.all_player_data[j].final_positiony - this.all_player_data[j].mesh.position.y) >= 4.2) {
+                if (Math.abs(this.all_player_data[j].final_positiony - this.all_player_data[j].mesh.position.y) > 4) {
                     //this.all_player_data[j].mesh.position.y -= 4.2;
                     // if (this.all_player_data[j].final_positiony < this.all_player_data[j].mesh.position.y)
                     //     this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positiony, 0), 4.2 / test);
                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
                     this.all_player_data[j].onplane = null;
                     this.all_player_data[j].plane_type = -1;
-                }
-                if (Math.abs(this.all_player_data[j].final_positionx - this.all_player_data[j].mesh.position.x) >= 5) {
-                    this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx;
                 }
 
                 // if (this.all_player_data[j].plane_type === 3) {
