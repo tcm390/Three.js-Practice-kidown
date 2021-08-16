@@ -1007,7 +1007,7 @@ class App {
                 this.fox_score++;
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
-                console.log('test2', this.fox.position.x);
+                console.log('test3', this.fox.position.x);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
