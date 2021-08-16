@@ -532,7 +532,22 @@ class App {
             this.right_sw = 0;
 
         })
-
+        window.addEventListener('blur', (e) => {
+            //window.location.reload();
+            // let data = {
+            //     title: 'player_position_update',
+            //     id: this.myID,
+            //     positionx: this.fox.position.x,
+            //     positiony: -100,
+            //     animation: 0,
+            //     plane_id: -1,
+            //     //plane_type: this.fox_plane_type,
+            //     //onplane_time: this.fox_onplane_time,
+            //     // action: this.fox_action,
+            //     score: this.fox_score
+            // }
+            // this.socket.send(JSON.stringify(data));
+        });
 
         window.addEventListener('keydown', (e) => {
             //console.log(e.keyCode)
