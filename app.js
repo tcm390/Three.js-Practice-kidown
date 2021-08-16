@@ -1368,8 +1368,9 @@ class App {
                 }
                 if (this.all_player_data[j].mesh.position.y > 22) {
                     //this.all_player_data[j].mesh.position.y -= 4.2;
-                    if (this.all_player_data[j].final_positiony < this.all_player_data[j].mesh.position.y)
-                        this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positiony, 0), 4.2 / test);
+                    // if (this.all_player_data[j].final_positiony < this.all_player_data[j].mesh.position.y)
+                    //     this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positiony, 0), 4.2 / test);
+                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
                     this.all_player_data[j].onplane = null;
                     this.all_player_data[j].plane_type = -1;
                 }
