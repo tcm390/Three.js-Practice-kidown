@@ -999,7 +999,7 @@ class App {
         const elapsedTime = this.clock.getElapsedTime();
         const deltaTime = elapsedTime - this.previousTime
         this.previousTime = elapsedTime;
-        if (Date.now() % 1000 === 0) {
+        if (Date.now() % 100 === 0) {
             console.log(Date.now());
         }
         if (this.fox) {
