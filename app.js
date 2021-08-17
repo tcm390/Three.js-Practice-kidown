@@ -1423,7 +1423,7 @@ class App {
                     this.all_player_data[j].plane_type = -1;
                 }
 
-                if (new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].final_positiony, 0).distanceTo(this.all_player_data[j].mesh.position) > 5) {
+                if (new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].final_positiony, 0).distanceTo(this.all_player_data[j].mesh.position) > 20) {
                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
                     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx;
                     this.all_player_data[j].onplane = null;
