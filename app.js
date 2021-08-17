@@ -1011,8 +1011,8 @@ class App {
                 this.fox_score++;
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
-                if (this.all_player_data.length >= 1)
-                    console.log('tt', this.all_player_data[0].mesh.position.y);
+                //if (this.all_player_data.length >= 1)
+                console.log('tt', this.fox.position.x);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
