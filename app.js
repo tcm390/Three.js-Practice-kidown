@@ -1012,7 +1012,7 @@ class App {
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
                 if (this.all_player_data.length >= 1)
-                    console.log('fin', this.all_player_data[0].mesh.position.y);
+                    console.log('fin10', this.all_player_data[0].mesh.position.y);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1413,7 +1413,7 @@ class App {
                     this.all_player_data[j].plane_type = -1;
                 }
 
-                if (new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].final_positiony, 0).distanceTo(this.all_player_data[j].mesh.position) > 5) {
+                if (new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].final_positiony, 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
                     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx;
                 }
