@@ -1417,8 +1417,8 @@ class App {
 
                 }
                 if (this.all_player_data[j].mesh.position.y > 22) {
-                    this.all_player_data[j].mesh.position.y -= 4.2;
-                    //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
+                    //this.all_player_data[j].mesh.position.y -= 4.2;
+                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
                     this.all_player_data[j].onplane = null;
                     this.all_player_data[j].plane_type = -1;
                 }
