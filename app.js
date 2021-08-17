@@ -1012,7 +1012,7 @@ class App {
                 this.own_score.innerHTML = this.fox_score;
                 this.score_time = elapsedTime;
                 if (this.all_player_data.length >= 1)
-                    console.log('dumb', this.all_player_data[0].mesh.position.y);
+                    console.log('dumb2', this.all_player_data[0].mesh.position.y);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1274,8 +1274,8 @@ class App {
                     // this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx, 0.25 / test);
                     this.all_player_data[j].mesh.position.x -= 0.25;
                 }
-                else {
-                    // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].mesh.position.y, 0), 1)
+                else if (Math.abs(this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx) < 0.25) {
+                    //this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].mesh.position.y, 0), 1)
                     // this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx, 1);
                     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx;
                 }
