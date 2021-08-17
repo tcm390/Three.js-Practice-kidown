@@ -1005,14 +1005,14 @@ class App {
 
         if (this.fox) {
             if (this.score_time === -1) {
-                this.score_time = elapsedTime;
+                // this.score_time = elapsedTime;
             }
             if (elapsedTime - this.score_time > 2 && this.die_sw === 0) {
-                this.fox_score++;
-                this.own_score.innerHTML = this.fox_score;
-                this.score_time = elapsedTime;
+                // this.fox_score++;
+                // this.own_score.innerHTML = this.fox_score;
+                // this.score_time = elapsedTime;
                 //if (this.all_player_data.length >= 1)
-                console.log('tt', this.fox.position.x);
+                //console.log('tt', this.fox.position.x);
                 // let data = {
                 //     title: 'score_update',
                 //     id: this.myID,
@@ -1144,6 +1144,8 @@ class App {
                             && this.fox.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
 
                             if (this.fox_plane !== this.objectsToUpdate[i].mesh) {
+                                this.fox_score++;
+                                this.own_score.innerHTML = this.fox_score;
                                 this.fox_onplane_time = elapsedTime;
                                 this.fox_plane_id = this.objectsToUpdate[i].id;
                                 this.fox_plane_type = this.objectsToUpdate[i].plane_type;
@@ -1569,9 +1571,11 @@ class App {
                         this.spring_sound_play = 1;
 
                         if (this.fox_life < 10) {
-
                             this.fox_life++;
                         }
+                        if (this.fox_onplane_time !== elapsedTime)
+                            this.fox_score++;
+                        this.own_score.innerHTML = this.fox_score;
                     }
                     else if (this.fox.position.y - this.fox_plane.position.y - 1 >= 0.4 && this.spring_sound_play === 1) {
                         this.spring_sound_play = 0;
