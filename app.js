@@ -1341,7 +1341,7 @@ class App {
                 if (this.all_player_data[j].final_positiony < this.all_player_data[j].mesh.position.y)
                     this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony, 0.15 / test);
                 // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positiony, 0), 0.15 / test)
-                this.all_player_data[j].mesh.position.y -= 0.15;
+                //this.all_player_data[j].mesh.position.y -= 0.15;
 
                 this.all_player_data[j].onplane = null;
                 this.all_player_data[j].plane_type = -1;
