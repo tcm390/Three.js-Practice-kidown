@@ -471,13 +471,32 @@ class App {
                             }
                         }
                     }
-                    else if (data.data[i].id === this.myID) {
-                        document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length;
-                        this.fox_finalpositionx = data.data[i].positionx;
-                    }
+                    // else if (data.data[i].id === this.myID) {
+                    //     document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length;
+                    //     this.fox_finalpositionx = data.data[i].positionx;
+                    // }
+                    // if (i < 10) {
+                    //     document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1) + ' ' + data.data[i].name;
+                    //     document.querySelector(`.score${i + 1}`).innerHTML = data.data[i].score;
+                    // }
+
+                }
+                // if (data.data.length < 10) {
+                //     for (let i = data.data.length; i < 10; i++) {
+                //         document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1);
+                //         document.querySelector(`.score${i + 1}`).innerHTML = 0;
+                //     }
+                // }
+
+            }
+            else if (data.title === 'all_player_score_update') {
+                for (let i = 0; i < data.data.length; i++) {
                     if (i < 10) {
                         document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1) + ' ' + data.data[i].name;
                         document.querySelector(`.score${i + 1}`).innerHTML = data.data[i].score;
+                    }
+                    if (data.data[i].id === this.myID) {
+                        document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length
                     }
 
                 }
@@ -487,26 +506,7 @@ class App {
                         document.querySelector(`.score${i + 1}`).innerHTML = 0;
                     }
                 }
-
             }
-            // else if (data.title === 'all_player_score_update') {
-            //     for (let i = 0; i < data.data.length; i++) {
-            //         if (i < 10) {
-            //             document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1) + ' ' + data.data[i].name;
-            //             document.querySelector(`.score${i + 1}`).innerHTML = data.data[i].score;
-            //         }
-            //         if (data.data[i].id === this.myID) {
-            //             document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length
-            //         }
-
-            //     }
-            //     if (data.data.length < 10) {
-            //         for (let i = data.data.length; i < 10 - data.data.length; i++) {
-            //             document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1);
-            //             document.querySelector(`.score${i + 1}`).innerHTML = 0;
-            //         }
-            //     }
-            // }
             else if (data.title === 'plane_data') {
                 this.plane_data = data.data;
 
