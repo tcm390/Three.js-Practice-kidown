@@ -1262,7 +1262,7 @@ class App {
             // }
             if (this.all_player_data[j].plane_type !== 3 && this.all_player_data[j].plane_type !== 4) {
                 let test = Math.abs(this.all_player_data[j].final_positionx - this.all_player_data[j].mesh.position.x);
-                if (Math.abs(this.all_player_data[j].final_positionx - this.all_player_data[j].mesh.position.x) > 0.15) {
+                if (Math.abs(this.all_player_data[j].final_positionx - this.all_player_data[j].mesh.position.x) >= 0.25) {
                     this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx, 0.25 / test);
                 }
                 else {
