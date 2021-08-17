@@ -27,10 +27,10 @@ self.addEventListener('message', function (e) {
 
                         }
                     }
-                    if (all_player_data[j].plane_id === objectsToUpdate[i].id) {
-                        //&& Math.abs(all_player_data[j].positiony - all_player_data[j].final_positiony) >= 1.5) {
-                        assign_plane.push({ player: j, plane: i });
-                    }
+                    // if (all_player_data[j].plane_id === objectsToUpdate[i].id) {
+                    //     //&& Math.abs(all_player_data[j].positiony - all_player_data[j].final_positiony) >= 1.5) {
+                    //     assign_plane.push({ player: j, plane: i });
+                    // }
 
                 }
             }
