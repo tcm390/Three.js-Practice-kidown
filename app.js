@@ -52,8 +52,8 @@ class App {
         this.left_sw = 0;
         this.jump_sw = 0;
         this.emoji_button_sw = 0;
-        this.emoji_sw = 99;
-        this.emoji = 99;
+        this.emoji_sw = -1;
+        this.emoji = -1;
         this.emoji_time = 0;
 
         this.die_sw = 0;
@@ -550,7 +550,7 @@ class App {
 
 
         window.addEventListener('keydown', (e) => {
-            console.log(e.keyCode)
+            //console.log(e.keyCode)
             if (e.keyCode === 87 || e.key === 'ArrowUp') {
                 this.jump_sw = 1;
             }
@@ -829,7 +829,11 @@ class App {
             // called when the resource is loaded
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
-                const angry = gltf.scene;
+                self.angry = gltf.scene;
+
+                self.scene.add(self.angry);
+
+                const angry = self.angry.clone();
                 angry.scale.set(600, 600, 600);
                 angry.position.x = 10;
                 angry.position.y = 35;
@@ -838,6 +842,14 @@ class App {
                 self.model.add(angry);
                 self.loadThumbup_symbol();
 
+                self.angry.scale.set(10, 40, 40);
+                self.angry.rotation.y = -Math.PI / 2;
+                // self.angry.traverse(function (child) {
+                //     if (child.isMesh) {
+                //         child.material.transparent = true;
+                //         child.material.opacity = 0.5;
+                //     }
+                // })
             },
             // called while loading is progressing
             function (xhr) {
@@ -860,7 +872,10 @@ class App {
             // called when the resource is loaded
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
-                const thumbup = gltf.scene;
+                self.thumbup = gltf.scene;
+
+                self.scene.add(self.thumbup);
+                const thumbup = self.thumbup.clone();
                 thumbup.scale.set(600, 600, 600);
                 thumbup.position.x = 10;
                 thumbup.position.y = 35;
@@ -869,6 +884,14 @@ class App {
                 self.model.add(thumbup);
                 self.loadheart_symbol();
 
+                self.thumbup.scale.set(10, 40, 40);
+                self.thumbup.rotation.y = -Math.PI / 2;
+                // self.thumbup.traverse(function (child) {
+                //     if (child.isMesh) {
+                //         child.material.transparent = true;
+                //         child.material.opacity = 0.2;
+                //     }
+                // })
 
             },
             // called while loading is progressing
@@ -892,7 +915,11 @@ class App {
             // called when the resource is loaded
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
-                const heart = gltf.scene;
+                console.log(gltf.scene)
+                self.heart = gltf.scene;
+
+                self.scene.add(self.heart);
+                const heart = self.heart.clone();
                 heart.scale.set(600, 600, 600);
                 heart.position.x = 10;
                 heart.position.y = 35;
@@ -900,6 +927,55 @@ class App {
                 self.model.add(heart);
                 self.ready_for_load_model = 1;
 
+                self.heart.scale.set(10, 40, 40);
+                self.heart.rotation.y = -Math.PI / 2;
+                self.loademoji_board();
+                // self.heart.traverse(function (child) {
+                //     if (child.isMesh) {
+                //         child.material.transparent = true;
+                //         child.material.opacity = 0.2;
+                //     }
+                // })
+                // self.heart.children[0].material.transparent = true;
+                // self.heart.children[0].material
+            },
+            // called while loading is progressing
+            function (xhr) {
+            },
+            // called when loading has errors
+            function (error) {
+
+                console.log('An error happened');
+                console.log(error);
+            }
+        );
+    }
+    loademoji_board() {
+        const loader = new GLTFLoader().setPath('./assets/model/');
+        const self = this;
+        // Load a glTF resource
+        loader.load(
+            // resource URL
+            'emoji_board.glb',
+            // called when the resource is loaded
+            function (gltf) {
+                // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
+                console.log(gltf.scene)
+                self.emoji_board = gltf.scene;
+                self.emoji_board.rotation.y = 0.2;
+                // self.emoji_board.rotation.x = -Math.PI / 2;
+                self.emoji_board.scale.set(2, 2, 2)
+                self.scene.add(self.emoji_board);
+
+
+                // self.heart.traverse(function (child) {
+                //     if (child.isMesh) {
+                //         child.material.transparent = true;
+                //         child.material.opacity = 0.2;
+                //     }
+                // })
+                // self.heart.children[0].material.transparent = true;
+                // self.heart.children[0].material
             },
             // called while loading is progressing
             function (xhr) {
@@ -956,13 +1032,7 @@ class App {
     }
     Animate_Character(fox, icode, elapsedTime, emoji) {
 
-        if (emoji === 99) {
-            fox.children[6].visible = true;
-            fox.children[7].visible = true;
-            fox.children[8].visible = true;
-            //emoji = -1;
-        }
-        else if (emoji === 1) {
+        if (emoji === 1) {
             fox.children[6].visible = true;
             fox.children[7].visible = false;
             fox.children[8].visible = false;
@@ -1961,6 +2031,17 @@ class App {
 
         if (this.life_bar)
             this.life_bar.position.set(this.camera.position.x - 30, 18, 10);
+
+        if (this.emoji_board) {
+            this.emoji_board.position.set(this.camera.position.x - 39.4, 10, 5);
+            if (this.angry)
+                this.angry.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 3.3, 6);
+            if (this.thumbup)
+                this.thumbup.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 0.2, 6);
+            if (this.heart)
+                this.heart.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y - 3.2, 6);
+        }
+
         this.stabbed_plane.position.set(this.camera.position.x, 0, 10);
         this.renderer.render(this.scene, this.camera);
 
