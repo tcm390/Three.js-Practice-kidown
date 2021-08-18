@@ -51,6 +51,10 @@ class App {
         this.right_sw = 0;
         this.left_sw = 0;
         this.jump_sw = 0;
+        this.emoji_button_sw = 0;
+        this.emoji_sw = 99;
+        this.emoji = 99;
+        this.emoji_time = 0;
 
         this.die_sw = 0;
 
@@ -128,7 +132,7 @@ class App {
         this.send_name.addEventListener('click', () => {
 
 
-            if (this.ready_sw === 1) {
+            if (this.ready_sw === 1 && this.ready_for_load_model) {
                 this.ready_sw = 0;
                 this.fox_name = document.querySelector('.Name').value
                 this.setListerner();
@@ -353,6 +357,16 @@ class App {
         this.stabbed_plane.visible = false;
         this.scene.add(this.stabbed_plane);
 
+        //######### pointer ############
+        // const pointer_geometry = new THREE.CylinderGeometry(.05, 0.5, 1, 4);
+        // this.pointer = new THREE.Mesh(pointer_geometry, new THREE.MeshStandardMaterial({ color: 0xff0000 }))
+        // this.pointer.rotation.z = Math.PI;
+        // this.pointer.scale.set(1, 1, 0.1);
+        // this.pointer.position.y = 100;
+        // this.pointer.position.z = 1;
+        // this.scene.add(this.pointer);
+
+
 
     }
     toXYCoords(pos) {
@@ -467,6 +481,7 @@ class App {
                                 this.all_player_data[j].final_positiony = data.data[i].positiony;
                                 this.all_player_data[j].animation = data.data[i].animation;
                                 this.all_player_data[j].plane_id = data.data[i].plane_id;
+                                this.all_player_data[j].emoji = data.data[i].emoji;
                                 //this.all_player_data[j].action = data.data[i].action;
                             }
                         }
@@ -535,7 +550,7 @@ class App {
 
 
         window.addEventListener('keydown', (e) => {
-            //console.log(e.keyCode)
+            console.log(e.keyCode)
             if (e.keyCode === 87 || e.key === 'ArrowUp') {
                 this.jump_sw = 1;
             }
@@ -547,6 +562,18 @@ class App {
             if (e.keyCode === 65 || e.key === 'ArrowLeft') {
                 this.left_sw = 1;
             }
+            if (e.keyCode === 49) {
+                this.emoji_sw = 1;
+                this.emoji_button_sw = 1;
+            }
+            if (e.keyCode === 50) {
+                this.emoji_sw = 2;
+                this.emoji_button_sw = 1;
+            }
+            if (e.keyCode === 51) {
+                this.emoji_sw = 3;
+                this.emoji_button_sw = 1;
+            }
 
         });
 
@@ -557,6 +584,18 @@ class App {
                 this.right_sw = 0;
             if (e.keyCode === 65 || e.key === 'ArrowLeft')
                 this.left_sw = 0;
+            if (e.keyCode === 49) {
+                this.emoji_sw = -1;
+                this.emoji_button_sw = 0;
+            }
+            if (e.keyCode === 50) {
+                this.emoji_sw = -1;
+                this.emoji_button_sw = 0;
+            }
+            if (e.keyCode === 51) {
+                this.emoji_sw = -1;
+                this.emoji_button_sw = 0;
+            }
         });
     }
 
@@ -626,8 +665,6 @@ class App {
                 //handR.position.y = -4;
                 self.Rhand.add(handR)
                 self.model.add(self.Rhand);
-                handR.visible = false;
-
                 self.loadRfist();
             },
             // called while loading is progressing
@@ -768,6 +805,100 @@ class App {
                 self.model.scale.set(0.1, 0.1, 0.1);
                 self.model.position.y = 20;
                 self.setsocketListener();
+                self.loadAngry_symbol();
+
+            },
+            // called while loading is progressing
+            function (xhr) {
+            },
+            // called when loading has errors
+            function (error) {
+
+                console.log('An error happened');
+                console.log(error);
+            }
+        );
+    }
+    loadAngry_symbol() {
+        const loader = new GLTFLoader().setPath('./assets/model/');
+        const self = this;
+        // Load a glTF resource
+        loader.load(
+            // resource URL
+            'angry_speech.glb',
+            // called when the resource is loaded
+            function (gltf) {
+                // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
+                const angry = gltf.scene;
+                angry.scale.set(600, 600, 600);
+                angry.position.x = 10;
+                angry.position.y = 35;
+                angry.position.z = -15;
+                // self.angry.position.y = 100;
+                self.model.add(angry);
+                self.loadThumbup_symbol();
+
+            },
+            // called while loading is progressing
+            function (xhr) {
+            },
+            // called when loading has errors
+            function (error) {
+
+                console.log('An error happened');
+                console.log(error);
+            }
+        );
+    }
+    loadThumbup_symbol() {
+        const loader = new GLTFLoader().setPath('./assets/model/');
+        const self = this;
+        // Load a glTF resource
+        loader.load(
+            // resource URL
+            'thumbup_speech.glb',
+            // called when the resource is loaded
+            function (gltf) {
+                // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
+                const thumbup = gltf.scene;
+                thumbup.scale.set(600, 600, 600);
+                thumbup.position.x = 10;
+                thumbup.position.y = 35;
+                thumbup.position.z = -15;
+                // self.thumbup.position.y = 100;
+                self.model.add(thumbup);
+                self.loadheart_symbol();
+
+
+            },
+            // called while loading is progressing
+            function (xhr) {
+            },
+            // called when loading has errors
+            function (error) {
+
+                console.log('An error happened');
+                console.log(error);
+            }
+        );
+    }
+    loadheart_symbol() {
+        const loader = new GLTFLoader().setPath('./assets/model/');
+        const self = this;
+        // Load a glTF resource
+        loader.load(
+            // resource URL
+            'heart_speech.glb',
+            // called when the resource is loaded
+            function (gltf) {
+                // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
+                const heart = gltf.scene;
+                heart.scale.set(600, 600, 600);
+                heart.position.x = 10;
+                heart.position.y = 35;
+                heart.position.z = -15;
+                self.model.add(heart);
+                self.ready_for_load_model = 1;
 
             },
             // called while loading is progressing
@@ -823,7 +954,35 @@ class App {
 
 
     }
-    Animate_Character(fox, icode, elapsedTime) {
+    Animate_Character(fox, icode, elapsedTime, emoji) {
+
+        if (emoji === 99) {
+            fox.children[6].visible = true;
+            fox.children[7].visible = true;
+            fox.children[8].visible = true;
+            //emoji = -1;
+        }
+        else if (emoji === 1) {
+            fox.children[6].visible = true;
+            fox.children[7].visible = false;
+            fox.children[8].visible = false;
+        }
+        else if (emoji === 2) {
+            fox.children[6].visible = false;
+            fox.children[7].visible = true;
+            fox.children[8].visible = false;
+        }
+        else if (emoji === 3) {
+            fox.children[6].visible = false;
+            fox.children[7].visible = false;
+            fox.children[8].visible = true;
+        }
+        else {
+            fox.children[6].visible = false;
+            fox.children[7].visible = false;
+            fox.children[8].visible = false;
+        }
+
         const PI = Math.PI;
         const amp = 5;
         let t = elapsedTime;
@@ -873,15 +1032,50 @@ class App {
             }
             if (icode === 1) {
                 fox.rotation.y = Math.PI + 0.2;
-                //fox.position.x -= 0.25;
+                fox.children[6].rotation.y = Math.PI / 2 - 0.2;
+                fox.children[6].position.z = fox.children[0].position.z - 12;
+                fox.children[6].position.x = fox.children[0].position.x - 10;
+                fox.children[6].position.y = fox.children[0].position.y + 40;
+                fox.children[7].rotation.y = Math.PI / 2 - 0.2;
+                fox.children[7].position.z = fox.children[0].position.z - 12;
+                fox.children[7].position.x = fox.children[0].position.x - 10;
+                fox.children[7].position.y = fox.children[0].position.y + 40;
+                fox.children[8].rotation.y = Math.PI / 2 - 0.2;
+                fox.children[8].position.z = fox.children[0].position.z - 12;
+                fox.children[8].position.x = fox.children[0].position.x - 10;
+                fox.children[8].position.y = fox.children[0].position.y + 40;
             }
 
             else if (icode === 2) {
                 fox.rotation.y = -0.2;
+                fox.children[6].rotation.y = -Math.PI / 2 + 0.2;
+                fox.children[6].position.z = fox.children[0].position.z + 12;
+                fox.children[6].position.x = fox.children[0].position.x + 15;
+                fox.children[6].position.y = fox.children[0].position.y + 40;
+                fox.children[7].rotation.y = -Math.PI / 2 + 0.2;
+                fox.children[7].position.z = fox.children[0].position.z + 12;
+                fox.children[7].position.x = fox.children[0].position.x + 15;
+                fox.children[7].position.y = fox.children[0].position.y + 40;
+                fox.children[8].rotation.y = -Math.PI / 2 + 0.2;
+                fox.children[8].position.z = fox.children[0].position.z + 12;
+                fox.children[8].position.x = fox.children[0].position.x + 15;
+                fox.children[8].position.y = fox.children[0].position.y + 40;
                 //fox.position.x += 0.25;
             }
         }
         else {
+            fox.children[6].rotation.y = 0;
+            fox.children[6].position.x = fox.children[0].position.x + 10;
+            fox.children[6].position.z = fox.children[0].position.z - 12;
+            fox.children[6].position.y = fox.children[0].position.y + 40;
+            fox.children[7].rotation.y = 0;
+            fox.children[7].position.x = fox.children[0].position.x + 10;
+            fox.children[7].position.z = fox.children[0].position.z - 12;
+            fox.children[7].position.y = fox.children[0].position.y + 40;
+            fox.children[8].rotation.y = 0;
+            fox.children[8].position.x = fox.children[0].position.x + 10;
+            fox.children[8].position.z = fox.children[0].position.z - 12;
+            fox.children[8].position.y = fox.children[0].position.y + 40;
             if (icode == 0)
                 fox.children[1].rotation.x = 0;
             fox.children[1].children[0].visible = false;
@@ -1501,7 +1695,7 @@ class App {
 
             }
 
-            this.Animate_Character(this.all_player_data[j].mesh, this.all_player_data[j].animation, elapsedTime);
+            this.Animate_Character(this.all_player_data[j].mesh, this.all_player_data[j].animation, elapsedTime, this.all_player_data[j].emoji);
 
 
             // if (this.all_player_data[j].mixer[this.all_player_data[j].animation]) {
@@ -1522,25 +1716,50 @@ class App {
         //}
         if (this.fox && this.die_sw === 0) {
             this.camera.position.x = this.fox.position.x;
+
+
+
+            //###### handel emoji ########
+            if (this.emoji_button_sw) {
+                if (elapsedTime - this.emoji_time > 3 && this.emoji_sw !== -1) {
+                    this.emoji_time = elapsedTime;
+                    this.emoji = this.emoji_sw;
+                }
+                else {
+                    this.emoji_sw = -1;
+                }
+            }
+            else {
+                if (elapsedTime - this.emoji_time > 3) {
+                    this.emoji = -1;
+                }
+            }
+
+
+            // this.pointer.position.x = this.fox.position.x;
+            // this.pointer.position.y = this.fox.position.y + 5;
             if (this.left_sw) {
+
                 this.fox_animation = 1;
                 // this.fox.rotation.y = -Math.PI / 2
                 if (this.left_block === 0)
                     this.fox.position.x -= 0.25;
-                this.Animate_Character(this.fox, 1, elapsedTime);
+                this.Animate_Character(this.fox, 1, elapsedTime, this.emoji);
             }
             else if (this.right_sw) {
+
                 this.fox_animation = 2;
                 //this.fox.rotation.y = Math.PI / 2
                 if (this.right_block === 0)
                     this.fox.position.x += 0.25;
-                this.Animate_Character(this.fox, 2, elapsedTime);
+                this.Animate_Character(this.fox, 2, elapsedTime, this.emoji);
             }
             else {
+
                 if (!this.fox_plane) {
                     if (!this.left_sw && !this.right_sw) {
                         this.fox_animation = 3;
-                        this.Animate_Character(this.fox, 3, elapsedTime);
+                        this.Animate_Character(this.fox, 3, elapsedTime, this.emoji);
                     }
                 }
                 // else {
@@ -1558,7 +1777,7 @@ class App {
                     this.fox_plane_id = null;
                     if (!this.left_sw && !this.right_sw) {
                         this.fox_animation = 3;
-                        this.Animate_Character(this.fox, 3, elapsedTime);
+                        this.Animate_Character(this.fox, 3, elapsedTime, this.emoji);
                     }
 
                 }
@@ -1592,7 +1811,7 @@ class App {
                     //if (!this.right_sw && !this.left_sw) {
                     if (!this.left_sw && !this.right_sw) {
                         this.fox_animation = 3;
-                        this.Animate_Character(this.fox, 3, elapsedTime);
+                        this.Animate_Character(this.fox, 3, elapsedTime, this.emoji);
                     }
                     //}
                     // if (this.fox.position.y > 22) {
@@ -1615,7 +1834,7 @@ class App {
                         this.fox_plane = null;
                         if (!this.left_sw && !this.right_sw) {
                             this.fox_animation = 3;
-                            this.Animate_Character(this.fox, 3, elapsedTime);
+                            this.Animate_Character(this.fox, 3, elapsedTime, this.emoji);
                         }
                     }
                     else {
@@ -1623,7 +1842,7 @@ class App {
                         this.fox.position.y = this.fox_plane.position.y + 1;
                         if (!this.left_sw && !this.right_sw) {
                             this.fox_animation = 0;
-                            this.Animate_Character(this.fox, 0, elapsedTime);
+                            this.Animate_Character(this.fox, 0, elapsedTime, this.emoji);
                         }
                     }
 
@@ -1633,7 +1852,7 @@ class App {
                     this.fox.position.y = this.fox_plane.position.y + 1;
                     if (!this.left_sw && !this.right_sw) {
                         this.fox_animation = 0;
-                        this.Animate_Character(this.fox, 0, elapsedTime);
+                        this.Animate_Character(this.fox, 0, elapsedTime, this.emoji);
                     }
                 }
 
@@ -1720,7 +1939,8 @@ class App {
                 //plane_type: this.fox_plane_type,
                 //onplane_time: this.fox_onplane_time,
                 // action: this.fox_action,
-                score: this.fox_score
+                score: this.fox_score,
+                emoji: this.emoji
             }
             this.socket.send(JSON.stringify(data));
 
