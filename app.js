@@ -471,10 +471,10 @@ class App {
                             }
                         }
                     }
-                    // else if (data.data[i].id === this.myID) {
-                    //     document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length;
-                    //     this.fox_finalpositionx = data.data[i].positionx;
-                    // }
+                    else if (data.data[i].id === this.myID) {
+                        //document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length;
+                        this.fox_finalpositionx = data.data[i].positionx;
+                    }
                     // if (i < 10) {
                     //     document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1) + ' ' + data.data[i].name;
                     //     document.querySelector(`.score${i + 1}`).innerHTML = data.data[i].score;
@@ -1482,7 +1482,7 @@ class App {
                 && this.all_player_data[j].onplane
                 && this.fox_plane) {
 
-                if (this.all_player_data[j].mesh.position.x > this.fox.position.x) {
+                if (this.all_player_data[j].mesh.position.x > this.fox_finalpositionx) {
                     this.all_player_data[j].mesh.position.x += 0.25;
                     // if (this.all_player_data[j].animation === 1)
                     //     this.fox.position.x -= 0.5;
