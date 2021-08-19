@@ -1310,12 +1310,13 @@ class App {
 
         if (this.fox) {
             if (this.score_time === -1) {
-                // this.score_time = elapsedTime;
+                this.score_time = elapsedTime;
+                console.log(this.fox.position.x)
             }
             if (elapsedTime - this.score_time > 2 && this.die_sw === 0) {
                 // this.fox_score++;
                 // this.own_score.innerHTML = this.fox_score;
-                // this.score_time = elapsedTime;
+                //this.score_time = elapsedTime;
                 //if (this.all_player_data.length >= 1)
                 //console.log('tt', this.fox.position.x);
                 // let data = {
@@ -1324,8 +1325,8 @@ class App {
                 //     score: this.fox_score
                 // }
                 // this.socket.send(JSON.stringify(data));
-                if (this.fox)
-                    console.log(this.fox.position.x)
+
+
             }
         }
         if (this.die_sw === 1) {
