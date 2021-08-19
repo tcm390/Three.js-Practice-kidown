@@ -441,7 +441,7 @@ class App {
                 textGeometry.center();
                 this.text = new THREE.Mesh(textGeometry, new THREE.MeshStandardMaterial({ color: 0xff5500, transparent: true, opacity: 1 }))
                 this.text.rotation.y = 0.1
-                this.text.scale.set(1.5, 1.5, 1.5)
+                this.text.scale.set(1.5, 1.5, 1)
                 this.text.position.y = 2;
                 this.text.position.x = -0.7;
                 this.life_bar.add(this.text)
@@ -1022,9 +1022,9 @@ class App {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
                 //console.log(gltf.scene)
                 self.emoji_board = gltf.scene;
-                self.emoji_board.rotation.y = 0.2;
+                self.emoji_board.rotation.y = 0.1;
                 // self.emoji_board.rotation.x = -Math.PI / 2;
-                self.emoji_board.scale.set(2, 2, 2)
+                self.emoji_board.scale.set(2, 2, 0.1)
                 self.scene.add(self.emoji_board);
                 self.setsocketListener();
                 // self.heart.traverse(function (child) {
@@ -1463,7 +1463,7 @@ class App {
             this.objectsToUpdate[i].mesh.position.y = (elapsedTime - this.objectsToUpdate[i].start_time) * 10 - 22.5;
 
             if (this.objectsToUpdate[i].mesh.position.y <= 22.5) {
-                if (this.fox) {
+                if (this.fox && this.die_sw === 0) {
                     if (Math.abs(this.fox.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.4) {
                         if (this.fox.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
                             && this.fox.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
@@ -2138,7 +2138,7 @@ class App {
             if (this.life_bar)
                 this.life_bar.position.set(this.camera.position.x - this.screenWidth / 2 * 0.75, 18, 10);
             if (this.emoji_board)
-                this.emoji_board.position.set(this.camera.position.x - this.screenWidth / 2 * 0.965, 10, 5);
+                this.emoji_board.position.set(this.camera.position.x - this.screenWidth / 2 * 0.96, 9, 5);
             // if (this.angry)
             //     this.angry.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 3.3, 6);
             // if (this.thumbup)
