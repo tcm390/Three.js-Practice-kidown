@@ -134,7 +134,7 @@ class App {
 
             if (this.ready_sw === 1 && this.ready_for_load_model) {
                 this.ready_sw = 0;
-                this.fox_name = document.querySelector('.Name').value
+                //this.fox_name = document.querySelector('.Name').value
                 this.setListerner();
                 this.load_LifeBar();
                 this.modal.classList.add('hidden');
@@ -161,9 +161,20 @@ class App {
                     r: this.fox_r,
                     g: this.fox_g,
                     b: this.fox_b,
-                    name: this.fox_name
+                    name: document.querySelector('.Name').value
                 }
                 this.socket.send(JSON.stringify(initdata));
+                this.fox_name = document.createElement('div');
+                this.fox_name.style.position = 'absolute';
+                this.fox_name.style.width = 100;
+                this.fox_name.style.height = 100;
+                this.fox_name.style.opacity = 0.5;
+                this.fox_name.style.color = 'white';
+                this.fox_name.innerHTML = document.querySelector('.Name').value;
+                this.fox_name.style.top = window.innerHeight / 2 + 'px';
+                this.fox_name.style.left = window.innerWidth / 2 + 'px';
+                document.body.appendChild(this.fox_name);
+
 
             }
         })
@@ -493,6 +504,7 @@ class App {
                                 this.all_player_data[j].animation = data.data[i].animation;
                                 this.all_player_data[j].plane_id = data.data[i].plane_id;
                                 this.all_player_data[j].emoji = data.data[i].emoji;
+                                this.all_player_data[j].rank = data.data[i].rank;
                                 //this.all_player_data[j].action = data.data[i].action;
                             }
                         }
@@ -522,7 +534,8 @@ class App {
                         document.querySelector(`.score${i + 1}`).innerHTML = data.data[i].score;
                     }
                     if (data.data[i].id === this.myID) {
-                        document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length
+                        document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length;
+                        this.fox_rank = i + 1;
                     }
 
                 }
@@ -1062,7 +1075,7 @@ class App {
         model.children[2].children[0].children[1].material.color = new THREE.Color(r, g, b);
         model.children[2].children[1].children[1].material.color = new THREE.Color(r, g, b);
 
-        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3, final_positionx: positionx });
+        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3, final_positionx: positionx, name: name });
 
         this.scene.add(model);
 
@@ -1820,6 +1833,14 @@ class App {
 
                     let test_pos = this.toXYCoords(this.all_player_data[j].mesh);
                     this.all_player_data[j].name_mesh.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`
+                    if (this.all_player_data[j].rank === 1) {
+                        this.all_player_data[j].name_mesh.style.color = 'gold';
+                        this.all_player_data[j].name_mesh.innerHTML = '👑 ' + this.all_player_data[j].name;
+                    }
+                    else {
+                        this.all_player_data[j].name_mesh.style.color = 'white';
+                        this.all_player_data[j].name_mesh.innerHTML = this.all_player_data[j].name;
+                    }
                 }
                 else {
                     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx;
@@ -2068,9 +2089,21 @@ class App {
                 //onplane_time: this.fox_onplane_time,
                 // action: this.fox_action,
                 score: this.fox_score,
-                emoji: this.emoji
+                emoji: this.emoji,
+                rank: this.rank
             }
             this.socket.send(JSON.stringify(data));
+
+            let test_pos = this.toXYCoords(this.fox);
+            this.fox_name.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`;
+            if (this.fox_rank === 1) {
+                this.fox_name.style.color = 'gold';
+                this.fox_name.innerHTML = '👑 ' + document.querySelector('.Name').value;
+            }
+            else {
+                this.fox_name.style.color = 'white';
+                this.fox_name.innerHTML = document.querySelector('.Name').value;
+            }
 
 
         }
