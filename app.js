@@ -1024,7 +1024,7 @@ class App {
                 self.emoji_board = gltf.scene;
                 self.emoji_board.rotation.y = 0.1;
                 // self.emoji_board.rotation.x = -Math.PI / 2;
-                self.emoji_board.scale.set(2, 2, 0.1)
+                self.emoji_board.scale.set(2, 2, 1)
                 self.scene.add(self.emoji_board);
                 self.setsocketListener();
                 // self.heart.traverse(function (child) {
