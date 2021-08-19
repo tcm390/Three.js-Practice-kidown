@@ -462,6 +462,7 @@ class App {
                     }
 
                 }
+                this.ready_for_load_model = 1;
             }
             else if (data.title === 'player_join') {
                 if (data.id !== this.myID) {
@@ -964,7 +965,7 @@ class App {
                 heart.position.y = 35;
                 heart.position.z = -15;
                 self.model.add(heart);
-                self.ready_for_load_model = 1;
+
 
                 self.heart.scale.set(10, 40, 40);
                 self.heart.rotation.y = -Math.PI / 2;
