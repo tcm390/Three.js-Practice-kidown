@@ -164,6 +164,7 @@ class App {
                     name: this.fox_name
                 }
                 this.socket.send(JSON.stringify(initdata));
+
             }
         })
 
@@ -366,8 +367,17 @@ class App {
         // this.pointer.position.z = 1;
         // this.scene.add(this.pointer);
 
+        this.calculate_screenWidth();
 
+    }
+    calculate_screenWidth() {
+        const vFOV = THREE.MathUtils.degToRad(this.camera.fov); // convert vertical fov to radians
 
+        const height = 2 * Math.tan(vFOV / 2) * 40; // visible height
+
+        const width = height * this.camera.aspect;
+        this.screenWidth = width;
+        //console.log(width);
     }
     toXYCoords(pos) {
         const screenPosition = pos.position.clone()
@@ -531,6 +541,33 @@ class App {
         }
     }
     setListerner() {
+
+
+        // window.addEventListener('mousemove', event => {
+
+        //     // this.mouse.x = 
+        //     // this.mouse.y = - (event.clientY / window.innerHeight) * 2 + 1
+        //     // console.log(- (event.clientY / window.innerHeight) * 2 + 1);
+        //     // const pos = new THREE.Vector3(0, 0, 0);
+        //     // const pMouse = new THREE.Vector3(-1, 0.1, 0);
+        //     // pMouse.unproject(this.camera);
+
+        //     // var cam = this.camera.position;
+        //     // var m = pMouse.y / (pMouse.y - cam.y);
+
+        //     // pos.x = pMouse.x + (cam.x - pMouse.x) * m;
+        //     // pos.z = pMouse.z + (cam.z - pMouse.z) * m;
+        //     //console.log(pos.x);
+
+        //     // var vector = new THREE.Vector3((event.clientX / window.innerWidth) * 2 - 1, (event.clientY / window.innerHeight) * 2 + 1, 0.5);
+        //     // vector.unproject(this.camera);
+        //     // var dir = vector.sub(camera.position).normalize();
+        //     // var distance = - camera.position.z / dir.z;
+        //     // var pos = camera.position.clone().add(dir.multiplyScalar(distance));
+
+
+        // });
+
         window.addEventListener('touchstart', (e) => {
             //alert(e.touches.length)
             if (e.touches[0].clientX < 100) {
@@ -602,9 +639,11 @@ class App {
 
 
     resize() {
+
         this.camera.aspect = window.innerWidth / window.innerHeight;
         this.camera.updateProjectionMatrix();
         this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.calculate_screenWidth();
     }
     initial_fox() {
         //######## initial fox attribute #######
@@ -915,7 +954,7 @@ class App {
             // called when the resource is loaded
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
-                console.log(gltf.scene)
+                //console.log(gltf.scene)
                 self.heart = gltf.scene;
 
                 self.scene.add(self.heart);
@@ -960,7 +999,7 @@ class App {
             // called when the resource is loaded
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
-                console.log(gltf.scene)
+                //console.log(gltf.scene)
                 self.emoji_board = gltf.scene;
                 self.emoji_board.rotation.y = 0.2;
                 // self.emoji_board.rotation.x = -Math.PI / 2;
@@ -1260,6 +1299,7 @@ class App {
     }
 
     render() {
+
         //this.stats.begin()
         this.right_block = 0;
         this.left_block = 0;
@@ -2030,10 +2070,12 @@ class App {
             this.fox_previousPlane = this.fox_plane;
 
         if (this.life_bar)
-            this.life_bar.position.set(this.camera.position.x - 30, 18, 10);
+            this.life_bar.position.set(this.camera.position.x - this.screenWidth / 2 * 0.75, 18, 10);
 
-        if (this.emoji_board) {
-            this.emoji_board.position.set(this.camera.position.x - 39.4, 10, 5);
+
+        if (this.emoji_board && this.screenWidth) {
+            //console.log(this.left_most_point)
+            this.emoji_board.position.set(this.camera.position.x - this.screenWidth / 2 * 0.965, 10, 5);
             if (this.angry)
                 this.angry.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 3.3, 6);
             if (this.thumbup)
