@@ -77,6 +77,41 @@ h3{
     transform: translate(-50%, -50%); 
     text-align: center; 
 }
+.gg_board{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -700%); 
+    text-align: center; 
+}
+.gg_board h2{
+    display: block;
+    margin: 30px auto;
+    text-align: center;
+    padding: 14px 10px;
+    width: 400px;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+.gg_board button{
+    border: 0;
+    background: linear-gradient(to top left, rgba(5, 95, 10), rgba(13, 216, 47));
+    display: block;
+    margin: -20px auto;
+    text-align: center;
+    border: 2px solid #229451;;
+    padding: 10px 30px;
+    outline: none;
+    color: rgb(252, 252, 252);
+    border-radius: 25px;
+    transition: 0.25s;
+    cursor: pointer;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-size: 15px;
+    font-weight: bold;
+}
+.gg_board button:hover{
+    background:  #2ecc71;
+}
 
 @-webkit-keyframes bounceOut {
     from {

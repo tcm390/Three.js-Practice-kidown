@@ -109,11 +109,14 @@ class App {
 
         container.appendChild(this.renderer.domElement);
 
-        // this.stats = new Stats()
-        // this.stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-        // document.body.appendChild(this.stats.dom)
+        this.stats = new Stats()
+        this.stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+        document.body.appendChild(this.stats.dom)
         this.leaderboard = document.querySelector('.leader-board-wrapper');
         this.own_score = document.querySelector('.own_score');
+
+        this.gg_board = document.querySelector('.gg_board');
+        this.restart = document.querySelector('.restart');
 
         this.send_name = document.querySelector('.send_name');
         this.modal = document.querySelector('.modal');
@@ -129,6 +132,9 @@ class App {
             }
         });
 
+        this.restart.addEventListener('click', () => {
+            window.location.reload();
+        })
         this.send_name.addEventListener('click', () => {
 
 
@@ -148,6 +154,7 @@ class App {
                 this.fox.children[2].children[0].children[1].material = this.model.children[2].children[0].children[1].material.clone();
                 this.fox.children[2].children[1].children[1].material = this.model.children[2].children[1].children[1].material.clone();
                 this.fox.position.x = this.fox_positionx;
+                this.fox.position.y = 20;
                 this.fox.children[0].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
                 this.fox.children[1].children[0].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
                 this.fox.children[1].children[1].children[1].material.color = new THREE.Color(this.fox_r, this.fox_g, this.fox_b);
@@ -174,6 +181,8 @@ class App {
                 this.fox_name.style.top = window.innerHeight / 2 + 'px';
                 this.fox_name.style.left = window.innerWidth / 2 + 'px';
                 document.body.appendChild(this.fox_name);
+
+                this.scene.remove(this.model);
 
 
             }
@@ -582,6 +591,10 @@ class App {
 
         // });
 
+        window.addEventListener('blur', () => {
+            window.location.reload();
+        })
+
         window.addEventListener('touchstart', (e) => {
             //alert(e.touches.length)
             if (e.touches[0].clientX < 100) {
@@ -602,10 +615,6 @@ class App {
 
         window.addEventListener('keydown', (e) => {
             //console.log(e.keyCode)
-            if (e.keyCode === 87 || e.key === 'ArrowUp') {
-                this.jump_sw = 1;
-            }
-
             if (e.keyCode === 68 || e.key === 'ArrowRight') {
                 this.right_sw = 1;
             }
@@ -613,15 +622,15 @@ class App {
             if (e.keyCode === 65 || e.key === 'ArrowLeft') {
                 this.left_sw = 1;
             }
-            if (e.keyCode === 49) {
+            if (e.keyCode === 81) {
                 this.emoji_sw = 1;
                 this.emoji_button_sw = 1;
             }
-            if (e.keyCode === 50) {
+            if (e.keyCode === 87) {
                 this.emoji_sw = 2;
                 this.emoji_button_sw = 1;
             }
-            if (e.keyCode === 51) {
+            if (e.keyCode === 69) {
                 this.emoji_sw = 3;
                 this.emoji_button_sw = 1;
             }
@@ -629,21 +638,20 @@ class App {
         });
 
         window.addEventListener('keyup', (e) => {
-            if (e.keyCode === 87 || e.key === 'ArrowUp')
-                this.jump_sw = 0;
+
             if (e.keyCode === 68 || e.key === 'ArrowRight')
                 this.right_sw = 0;
             if (e.keyCode === 65 || e.key === 'ArrowLeft')
                 this.left_sw = 0;
-            if (e.keyCode === 49) {
+            if (e.keyCode === 81) {
                 this.emoji_sw = -1;
                 this.emoji_button_sw = 0;
             }
-            if (e.keyCode === 50) {
+            if (e.keyCode === 87) {
                 this.emoji_sw = -1;
                 this.emoji_button_sw = 0;
             }
-            if (e.keyCode === 51) {
+            if (e.keyCode === 69) {
                 this.emoji_sw = -1;
                 this.emoji_button_sw = 0;
             }
@@ -882,11 +890,10 @@ class App {
             // called when the resource is loaded
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
-                self.angry = gltf.scene;
+                //self.angry = gltf.scene;
+                //self.scene.add(self.angry);
 
-                self.scene.add(self.angry);
-
-                const angry = self.angry.clone();
+                const angry = gltf.scene;
                 angry.scale.set(600, 600, 600);
                 angry.position.x = 10;
                 angry.position.y = 35;
@@ -895,8 +902,8 @@ class App {
                 self.model.add(angry);
                 self.loadThumbup_symbol();
 
-                self.angry.scale.set(10, 40, 40);
-                self.angry.rotation.y = -Math.PI / 2;
+                // self.angry.scale.set(10, 40, 40);
+                // self.angry.rotation.y = -Math.PI / 2;
                 // self.angry.traverse(function (child) {
                 //     if (child.isMesh) {
                 //         child.material.transparent = true;
@@ -925,10 +932,10 @@ class App {
             // called when the resource is loaded
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
-                self.thumbup = gltf.scene;
+                //self.thumbup = gltf.scene;
+                //self.scene.add(self.thumbup);
 
-                self.scene.add(self.thumbup);
-                const thumbup = self.thumbup.clone();
+                const thumbup = gltf.scene;
                 thumbup.scale.set(600, 600, 600);
                 thumbup.position.x = 10;
                 thumbup.position.y = 35;
@@ -936,9 +943,8 @@ class App {
                 // self.thumbup.position.y = 100;
                 self.model.add(thumbup);
                 self.loadheart_symbol();
-
-                self.thumbup.scale.set(10, 40, 40);
-                self.thumbup.rotation.y = -Math.PI / 2;
+                // self.thumbup.scale.set(10, 40, 40);
+                // self.thumbup.rotation.y = -Math.PI / 2;
                 // self.thumbup.traverse(function (child) {
                 //     if (child.isMesh) {
                 //         child.material.transparent = true;
@@ -969,19 +975,20 @@ class App {
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
                 //console.log(gltf.scene)
-                self.heart = gltf.scene;
+                //self.heart = gltf.scene;
+                //self.scene.add(self.heart);
 
-                self.scene.add(self.heart);
-                const heart = self.heart.clone();
+                const heart = gltf.scene;
                 heart.scale.set(600, 600, 600);
                 heart.position.x = 10;
                 heart.position.y = 35;
                 heart.position.z = -15;
                 self.model.add(heart);
 
-
-                self.heart.scale.set(10, 40, 40);
-                self.heart.rotation.y = -Math.PI / 2;
+                self.scene.add(self.model);
+                self.model.position.y = 0;
+                // self.heart.scale.set(10, 40, 40);
+                // self.heart.rotation.y = -Math.PI / 2;
                 self.loademoji_board();
                 // self.heart.traverse(function (child) {
                 //     if (child.isMesh) {
@@ -1019,7 +1026,6 @@ class App {
                 // self.emoji_board.rotation.x = -Math.PI / 2;
                 self.emoji_board.scale.set(2, 2, 2)
                 self.scene.add(self.emoji_board);
-
                 self.setsocketListener();
                 // self.heart.traverse(function (child) {
                 //     if (child.isMesh) {
@@ -1314,7 +1320,7 @@ class App {
 
     render() {
 
-        //this.stats.begin()
+        this.stats.begin()
         this.right_block = 0;
         this.left_block = 0;
         const elapsedTime = this.clock.getElapsedTime();
@@ -1343,12 +1349,13 @@ class App {
             }
         }
         if (this.die_sw === 1) {
-            if (elapsedTime - this.die_time > 1.5 && this.fox.position.y > 207) {
+            if (elapsedTime - this.die_time > 1.5 && this.fox.position.y < -27) {
                 // for (let i = 0; i < this.all_player_data.length; i++) {
                 //     this.all_player_data[i].name_mesh.remove();
                 // }
                 this.scene.remove(this.fox);
-                window.location.reload();
+                this.gg_board.classList.add('fadeOut');
+                //window.location.reload();
                 this.die_time = elapsedTime;
             }
 
@@ -2070,11 +2077,15 @@ class App {
             if (this.fox.position.y < -23 && this.die_sw === 0) {
                 this.die_audio.play();
                 this.die_sw = 1;
+                this.fox_name.remove();
+                document.querySelector(`.final_score`).innerHTML += this.fox_score;
                 this.die_time = elapsedTime;
             }
             if (this.fox_life <= 0 && this.die_sw === 0) {
                 this.die_audio.play();
                 this.die_sw = 1;
+                this.fox_name.remove();
+                document.querySelector(`.final_score`).innerHTML += this.fox_score;
                 this.die_time = elapsedTime;
             }
 
@@ -2121,26 +2132,26 @@ class App {
         if (this.fox_plane !== null)
             this.fox_previousPlane = this.fox_plane;
 
-        if (this.life_bar)
-            this.life_bar.position.set(this.camera.position.x - this.screenWidth / 2 * 0.75, 18, 10);
 
-
-        if (this.emoji_board && this.screenWidth) {
+        if (this.screenWidth) {
             //console.log(this.left_most_point)
-            this.emoji_board.position.set(this.camera.position.x - this.screenWidth / 2 * 0.965, 10, 5);
-            if (this.angry)
-                this.angry.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 3.3, 6);
-            if (this.thumbup)
-                this.thumbup.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 0.2, 6);
-            if (this.heart)
-                this.heart.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y - 3.2, 6);
+            if (this.life_bar)
+                this.life_bar.position.set(this.camera.position.x - this.screenWidth / 2 * 0.75, 18, 10);
+            if (this.emoji_board)
+                this.emoji_board.position.set(this.camera.position.x - this.screenWidth / 2 * 0.965, 10, 5);
+            // if (this.angry)
+            //     this.angry.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 3.3, 6);
+            // if (this.thumbup)
+            //     this.thumbup.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 0.2, 6);
+            // if (this.heart)
+            //     this.heart.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y - 3.2, 6);
         }
 
         this.stabbed_plane.position.set(this.camera.position.x, 0, 10);
         this.renderer.render(this.scene, this.camera);
 
 
-        //this.stats.end()
+        this.stats.end()
     }
 }
 
