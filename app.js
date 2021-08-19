@@ -1834,6 +1834,7 @@ class App {
                     let test_pos = this.toXYCoords(this.all_player_data[j].mesh);
                     this.all_player_data[j].name_mesh.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`
                     if (this.all_player_data[j].rank === 1) {
+                        //console.log(this.all_player_data[j].name_mesh.style.color)
                         this.all_player_data[j].name_mesh.style.color = 'gold';
                         this.all_player_data[j].name_mesh.innerHTML = '👑 ' + this.all_player_data[j].name;
                     }
@@ -2090,7 +2091,7 @@ class App {
                 // action: this.fox_action,
                 score: this.fox_score,
                 emoji: this.emoji,
-                rank: this.rank
+                rank: this.fox_rank
             }
             this.socket.send(JSON.stringify(data));
 
