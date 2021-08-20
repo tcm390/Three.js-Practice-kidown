@@ -1827,6 +1827,8 @@ class App {
                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
                     this.all_player_data[j].name_mesh.style.transform = `translateX(10000px) translateY(10000px)`
                 }
+                this.all_player_data[j].mesh.position.y = Math.floor(this.all_player_data[j].mesh.position.y * 100) / 100;
+                this.all_player_data[j].mesh.position.x = Math.floor(this.all_player_data[j].mesh.position.x * 100) / 100;
 
             }
             // if (this.all_player_data[j].onplane && this.all_player_data[j].onplane.position.y > 22.5) {
