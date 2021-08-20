@@ -1575,10 +1575,13 @@ class App {
                         // let test = Math.abs(this.all_player_data[j].final_positionx[0] - this.all_player_data[j].mesh.position.x);
                         // let test2 = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].final_positionx[0]);
                         let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
-                        if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 0.15) {
+                        if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].final_positionx[0]) >= 0.15) {
                             const temp1 = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], 0.25 / test);
                             const temp2 = this.myLerp(this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test);
                             this.all_player_data[j].mesh.position.x = this.myLerp(temp1, temp2, 0.25 / test);
+                        }
+                        else if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 0.15) {
+                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
                         }
                         else {
                             this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
