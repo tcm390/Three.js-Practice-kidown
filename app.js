@@ -1434,7 +1434,7 @@ class App {
         }
         for (let i = 0; i < this.objectsToUpdate.length; i++) {
 
-            this.objectsToUpdate[i].mesh.position.y = (elapsedTime - this.objectsToUpdate[i].start_time) * 10 - 22.5;
+            this.objectsToUpdate[i].mesh.position.y = (elapsedTime - this.objectsToUpdate[i].start_time) * 15 - 22.5;
 
             if (this.objectsToUpdate[i].mesh.position.y <= 22.5) {
                 if (this.fox && this.die_sw === 0) {
