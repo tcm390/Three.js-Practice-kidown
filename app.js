@@ -1312,8 +1312,8 @@ class App {
                 // }
                 // this.socket.send(JSON.stringify(data));
                 if (this.all_player_data.length > 0) {
-                    console.log('position', this.all_player_data[j].mesh.position.x, this.all_player_data[j].mesh.position.y)
-                    console.log('final_position', this.all_player_data[j].final_positionx, this.all_player_data[j].final_positiony)
+                    console.log('position', this.all_player_data[0].mesh.position.x, this.all_player_data[0].mesh.position.y)
+                    console.log('final_position', this.all_player_data[0].final_positionx, this.all_player_data[0].final_positiony)
                 }
 
                 this.score_time = elapsedTime;
