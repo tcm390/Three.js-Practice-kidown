@@ -417,45 +417,48 @@ class App {
         this.add_life_material = new THREE.MeshMatcapMaterial({ color: 0xaaffaa, transparent: true, opacity: 0.8 });
         this.add_life_material.matcap = this.green_texture2;
         this.subtract_life_material = new THREE.MeshStandardMaterial({ color: 0x666666, transparent: true, opacity: 0.8 })
-        const life_bar_geometry = new THREE.CylinderGeometry(0.25, 0.25, 2, 10);
+        const life_bar_geometry = new THREE.CylinderGeometry(0.5, 0.5, 2.5, 10);
         this.life_bar = new THREE.Group();
         const life_bar_body = new THREE.Mesh(life_bar_geometry, new THREE.MeshStandardMaterial());
-        const fontLoader = new THREE.FontLoader()
-        fontLoader.load(
-            './assets/fonts/helvetiker_regular.typeface.json',
-            (font) => {
-                const textGeometry = new THREE.TextGeometry(
-                    'L I F E',
-                    {
-                        font: font,
-                        size: 0.5,
-                        height: 0.2,
-                        curveSegments: 1,
-                        bevelEnabled: true,
-                        bevelThickness: 0.03,
-                        bevelSize: 0.03,
-                        bevelOffset: 0,
-                        bevelSegments: 2
-                    }
-                )
-                textGeometry.center();
-                this.text = new THREE.Mesh(textGeometry, new THREE.MeshStandardMaterial({ color: 0xff5500, transparent: true, opacity: 1 }))
-                this.text.rotation.y = 0.1
-                this.text.scale.set(1.5, 1.5, 1)
-                this.text.position.y = 2;
-                this.text.position.x = -0.7;
-                this.life_bar.add(this.text)
+
+        const loader = new GLTFLoader().setPath('./assets/model/');
+        const self = this;
+        // Load a glTF resource
+        loader.load(
+            // resource URL
+            'life_bar.glb',
+            // called when the resource is loaded
+            function (gltf) {
+                // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
+                //console.log(gltf.scene)
+                gltf.scene.scale.set(1.5, 1.5, 1.5);
+                gltf.scene.position.x += 5;
+                gltf.scene.position.y -= 3;
+
+                //gltf.scene.rotation.x = 0.5;
+                self.life_bar.add(gltf.scene)
+                //self.setsocketListener();
+            },
+            // called while loading is progressing
+            function (xhr) {
+            },
+            // called when loading has errors
+            function (error) {
+
+                console.log('An error happened');
+                console.log(error);
             }
-        )
+        );
         //life_bar_body.rotation.z = Math.PI / 2;
         life_bar_body.scale.z = 0.3;
-        for (let i = -2; i <= 2.8; i += 0.5) {
+        for (let i = 2.5; i <= 12.5; i += 1) {
             const temp_life_bar = life_bar_body.clone();
             temp_life_bar.material = this.add_life_material;
             temp_life_bar.position.x = i;
+            temp_life_bar.position.z -= 1;
             this.life_bar.add(temp_life_bar);
         }
-        this.life_bar.scale.x = 2;
+        this.life_bar.scale.set(0.9, 0.9, 0.9);
         this.scene.add(this.life_bar);
         //console.log(this.life_bar)
     }
@@ -989,7 +992,8 @@ class App {
                 self.model.position.y = 0;
                 // self.heart.scale.set(10, 40, 40);
                 // self.heart.rotation.y = -Math.PI / 2;
-                self.loademoji_board();
+                self.setsocketListener();
+                //self.loademoji_board();
                 // self.heart.traverse(function (child) {
                 //     if (child.isMesh) {
                 //         child.material.transparent = true;
@@ -1016,15 +1020,15 @@ class App {
         // Load a glTF resource
         loader.load(
             // resource URL
-            'emoji_board.glb',
+            'life_bar.glb',
             // called when the resource is loaded
             function (gltf) {
                 // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
                 //console.log(gltf.scene)
                 self.emoji_board = gltf.scene;
-                self.emoji_board.rotation.y = 0.1;
+                //self.emoji_board.rotation.y = - Math.PI / 2;
                 // self.emoji_board.rotation.x = -Math.PI / 2;
-                self.emoji_board.scale.set(2, 2, 1)
+                self.emoji_board.scale.set(2, 2, 2)
                 self.scene.add(self.emoji_board);
                 self.setsocketListener();
                 // self.heart.traverse(function (child) {
@@ -2138,7 +2142,7 @@ class App {
             if (this.life_bar)
                 this.life_bar.position.set(this.camera.position.x - this.screenWidth / 2 * 0.75, 18, 10);
             if (this.emoji_board)
-                this.emoji_board.position.set(this.camera.position.x - this.screenWidth / 2 * 0.96, 9, 5);
+                this.emoji_board.position.set(this.camera.position.x - this.screenWidth / 2 * 0.7, 15, 5);
             // if (this.angry)
             //     this.angry.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 3.3, 6);
             // if (this.thumbup)
