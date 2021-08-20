@@ -417,7 +417,7 @@ class App {
         this.add_life_material = new THREE.MeshMatcapMaterial({ color: 0xaaffaa, transparent: true, opacity: 0.8 });
         this.add_life_material.matcap = this.green_texture2;
         this.subtract_life_material = new THREE.MeshStandardMaterial({ color: 0x666666, transparent: true, opacity: 0.8 })
-        const life_bar_geometry = new THREE.CylinderGeometry(0.5, 0.5, 2.5, 10);
+        const life_bar_geometry = new THREE.CylinderGeometry(0.54, 0.54, 2.5, 10);
         this.life_bar = new THREE.Group();
         const life_bar_body = new THREE.Mesh(life_bar_geometry, new THREE.MeshStandardMaterial());
 
@@ -451,14 +451,14 @@ class App {
         );
         //life_bar_body.rotation.z = Math.PI / 2;
         life_bar_body.scale.z = 0.3;
-        for (let i = 2.5; i <= 12.5; i += 1) {
+        for (let i = 2.3; i <= 12.5; i += 1.1) {
             const temp_life_bar = life_bar_body.clone();
             temp_life_bar.material = this.add_life_material;
             temp_life_bar.position.x = i;
             temp_life_bar.position.z -= 1;
             this.life_bar.add(temp_life_bar);
         }
-        this.life_bar.scale.set(0.9, 0.9, 0.9);
+        this.life_bar.scale.set(0.9, 0.9, 0.3);
         this.scene.add(this.life_bar);
         //console.log(this.life_bar)
     }
@@ -751,7 +751,8 @@ class App {
                 handR.scale.set(15, 15, 15);
                 handR.position.z = -7;
                 //handR.position.y = -4;
-                self.Rhand.add(handR)
+                self.Rhand.add(handR);
+                self.Rhand.position.y = -5;
                 self.model.add(self.Rhand);
 
 
@@ -804,6 +805,7 @@ class App {
                 handL.position.z = 7;
                 //handL.position.y = -4;
                 self.Lhand.add(handL)
+                self.Lhand.position.y = -5;
                 self.model.add(self.Lhand);
 
                 self.loadhead();
@@ -826,7 +828,7 @@ class App {
             function (gltf) {
                 const head = gltf.scene;
                 head.scale.set(20, 20, 20);
-                head.position.y = 7;
+                head.position.y = 0.2;
                 head.position.x = 2;
                 //head.rotation.y = Math.PI / 2
                 self.model.add(head);
@@ -859,7 +861,7 @@ class App {
                 //legR.rotation.y = Math.PI / 2;
                 legR.position.x = 0;
                 legR.position.z = 4;
-                legR.position.y = -6;
+                legR.position.y = 1;
                 legR.castShadow = true;
                 self.model.add(legR);
 
