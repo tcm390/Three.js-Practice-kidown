@@ -1014,43 +1014,6 @@ class App {
             }
         );
     }
-    loademoji_board() {
-        const loader = new GLTFLoader().setPath('./assets/model/');
-        const self = this;
-        // Load a glTF resource
-        loader.load(
-            // resource URL
-            'life_bar.glb',
-            // called when the resource is loaded
-            function (gltf) {
-                // var headGeom = new THREE.CubeGeometry(16, 16, 16, 1);//
-                //console.log(gltf.scene)
-                self.emoji_board = gltf.scene;
-                //self.emoji_board.rotation.y = - Math.PI / 2;
-                // self.emoji_board.rotation.x = -Math.PI / 2;
-                self.emoji_board.scale.set(2, 2, 2)
-                self.scene.add(self.emoji_board);
-                self.setsocketListener();
-                // self.heart.traverse(function (child) {
-                //     if (child.isMesh) {
-                //         child.material.transparent = true;
-                //         child.material.opacity = 0.2;
-                //     }
-                // })
-                // self.heart.children[0].material.transparent = true;
-                // self.heart.children[0].material
-            },
-            // called while loading is progressing
-            function (xhr) {
-            },
-            // called when loading has errors
-            function (error) {
-
-                console.log('An error happened');
-                console.log(error);
-            }
-        );
-    }
 
     loadPlayer(id, positionx, positiony, r, g, b, name) {
 
@@ -1847,7 +1810,7 @@ class App {
                     if (this.all_player_data[j].rank === 1) {
                         //console.log(this.all_player_data[j].name_mesh.style.color)
                         this.all_player_data[j].name_mesh.style.color = 'gold';
-                        this.all_player_data[j].name_mesh.innerHTML = '👑 ' + this.all_player_data[j].name;
+                        this.all_player_data[j].name_mesh.innerHTML = '<font size="6">👑</font>' + this.all_player_data[j].name;
                     }
                     else {
                         this.all_player_data[j].name_mesh.style.color = 'white';
@@ -2114,7 +2077,7 @@ class App {
             this.fox_name.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`;
             if (this.fox_rank === 1) {
                 this.fox_name.style.color = 'gold';
-                this.fox_name.innerHTML = '👑 ' + document.querySelector('.Name').value;
+                this.fox_name.innerHTML = '<font size="6">👑</font>' + document.querySelector('.Name').value;
             }
             else {
                 this.fox_name.style.color = 'white';
@@ -2138,17 +2101,8 @@ class App {
 
 
         if (this.screenWidth) {
-            //console.log(this.left_most_point)
             if (this.life_bar)
                 this.life_bar.position.set(this.camera.position.x - this.screenWidth / 2 * 0.75, 18, 10);
-            if (this.emoji_board)
-                this.emoji_board.position.set(this.camera.position.x - this.screenWidth / 2 * 0.7, 15, 5);
-            // if (this.angry)
-            //     this.angry.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 3.3, 6);
-            // if (this.thumbup)
-            //     this.thumbup.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y + 0.2, 6);
-            // if (this.heart)
-            //     this.heart.position.set(this.emoji_board.position.x + 1, this.emoji_board.position.y - 3.2, 6);
         }
 
         this.stabbed_plane.position.set(this.camera.position.x, 0, 10);
