@@ -672,7 +672,7 @@ class App {
     }
     initial_fox() {
         //######## initial fox attribute #######
-        this.fox_positionx = Math.random() * 150 - 75;
+        this.fox_positionx = Math.floor(Math.random() * 150 - 75);
         this.fox_r = Math.random();
         this.fox_g = Math.random();
         this.fox_b = Math.random();
@@ -1311,7 +1311,8 @@ class App {
                 //     score: this.fox_score
                 // }
                 // this.socket.send(JSON.stringify(data));
-
+                console.log(this.fox.position.x, this.fox.position.y)
+                this.score_time = elapsedTime;
 
             }
         }
@@ -1349,12 +1350,12 @@ class App {
                     plane_type = 2;
                 }
 
-                else if (Math.floor(this.plane_data[i].id) % 6 === 3) {
+                else if (Math.floor(this.plane_data[i].id) % 6 === 30) {
                     cube = this.convey.clone();
                     plane_type = 3;
                 }
 
-                else if (Math.floor(this.plane_data[i].id) % 6 === 4) {
+                else if (Math.floor(this.plane_data[i].id) % 6 === 40) {
                     cube = this.convey.clone();
                     cube.rotation.z = Math.PI;
                     plane_type = 4;
@@ -2055,6 +2056,9 @@ class App {
                 document.querySelector(`.final_score`).innerHTML += this.fox_score;
                 this.die_time = elapsedTime;
             }
+
+
+            this.fox.position.y = Math.floor(this.fox.position.y * 100) / 100;
 
             this.calculate_life(this.fox_life);
             let data = {
