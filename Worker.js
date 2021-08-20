@@ -14,7 +14,7 @@ self.addEventListener('message', function (e) {
         elapsedTime = e.data.elapsedTime;
         test_plane_size = e.data.test_plane_size;
         for (let i = 0; i < objectsToUpdate.length; i++) {
-            objectsToUpdate[i].positiony = (elapsedTime - objectsToUpdate[i].start_time) * 12 - 22.5;
+            objectsToUpdate[i].positiony = (elapsedTime - objectsToUpdate[i].start_time) * 10 - 22.5;
             if (objectsToUpdate[i].positiony <= 22.5) {
                 for (let j = 0; j < all_player_data.length; j++) {
 
