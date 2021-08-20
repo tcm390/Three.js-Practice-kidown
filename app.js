@@ -1311,7 +1311,11 @@ class App {
                 //     score: this.fox_score
                 // }
                 // this.socket.send(JSON.stringify(data));
-                console.log(this.fox.position.x, this.fox.position.y)
+                if (this.all_player_data.length > 0) {
+                    console.log('position', this.all_player_data[j].mesh.position.x, this.all_player_data[j].mesh.position.y)
+                    console.log('final_position', this.all_player_data[j].final_positionx, this.all_player_data[j].final_positiony)
+                }
+
                 this.score_time = elapsedTime;
 
             }
@@ -2059,6 +2063,7 @@ class App {
 
 
             this.fox.position.y = Math.floor(this.fox.position.y * 100) / 100;
+            this.fox.position.x = Math.floor(this.fox.position.x * 100) / 100;
 
             this.calculate_life(this.fox_life);
             let data = {
