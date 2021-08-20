@@ -1673,9 +1673,9 @@ class App {
                         let test = Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y);
                         if (test > 0) {
                             // this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                            const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                            //const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                            this.all_player_data[j].mesh.position.y = temp1;
+                            const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test);
+                            const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
+                            this.all_player_data[j].mesh.position.y = this.myLerp(temp1, temp2, 0.15 / test);
                         }
                         else {
                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1706,9 +1706,9 @@ class App {
 
                                     if (test > 0) {
                                         // this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                        const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                        //const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                        this.all_player_data[j].mesh.position.y = temp1;
+                                        const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test);
+                                        const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
+                                        this.all_player_data[j].mesh.position.y = this.myLerp(temp1, temp2, 0.15 / test);
                                     }
                                     else {
                                         this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1722,9 +1722,9 @@ class App {
                                     if (this.all_player_data[j].onplane.position.y - 1 - this.all_player_data[j].final_positiony[1] >= 0.4) {
                                         if (test > 0) {
                                             // this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                            const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                            //const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                            this.all_player_data[j].mesh.position.y = temp1;
+                                            const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test);
+                                            const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
+                                            this.all_player_data[j].mesh.position.y = this.myLerp(temp1, temp2, 0.15 / test)
                                         }
                                         else {
                                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1747,9 +1747,9 @@ class App {
                                 if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
                                     if (test > 0) {
                                         // this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                        const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                        //const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                        this.all_player_data[j].mesh.position.y = temp1;
+                                        const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test);
+                                        const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
+                                        this.all_player_data[j].mesh.position.y = this.myLerp(temp1, temp2, 0.15 / test)
                                     }
                                     else {
                                         this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1772,9 +1772,9 @@ class App {
 
                             if (test > 0) {
                                 // this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                //const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                this.all_player_data[j].mesh.position.y = temp1;
+                                const temp1 = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test);
+                                const temp2 = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
+                                this.all_player_data[j].mesh.position.y = this.myLerp(temp1, temp2, 0.15 / test)
                             }
                             else {
                                 this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
