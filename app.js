@@ -1370,6 +1370,7 @@ class App {
             else if (this.receive_player_data[i].id === this.myID) {
                 this.fox_finalpositionx = this.receive_player_data[i].positionx;
             }
+            this.receive_player_data = [];
 
         }
 
