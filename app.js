@@ -1570,22 +1570,22 @@ class App {
             }
             //########### handel remote player ##############
             for (let j = 0; j < this.all_player_data.length; j++) {
-                if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth / 1.8
-                    && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth / 1.8) {
+                if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
+                    && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth) {
 
 
                     if (this.all_player_data[j].plane_type !== 3 && this.all_player_data[j].plane_type !== 4) {
                         // let test = Math.abs(this.all_player_data[j].final_positionx[0] - this.all_player_data[j].mesh.position.x);
                         // let test2 = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].final_positionx[0]);
                         let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
-                        if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 0.5) {
+                        if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 0.25) {
 
                             this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test);
                         }
-                        else if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 0.25) {
+                        // else if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 0.25) {
 
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
-                        }
+                        //     this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
+                        // }
                         else {
                             this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
                         }
