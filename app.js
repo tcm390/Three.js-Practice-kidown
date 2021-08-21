@@ -1578,8 +1578,12 @@ class App {
 
 
                         let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
-                        if (test > 0.25) {
+                        let test1 = Math.abs(this.all_player_data[j].final_positionx[0] - this.all_player_data[j].mesh.position.x);
+                        if (test > 0.25 && test1 > 0.25) {
                             this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test);
+                        }
+                        else if (test > 0.25) {
+                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
                         }
                         else {
                             this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
