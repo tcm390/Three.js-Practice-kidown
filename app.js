@@ -1370,7 +1370,7 @@ class App {
                 // material.matcap = this.plane_texture;
                 let cube;
                 let plane_type;
-                if (Math.floor(this.plane_data[i].id) % 6 === 10) {
+                if (Math.floor(this.plane_data[i].id) % 6 === 1) {
                     cube = this.trampoline.clone();
                     plane_type = 1;
                 }
@@ -1380,12 +1380,12 @@ class App {
                     plane_type = 2;
                 }
 
-                else if (Math.floor(this.plane_data[i].id) % 6 === 30) {
+                else if (Math.floor(this.plane_data[i].id) % 6 === 3) {
                     cube = this.convey.clone();
                     plane_type = 3;
                 }
 
-                else if (Math.floor(this.plane_data[i].id) % 6 === 40) {
+                else if (Math.floor(this.plane_data[i].id) % 6 === 4) {
                     cube = this.convey.clone();
                     cube.rotation.z = Math.PI;
                     plane_type = 4;
