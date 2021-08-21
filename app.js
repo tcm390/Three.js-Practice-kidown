@@ -45,6 +45,7 @@ class App {
         this.score_time = -1;
 
         this.all_player_data = [];
+        this.receive_player_data = [];
         this.objectsToUpdate = [];
 
         this.ready_sw = 0;
@@ -507,32 +508,33 @@ class App {
                 }
             }
             else if (data.title === 'all_player_data_update') {
-                for (let i = 0; i < data.data.length; i++) {
-                    if (data.data[i].id !== this.myID) {
-                        for (let j = 0; j < this.all_player_data.length; j++) {
-                            if (data.data[i].id === this.all_player_data[j].id) {
-                                this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
-                                this.all_player_data[j].final_positionx[1] = data.data[i].positionx;
-                                this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
-                                this.all_player_data[j].final_positiony[1] = data.data[i].positiony;
-                                this.all_player_data[j].animation = data.data[i].animation;
-                                this.all_player_data[j].plane_id = data.data[i].plane_id;
-                                this.all_player_data[j].emoji = data.data[i].emoji;
-                                this.all_player_data[j].rank = data.data[i].rank;
-                                //this.all_player_data[j].action = data.data[i].action;
-                            }
-                        }
-                    }
-                    else if (data.data[i].id === this.myID) {
-                        //document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length;
-                        this.fox_finalpositionx = data.data[i].positionx;
-                    }
-                    // if (i < 10) {
-                    //     document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1) + ' ' + data.data[i].name;
-                    //     document.querySelector(`.score${i + 1}`).innerHTML = data.data[i].score;
-                    // }
+                this.receive_player_data = data.data;
+                // for (let i = 0; i < data.data.length; i++) {
+                //     if (data.data[i].id !== this.myID) {
+                //         for (let j = 0; j < this.all_player_data.length; j++) {
+                //             if (data.data[i].id === this.all_player_data[j].id) {
+                //                 this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
+                //                 this.all_player_data[j].final_positionx[1] = data.data[i].positionx;
+                //                 this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
+                //                 this.all_player_data[j].final_positiony[1] = data.data[i].positiony;
+                //                 this.all_player_data[j].animation = data.data[i].animation;
+                //                 this.all_player_data[j].plane_id = data.data[i].plane_id;
+                //                 this.all_player_data[j].emoji = data.data[i].emoji;
+                //                 this.all_player_data[j].rank = data.data[i].rank;
+                //                 //this.all_player_data[j].action = data.data[i].action;
+                //             }
+                //         }
+                //     }
+                //     else if (data.data[i].id === this.myID) {
+                //         //document.querySelector('.own_rank').innerHTML = (i + 1) + ' of ' + data.data.length;
+                //         this.fox_finalpositionx = data.data[i].positionx;
+                //     }
+                //     // if (i < 10) {
+                //     //     document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1) + ' ' + data.data[i].name;
+                //     //     document.querySelector(`.score${i + 1}`).innerHTML = data.data[i].score;
+                //     // }
 
-                }
+                // }
                 // if (data.data.length < 10) {
                 //     for (let i = data.data.length; i < 10; i++) {
                 //         document.querySelector(`.leaderboard-player${i + 1}`).innerHTML = '#' + (i + 1);
@@ -1347,6 +1349,28 @@ class App {
             else {
                 this.fox.position.y -= 0.35;
             }
+        }
+        //########### update player data ########
+        for (let i = 0; i < this.receive_player_data.length; i++) {
+            if (this.receive_player_data[i].id !== this.myID) {
+                for (let j = 0; j < this.all_player_data.length; j++) {
+                    if (this.receive_player_data[i].id === this.all_player_data[j].id) {
+                        this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
+                        this.all_player_data[j].final_positionx[1] = this.receive_player_data[i].positionx;
+                        this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
+                        this.all_player_data[j].final_positiony[1] = this.receive_player_data[i].positiony;
+                        this.all_player_data[j].animation = this.receive_player_data[i].animation;
+                        this.all_player_data[j].plane_id = this.receive_player_data[i].plane_id;
+                        this.all_player_data[j].emoji = this.receive_player_data[i].emoji;
+                        this.all_player_data[j].rank = this.receive_player_data[i].rank;
+                        //this.all_player_data[j].action = data.data[i].action;
+                    }
+                }
+            }
+            else if (data.data[i].id === this.myID) {
+                this.fox_finalpositionx = data.data[i].positionx;
+            }
+
         }
 
         //########## draw plane #############
