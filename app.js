@@ -1367,8 +1367,8 @@ class App {
                     }
                 }
             }
-            else if (data.data[i].id === this.myID) {
-                this.fox_finalpositionx = data.data[i].positionx;
+            else if (this.receive_player_data[i].id === this.myID) {
+                this.fox_finalpositionx = this.receive_player_data[i].positionx;
             }
 
         }
