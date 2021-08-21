@@ -1865,7 +1865,7 @@ class App {
                         && this.fox_plane) {
 
                         if (this.all_player_data[j].mesh.position.x > this.fox_finalpositionx) {
-                            this.all_player_data[j].mesh.position.x += 0.25;
+                            //this.all_player_data[j].mesh.position.x += 0.25;
                             // if (this.all_player_data[j].animation === 1)
                             //     this.fox.position.x -= 0.5;
                             // else
@@ -1873,7 +1873,7 @@ class App {
                             this.fox.position.x -= 0.25
                         }
                         else {
-                            this.all_player_data[j].mesh.position.x -= 0.25;
+                            //this.all_player_data[j].mesh.position.x -= 0.25;
                             // if (this.all_player_data[j].animation === 2)
                             //     this.fox.position.x += 0.5;
                             // else
