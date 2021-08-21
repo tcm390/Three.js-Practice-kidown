@@ -1648,21 +1648,15 @@ class App {
 
                     if (this.all_player_data[j].onplane === null) {
 
-                        let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                        if (test1 > 0.15) {
-                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test1);
-                        }
-                        else {
-                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[0];
-                        }
-
-                        let test2 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                        if (test2 > 0.15) {
-                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test2);
+                        let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                        if (test > 0.15) {
+                            this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                         }
                         else {
                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                         }
+
+
 
 
                         this.all_player_data[j].onplane = null;
@@ -1685,21 +1679,14 @@ class App {
                             else if (this.all_player_data[j].plane_type === 2) {
                                 if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
 
-                                    let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                                    if (test1 > 0.15) {
-                                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test1);
-                                    }
-                                    else {
-                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[0];
-                                    }
-
-                                    let test2 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                                    if (test2 > 0.15) {
-                                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test2);
+                                    let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                                    if (test > 0.15) {
+                                        this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     }
                                     else {
                                         this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                                     }
+
 
 
                                     this.all_player_data[j].onplane = null;
@@ -1707,23 +1694,13 @@ class App {
                                 }
                                 else {
                                     if (this.all_player_data[j].onplane.position.y - 1 - this.all_player_data[j].final_positiony[1] >= 0.4) {
-                                        let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                                        if (test1 > 0.15) {
-                                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test1);
-                                        }
-                                        else {
-                                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[0];
-                                        }
-
-                                        let test2 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                                        if (test2 > 0.15) {
-                                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test2);
+                                        let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                                        if (test > 0.15) {
+                                            this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                                         }
                                         else {
                                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                                         }
-
-
 
                                         //this.all_player_data[j].mesh.position.y -= 0.15;
                                         // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positiony, 0), 0.15 / test)
@@ -1742,21 +1719,14 @@ class App {
                             else {
 
                                 if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
-                                    let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                                    if (test1 > 0.15) {
-                                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test1);
-                                    }
-                                    else {
-                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[0];
-                                    }
-
-                                    let test2 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                                    if (test2 > 0.15) {
-                                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test2);
+                                    let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                                    if (test > 0.15) {
+                                        this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     }
                                     else {
                                         this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                                     }
+
 
 
                                     this.all_player_data[j].onplane = null;
@@ -1773,21 +1743,14 @@ class App {
                         }
                         else {
 
-                            let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                            if (test1 > 0.15) {
-                                this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], 0.15 / test1);
-                            }
-                            else {
-                                this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[0];
-                            }
-
-                            let test2 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                            if (test2 > 0.15) {
-                                this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test2);
+                            let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                            if (test > 0.15) {
+                                this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                             }
                             else {
                                 this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                             }
+
 
 
                             this.all_player_data[j].onplane = null;
