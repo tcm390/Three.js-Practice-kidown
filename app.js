@@ -1583,7 +1583,7 @@ class App {
                             this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[0];
                         }
 
-                        let test2 = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
+                        let test2 = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].final_positionx[0]);
                         if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) > 0.25) {
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test2);
                         }
