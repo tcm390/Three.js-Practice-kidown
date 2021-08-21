@@ -1295,7 +1295,7 @@ class App {
         return a + (b - a) * x;
     }
     myBezier(a, b, c, x) {
-        return (Math.pow((1 - x), 2) * a) + (2 * (1 - x) * x * b) + (Math.pow(x, 2) * c);
+        return ((1 - x) * (1 - x) * a) + (2 * (1 - x) * x * b) + (x * x * c);
     }
 
     render() {
@@ -1575,27 +1575,17 @@ class App {
 
 
                     if (this.all_player_data[j].plane_type !== 3 && this.all_player_data[j].plane_type !== 4) {
-                        let temp1;
-                        let temp2;
 
-                        let test1 = Math.abs(this.all_player_data[j].final_positionx[0] - this.all_player_data[j].mesh.position.x);
-                        if (test1 > 0.25) {
-                            temp1 = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], 0.25 / test1);
+
+                        let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
+                        if (test > 0.25) {
+                            this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test);
                         }
                         else {
-                            temp1 = this.all_player_data[j].final_positionx[0];
+                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
                         }
 
-                        let test2 = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].final_positionx[0]);
-                        if (test2 > 0.25) {
-                            temp2 = this.myLerp(this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test2);
-                        }
-                        else {
-                            temp2 = this.all_player_data[j].final_positionx[1];
-                        }
 
-                        let test3 = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
-                        this.all_player_data[j].mesh.position.x = this.myLerp(temp1, temp2, 0.25 / test3);
 
                     }
                     else if (this.all_player_data[j].plane_type === 3) {
