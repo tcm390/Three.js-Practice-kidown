@@ -1810,7 +1810,8 @@ class App {
                         //     this.all_player_data[j].onplane = null;
                         //     this.all_player_data[j].plane_type = -1;
                         // }
-                        if (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1] >= 4.2) {
+                        if (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1] >= 4.2
+                            && this.all_player_data[j].mesh.position.y > 23.5) {
                             let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                             this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 4.2 / test);
                             //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
