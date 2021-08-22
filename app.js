@@ -1833,18 +1833,17 @@ class App {
                             this.all_player_data[j].onplane = null;
                             this.all_player_data[j].plane_type = -1;
                         }
-
-                        // if (new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
-                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                        //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                        //     this.all_player_data[j].onplane = null;
-                        //     this.all_player_data[j].plane_type = -1;
-                        // }
-
-
-                        if (Math.abs(this.all_player_data[j].final_positionx - this.all_player_data[j].mesh.position.x) >= 10) {
+                        else if (new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
+                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                             this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                            this.all_player_data[j].onplane = null;
+                            this.all_player_data[j].plane_type = -1;
                         }
+
+
+                        // if (Math.abs(this.all_player_data[j].final_positionx - this.all_player_data[j].mesh.position.x) >= 10) {
+                        //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                        // }
 
                         // if (this.all_player_data[j].plane_type === 3) {
                         //     this.all_player_data[j].mesh.position.x -= 0.15;
