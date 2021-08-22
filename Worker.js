@@ -27,9 +27,9 @@ self.addEventListener('message', function (e) {
 
                         }
                     }
-                    if (all_player_data[j].plane_id === objectsToUpdate[i].id) {
+                    if (all_player_data[j].plane_id === objectsToUpdate[i].id
                         //&& all_player_data[j].positiony > objectsToUpdate[i].positiony) {
-                        // && Math.abs(all_player_data[j].positiony - all_player_data[j].final_positiony) >= 4.5) {
+                        && Math.abs(all_player_data[j].positiony - all_player_data[j].final_positiony) >= 10) {
                         assign_plane.push({ player: j, plane: i });
                     }
 
