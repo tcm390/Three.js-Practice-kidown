@@ -1737,8 +1737,8 @@ class App {
 
 
 
-                                    this.all_player_data[j].onplane = null;
-                                    this.all_player_data[j].plane_type = -1;
+                                    // this.all_player_data[j].onplane = null;
+                                    // this.all_player_data[j].plane_type = -1;
                                 }
                                 else {
                                     if (this.all_player_data[j].onplane.position.y - 1 - this.all_player_data[j].final_positiony[1] >= 0.4) {
@@ -1787,8 +1787,8 @@ class App {
 
 
 
-                                    this.all_player_data[j].onplane = null;
-                                    this.all_player_data[j].plane_type = -1;
+                                    // this.all_player_data[j].onplane = null;
+                                    // this.all_player_data[j].plane_type = -1;
 
 
                                 }
@@ -1830,8 +1830,8 @@ class App {
                             // let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                             // this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 6.2 / test);
                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            // this.all_player_data[j].onplane = null;
-                            // this.all_player_data[j].plane_type = -1;
+                            this.all_player_data[j].onplane = null;
+                            this.all_player_data[j].plane_type = -1;
                         }
                         if (new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1884,7 +1884,7 @@ class App {
                         && this.fox_plane) {
 
                         if (this.all_player_data[j].mesh.position.x > this.fox_finalpositionx) {
-                            //this.all_player_data[j].mesh.position.x += 0.25;
+                            this.all_player_data[j].mesh.position.x += 0.25;
                             // if (this.all_player_data[j].animation === 1)
                             //     this.fox.position.x -= 0.5;
                             // else
@@ -1892,7 +1892,7 @@ class App {
                             this.fox.position.x -= 0.25
                         }
                         else {
-                            //this.all_player_data[j].mesh.position.x -= 0.25;
+                            this.all_player_data[j].mesh.position.x -= 0.25;
                             // if (this.all_player_data[j].animation === 2)
                             //     this.fox.position.x += 0.5;
                             // else
