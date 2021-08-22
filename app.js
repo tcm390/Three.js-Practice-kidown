@@ -1584,11 +1584,11 @@ class App {
 
                         }
                         else {
-                            //if (this.all_player_data[e.data.data[j].player].mesh.position.y >= this.objectsToUpdate[e.data.data[j].plane].mesh.position.y - 0.4) {
-                            this.all_player_data[e.data.data[j].player].onplane_time = elapsedTime;
-                            this.all_player_data[e.data.data[j].player].onplane = this.objectsToUpdate[e.data.data[j].plane].mesh;
-                            this.all_player_data[e.data.data[j].player].plane_type = this.objectsToUpdate[e.data.data[j].plane].plane_type;
-                            //}
+                            if (this.all_player_data[e.data.data[j].player].mesh.position.y >= this.objectsToUpdate[e.data.data[j].plane].mesh.position.y - 0.4) {
+                                this.all_player_data[e.data.data[j].player].onplane_time = elapsedTime;
+                                this.all_player_data[e.data.data[j].player].onplane = this.objectsToUpdate[e.data.data[j].plane].mesh;
+                                this.all_player_data[e.data.data[j].player].plane_type = this.objectsToUpdate[e.data.data[j].plane].plane_type;
+                            }
 
                         }
 
@@ -1801,21 +1801,22 @@ class App {
                         }
                         else {
 
-                            let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                            let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                            // if (test > 0.15 && test1 > 0.15) {
-                            //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
+                            // let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                            // let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
+                            // // if (test > 0.15 && test1 > 0.15) {
+                            // //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
+                            // // }
+                            // // else
+                            // if (test > 0.15) {
+                            //     this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                             // }
-                            // else
-                            if (test > 0.15) {
-                                this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                            }
-                            else {
-                                this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            }
+                            // else {
+                            //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                            // }
 
 
-
+                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
                             this.all_player_data[j].onplane = null;
                             this.all_player_data[j].plane_type = -1;
 
