@@ -1616,8 +1616,12 @@ class App {
                         //     this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test);
                         // }
                         // else
-                        if (test > 0.25 && test * 100 % 25 === 0) {
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
+                        if (test > 0.25) {
+                            if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].final_positionx[1])
+                                this.all_player_data[j].mesh.position.x += 0.25;
+                            else
+                                this.all_player_data[j].mesh.position.x -= 0.25;
+                            //this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
                         }
                         else {
                             this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
