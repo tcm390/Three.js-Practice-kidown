@@ -2125,7 +2125,7 @@ class App {
                 this.fox.position.y -= 0.15
             }
 
-            if (this.fox.position.y > 22) {
+            if (this.fox.position.y > 23.5) {
                 this.stabbed_audio.play();
                 this.fox.position.y -= 4.2;
                 this.fox_plane = null;
