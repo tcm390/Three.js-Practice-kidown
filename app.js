@@ -1594,10 +1594,10 @@ class App {
 
 
 
-                        if (Math.abs(all_player_data[all_player_data[e.data.data[j].player].mesh.position.y - e.data.data[j].player].onplane.position.y - 1) < 0.8
-                            && this.all_player_data[e.data.data[j].player].plane_type !== 2) {
-                            this.all_player_data[e.data.data[j].player].mesh.position.y = this.all_player_data[e.data.data[j].player].onplane.position.y + 1;
-                        }
+                        // if (Math.abs(all_player_data[all_player_data[e.data.data[j].player].mesh.position.y - e.data.data[j].player].onplane.position.y - 1) < 0.8
+                        //     && this.all_player_data[e.data.data[j].player].plane_type !== 2) {
+                        //     this.all_player_data[e.data.data[j].player].mesh.position.y = this.all_player_data[e.data.data[j].player].onplane.position.y + 1;
+                        // }
                     }
                 }
             }
