@@ -588,9 +588,9 @@ class App {
 
         // });
 
-        window.addEventListener('blur', () => {
-            window.location.reload();
-        })
+        // window.addEventListener('blur', () => {
+        //     window.location.reload();
+        // })
 
         window.addEventListener('touchstart', (e) => {
             //alert(e.touches.length)
