@@ -18,7 +18,7 @@ self.addEventListener('message', function (e) {
             if (objectsToUpdate[i].positiony <= 22.5) {
                 for (let j = 0; j < all_player_data.length; j++) {
 
-                    if (Math.abs(all_player_data[j].positiony - objectsToUpdate[i].positiony - 1) < 0.4) {
+                    if ((all_player_data[j].positiony - objectsToUpdate[i].positiony - 1) < 0.4) {
                         if (all_player_data[j].positionx < objectsToUpdate[i].positionx + test_plane_size / 1.8
                             && all_player_data[j].positionx > objectsToUpdate[i].positionx - test_plane_size / 1.8) {
 
