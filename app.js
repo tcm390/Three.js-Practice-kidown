@@ -67,7 +67,7 @@ class App {
         this.fox_push_power2 = 0;
 
         this.fox_score = 0;
-        this.fox_life = 10;
+        this.fox_life = 1000;
         this.fox_previousPlane = null;
         this.fox_animation = 0;
         this.fox_plane_id = null;
