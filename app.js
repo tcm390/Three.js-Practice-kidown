@@ -1710,7 +1710,7 @@ class App {
 
                         if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
                             && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
-                            && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3) {
+                            && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 4.5) {
                             if (this.all_player_data[j].plane_type === 1) {
 
                                 this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
@@ -1720,7 +1720,7 @@ class App {
 
                             }
                             else if (this.all_player_data[j].plane_type === 2) {
-                                if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.6) {
+                                if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
 
                                     let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                                     let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
@@ -1771,7 +1771,7 @@ class App {
 
                             else {
 
-                                if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.6) {
+                                if ((this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1) >= 0.4) {
                                     let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                                     let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
                                     // if (test > 0.15 && test1 > 0.15) {
