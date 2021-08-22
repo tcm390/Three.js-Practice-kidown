@@ -1830,8 +1830,8 @@ class App {
                             // let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                             // this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 6.2 / test);
                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            this.all_player_data[j].onplane = null;
-                            this.all_player_data[j].plane_type = -1;
+                            // this.all_player_data[j].onplane = null;
+                            // this.all_player_data[j].plane_type = -1;
                         }
                         if (new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
