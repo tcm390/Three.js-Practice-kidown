@@ -1827,7 +1827,7 @@ class App {
 
                         }
                         if (this.all_player_data[j].mesh.position.y > 23.5) {
-                            this.all_player_data[j].mesh.position.y -= 4.5;
+                            this.all_player_data[j].mesh.position.y -= 6.3;
                             //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                             this.all_player_data[j].onplane = null;
                             this.all_player_data[j].plane_type = -1;
@@ -2150,7 +2150,7 @@ class App {
 
             if (this.fox.position.y > 23.5) {
                 this.stabbed_audio.play();
-                this.fox.position.y -= 4.5;
+                this.fox.position.y -= 6.3;
                 this.fox_plane = null;
                 if (this.fox_life > 0) {
                     this.fox_life -= 3;
