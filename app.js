@@ -1810,10 +1810,9 @@ class App {
                         //     this.all_player_data[j].onplane = null;
                         //     this.all_player_data[j].plane_type = -1;
                         // }
-                        if (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1] >= 4.2
-                            && this.all_player_data[j].mesh.position.y > 23.5) {
+                        if (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1] >= 6.2) {
                             let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 4.2 / test);
+                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 6.2 / test);
                             //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                             this.all_player_data[j].onplane = null;
                             this.all_player_data[j].plane_type = -1;
@@ -2128,7 +2127,7 @@ class App {
 
             if (this.fox.position.y > 23.5) {
                 this.stabbed_audio.play();
-                this.fox.position.y -= 4.2;
+                this.fox.position.y -= 6.2;
                 this.fox_plane = null;
                 if (this.fox_life > 0) {
                     this.fox_life -= 3;
