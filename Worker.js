@@ -27,24 +27,24 @@ self.addEventListener('message', function (e) {
 
                         }
                     }
-                    if (all_player_data[j].plane_id === objectsToUpdate[i].id)
+                    if (all_player_data[j].plane_id === objectsToUpdate[i].id) {
                         //&& Math.abs(all_player_data[j].positiony - objectsToUpdate[i].positiony) >= 4.5) {
                         assign_plane.push({ player: j, plane: i });
+                    }
+
                 }
-
             }
-        }
             else if (objectsToUpdate[i].positiony > 22.5) {
-            objectsToUpdate.splice(i, 1);
-        }
+                objectsToUpdate.splice(i, 1);
+            }
 
+        }
+        const assign_data = {
+            type: 'assign_plane',
+            data: assign_plane
+        }
+        self.postMessage(assign_data);
     }
-    const assign_data = {
-        type: 'assign_plane',
-        data: assign_plane
-    }
-    self.postMessage(assign_data);
-}
 
 
 
