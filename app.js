@@ -1584,11 +1584,11 @@ class App {
 
                         }
                         else {
-                            if (this.all_player_data[e.data.data[j].player].mesh.position.y >= this.objectsToUpdate[e.data.data[j].plane].mesh.position.y - 0.4) {
-                                this.all_player_data[e.data.data[j].player].onplane_time = elapsedTime;
-                                this.all_player_data[e.data.data[j].player].onplane = this.objectsToUpdate[e.data.data[j].plane].mesh;
-                                this.all_player_data[e.data.data[j].player].plane_type = this.objectsToUpdate[e.data.data[j].plane].plane_type;
-                            }
+                            //if (this.all_player_data[e.data.data[j].player].mesh.position.y >= this.objectsToUpdate[e.data.data[j].plane].mesh.position.y - 0.4) {
+                            this.all_player_data[e.data.data[j].player].onplane_time = elapsedTime;
+                            this.all_player_data[e.data.data[j].player].onplane = this.objectsToUpdate[e.data.data[j].plane].mesh;
+                            this.all_player_data[e.data.data[j].player].plane_type = this.objectsToUpdate[e.data.data[j].plane].plane_type;
+                            //}
 
                         }
 
