@@ -1689,7 +1689,7 @@ class App {
                     }
 
                     if (this.all_player_data[j].onplane) {
-                        if (this.all_player_data[j].onplane.mesh.position.y > 22) {
+                        if (this.all_player_data[j].onplane.position.y > 22) {
                             this.all_player_data[j].onplane = null;
                         }
                     }
