@@ -1753,11 +1753,11 @@ class App {
                                 if (test > 0.15) {
                                     this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                 }
-                                else {
-                                    //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                    this.all_player_data[j].mesh.position.y -= 0.15;
+                                // else {
+                                //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                //     this.all_player_data[j].mesh.position.y -= 0.15;
 
-                                }
+                                // }
                                 if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1) {
 
                                     this.all_player_data[j].onplane = null;
