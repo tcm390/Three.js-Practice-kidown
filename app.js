@@ -2148,15 +2148,26 @@ class App {
                 this.fox.position.y -= 0.15
             }
 
-            if (this.fox.position.y > 23.5) {
-                this.stabbed_audio.play();
-                //this.fox.position.y -= 6.3;
-                this.fox_plane = null;
-                if (this.fox_life > 0) {
-                    this.fox_life -= 3;
+            // if (this.fox.position.y > 23.5) {
+            //     this.stabbed_audio.play();
+            //     //this.fox.position.y -= 6.3;
+            //     this.fox_plane = null;
+            //     if (this.fox_life > 0) {
+            //         this.fox_life -= 3;
+            //     }
+            //     // this.stabbed_plane.visible = true;
+            //     this.last_stabbed_time = elapsedTime;
+            // }
+            if (this.fox_plane) {
+                if (this.fox_plane.position.y > 22) {
+                    this.stabbed_audio.play();
+                    this.fox_plane = null;
+                    if (this.fox_life > 0) {
+                        this.fox_life -= 3;
+                    }
+                    // this.stabbed_plane.visible = true;
+                    this.last_stabbed_time = elapsedTime;
                 }
-                // this.stabbed_plane.visible = true;
-                this.last_stabbed_time = elapsedTime;
             }
             if (this.fox.position.y < -23 && this.die_sw === 0) {
                 this.die_audio.play();
