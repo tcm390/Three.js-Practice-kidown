@@ -1460,7 +1460,7 @@ class App {
 
             this.objectsToUpdate[i].mesh.position.y = (elapsedTime - this.objectsToUpdate[i].start_time) * 10 - 22.5;
 
-            if (this.objectsToUpdate[i].mesh.position.y <= 22.5) {
+            if (this.objectsToUpdate[i].mesh.position.y <= 21) {
                 if (this.fox && this.die_sw === 0) {
                     if (Math.abs(this.fox.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.4) {
                         if (this.fox.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
@@ -1504,7 +1504,7 @@ class App {
 
 
             }
-            else if (this.objectsToUpdate[i].mesh.position.y > 22.5) {
+            else if (this.objectsToUpdate[i].mesh.position.y > 23) {
                 // if (this.objectsToUpdate[i].mesh === this.fox_plane) {
                 //     this.fox_plane_id = null;
                 //     this.fox_plane = null
@@ -1515,9 +1515,11 @@ class App {
                 //         this.all_player_data[j].plane_type = -1;
                 //     }
                 // }
+
                 this.scene.remove(this.objectsToUpdate[i].mesh);
                 this.objectsToUpdate.splice(i, 1);
             }
+
             //########## deal with left convey ############
             if (this.objectsToUpdate[i].plane_type === 3) {
                 this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 2].rotation.z = elapsedTime * 2;
@@ -1611,10 +1613,15 @@ class App {
             }
             //########### handel remote player ##############
             for (let j = 0; j < this.all_player_data.length; j++) {
+
                 if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
                     && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth) {
 
-
+                    if (this.all_player_data[j].onplane) {
+                        if (this.all_player_data[j].onplane.position.y > 21) {
+                            this.all_player_data[j].onplane = null;
+                        }
+                    }
                     if (this.all_player_data[j].plane_type !== 3 && this.all_player_data[j].plane_type !== 4) {
 
 
@@ -1690,11 +1697,7 @@ class App {
 
                     }
 
-                    if (this.all_player_data[j].onplane) {
-                        if (this.all_player_data[j].onplane.position.y > 22) {
-                            this.all_player_data[j].onplane = null;
-                        }
-                    }
+
 
                     if (this.all_player_data[j].onplane === null) {
 
@@ -2166,7 +2169,7 @@ class App {
             //     this.last_stabbed_time = elapsedTime;
             // }
             if (this.fox_plane) {
-                if (this.fox_plane.position.y > 22) {
+                if (this.fox_plane.position.y > 21) {
                     this.stabbed_audio.play();
                     this.fox_plane = null;
                     if (this.fox_life > 0) {

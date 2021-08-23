@@ -15,7 +15,7 @@ self.addEventListener('message', function (e) {
         test_plane_size = e.data.test_plane_size;
         for (let i = 0; i < objectsToUpdate.length; i++) {
             objectsToUpdate[i].positiony = (elapsedTime - objectsToUpdate[i].start_time) * 10 - 22.5;
-            if (objectsToUpdate[i].positiony <= 22.5) {
+            if (objectsToUpdate[i].positiony <= 21) {
                 for (let j = 0; j < all_player_data.length; j++) {
 
                     if (Math.abs(all_player_data[j].positiony - objectsToUpdate[i].positiony - 1) < 0.4) {
@@ -35,7 +35,7 @@ self.addEventListener('message', function (e) {
 
                 }
             }
-            else if (objectsToUpdate[i].positiony > 22.5) {
+            else if (objectsToUpdate[i].positiony > 23) {
                 objectsToUpdate.splice(i, 1);
             }
 
