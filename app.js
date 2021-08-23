@@ -1753,13 +1753,18 @@ class App {
                                 if (test > 0.15) {
                                     this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                 }
-                                // else {
-                                //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                //     this.all_player_data[j].mesh.position.y -= 0.15;
+                                else {
+                                    //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                    this.all_player_data[j].mesh.position.y -= 0.15;
 
-                                // }
+                                }
                                 if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1) {
 
+                                    this.all_player_data[j].onplane = null;
+                                    this.all_player_data[j].plane_type = -1;
+                                }
+                                else if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1) {
+                                    this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
                                     this.all_player_data[j].onplane = null;
                                     this.all_player_data[j].plane_type = -1;
                                 }
@@ -1787,13 +1792,13 @@ class App {
                                     //     this.all_player_data[j].plane_type = -1;
 
                                     // }
-                                    if (elapsedTime - this.all_player_data[j].onplane_time > 0.1) {
-                                        this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
-                                        this.all_player_data[j].onplane = null;
-                                        this.all_player_data[j].plane_type = -1;
-                                    }
+                                    // if (elapsedTime - this.all_player_data[j].onplane_time > 0.1) {
+                                    //     this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
+                                    //     this.all_player_data[j].onplane = null;
+                                    //     this.all_player_data[j].plane_type = -1;
+                                    // }
                                     // else {
-                                    //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
+                                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
                                     // }
                                 }
                             }
