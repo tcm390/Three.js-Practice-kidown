@@ -2100,7 +2100,7 @@ class App {
 
                 }
                 else if (this.fox_plane_type === 2) {
-                    if (elapsedTime - this.fox_onplane_time > 0.1) {
+                    if (elapsedTime - this.fox_onplane_time > 0.05) {
 
                         this.fox.position.y -= 0.15;
                         this.fox_plane.rotation.x += Math.PI / 10;
