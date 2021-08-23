@@ -1711,9 +1711,9 @@ class App {
                         if (test > 0.15) {
                             this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                         }
-                        // else {
-                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                        // }
+                        else {
+                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                        }
 
 
 
