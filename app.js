@@ -1688,7 +1688,11 @@ class App {
 
                     }
 
-
+                    if (this.all_player_data[j].onplane) {
+                        if (this.all_player_data[j].onplane.mesh.position.y > 22) {
+                            this.all_player_data[j].onplane = null;
+                        }
+                    }
 
                     if (this.all_player_data[j].onplane === null) {
 
@@ -1713,6 +1717,7 @@ class App {
 
                     }
                     else if (this.all_player_data[j].onplane) {
+
 
                         if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
                             && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
