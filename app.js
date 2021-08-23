@@ -1800,7 +1800,7 @@ class App {
                                     //     this.all_player_data[j].plane_type = -1;
                                     // }
                                     // else {
-                                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
+                                    // this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
                                     // }
                                 }
                             }
