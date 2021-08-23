@@ -1635,9 +1635,9 @@ class App {
                         if (test > 0.25) {
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
                         }
-                        else {
-                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                        }
+                        // else {
+                        //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                        // }
 
 
 
@@ -1737,7 +1737,7 @@ class App {
 
                             }
                             else if (this.all_player_data[j].plane_type === 2) {
-                                if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1.4) {
+                                if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1) {
 
                                     let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                                     let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
@@ -1788,7 +1788,7 @@ class App {
 
                             else {
 
-                                if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1.4) {
+                                if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1) {
                                     let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                                     let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
                                     // if (test > 0.15 && test1 > 0.15) {
