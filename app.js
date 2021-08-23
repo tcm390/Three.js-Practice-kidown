@@ -1710,7 +1710,7 @@ class App {
 
                     if (this.all_player_data[j].onplane === null) {
 
-                        let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                        let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                         let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
                         // if (test > 0.15 && test1 > 0.15) {
                         //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
@@ -1746,7 +1746,7 @@ class App {
 
                             }
                             else if (this.all_player_data[j].plane_type === 2) {
-                                let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                                let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                                 let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
                                 // if (test > 0.15 && test1 > 0.15) {
                                 //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
@@ -1808,7 +1808,7 @@ class App {
                             else {
 
                                 if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1) {
-                                    let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                                    let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                                     let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
                                     // if (test > 0.15 && test1 > 0.15) {
                                     //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
@@ -1838,7 +1838,7 @@ class App {
                         }
                         else {
 
-                            let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+                            let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
                             let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
                             // if (test > 0.15 && test1 > 0.15) {
                             //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
