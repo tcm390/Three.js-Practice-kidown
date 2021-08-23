@@ -1316,12 +1316,12 @@ class App {
                 //     score: this.fox_score
                 // }
                 // this.socket.send(JSON.stringify(data));
-                // if (this.all_player_data.length > 0) {
-                //     console.log('position', this.all_player_data[0].mesh.position.x, this.all_player_data[0].mesh.position.y)
-                //     console.log('final_position', this.all_player_data[0].final_positionx, this.all_player_data[0].final_positiony)
-                // }
+                if (this.all_player_data.length > 0) {
+                    console.log('position', this.all_player_data[0].mesh.position.x, this.all_player_data[0].mesh.position.y)
+                    console.log('final_position', this.all_player_data[0].final_positionx, this.all_player_data[0].final_positiony)
+                }
 
-                //this.score_time = elapsedTime;
+                this.score_time = elapsedTime;
 
             }
         }
