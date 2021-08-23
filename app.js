@@ -1713,12 +1713,12 @@ class App {
                         //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                         // }
                         // else 
-                        if (test >= 0.15) {
+                        if (test > 0.15) {
                             this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                         }
                         else {
-                            //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            this.all_player_data[j].mesh.position.y -= 0.15;
+                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                            //this.all_player_data[j].mesh.position.y -= 0.15;
                         }
 
 
@@ -1751,12 +1751,12 @@ class App {
                                     //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     // }
                                     // else 
-                                    if (test >= 0.15) {
+                                    if (test > 0.15) {
                                         this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     }
                                     else {
-                                        //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                        this.all_player_data[j].mesh.position.y -= 0.15;
+                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                        //this.all_player_data[j].mesh.position.y -= 0.15;
 
                                     }
 
@@ -1773,12 +1773,12 @@ class App {
                                         //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                                         // }
                                         // else 
-                                        if (test >= 0.15) {
+                                        if (test > 0.15) {
                                             this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                         }
                                         else {
-                                            // this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                            this.all_player_data[j].mesh.position.y -= 0.15;
+                                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                            //this.all_player_data[j].mesh.position.y -= 0.15;
                                         }
 
                                         //this.all_player_data[j].mesh.position.y -= 0.15;
@@ -1804,12 +1804,12 @@ class App {
                                     //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     // }
                                     // else 
-                                    if (test >= 0.15) {
+                                    if (test > 0.15) {
                                         this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     }
                                     else {
-                                        //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                        this.all_player_data[j].mesh.position.y -= 0.15;
+                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                        //this.all_player_data[j].mesh.position.y -= 0.15;
                                     }
 
 
@@ -1834,12 +1834,12 @@ class App {
                             //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                             // }
                             // else
-                            if (test >= 0.15) {
+                            if (test > 0.15) {
                                 this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                             }
                             else {
-                                //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                this.all_player_data[j].mesh.position.y -= 0.15;
+                                this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                //this.all_player_data[j].mesh.position.y -= 0.15;
                             }
 
 
