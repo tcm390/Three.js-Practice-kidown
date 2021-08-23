@@ -1581,9 +1581,7 @@ class App {
                             this.all_player_data[e.data.data[j].player].onplane_time = elapsedTime;
                         this.all_player_data[e.data.data[j].player].onplane = this.objectsToUpdate[e.data.data[j].plane].mesh;
                         this.all_player_data[e.data.data[j].player].plane_type = this.objectsToUpdate[e.data.data[j].plane].plane_type;
-                        if (e.data.data[j].from_id === 0) {
-                            this.all_player_data[e.data.data[j].player].mesh.position.y = this.objectsToUpdate[e.data.data[j].plane].mesh.position.y + 1;
-                        }
+
                         //}
 
                         //}
@@ -1849,12 +1847,12 @@ class App {
                         //     this.all_player_data[j].onplane = null;
                         //     this.all_player_data[j].plane_type = -1;
                         // }
-                        if (new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
-                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                            this.all_player_data[j].onplane = null;
-                            this.all_player_data[j].plane_type = -1;
-                        }
+                        // if (new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
+                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                        //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                        //     this.all_player_data[j].onplane = null;
+                        //     this.all_player_data[j].plane_type = -1;
+                        // }
 
 
                         // if (Math.abs(this.all_player_data[j].final_positionx - this.all_player_data[j].mesh.position.x) >= 10) {
