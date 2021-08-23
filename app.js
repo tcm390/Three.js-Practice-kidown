@@ -1501,6 +1501,51 @@ class App {
                 //     }
 
                 // }
+                //########## deal with left convey ############
+                if (this.objectsToUpdate[i].plane_type === 3) {
+                    this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 2].rotation.z = elapsedTime * 2;
+                    this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 3].rotation.z = elapsedTime * 2;
+                    for (let j = 0; j < this.objectsToUpdate[i].mesh.children.length - 4; j++) {
+                        if (this.objectsToUpdate[i].mesh.children[j].position.y >= this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.y + .9) {
+                            this.objectsToUpdate[i].mesh.children[j].position.x -= 1 / 20;
+                            if (this.objectsToUpdate[i].mesh.children[j].position.x < this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.x - 5) {
+                                this.objectsToUpdate[i].mesh.children[j].position.y -= 1.8;
+                            }
+                        }
+                        else if (this.objectsToUpdate[i].mesh.children[j].position.y <= this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.y - .9) {
+                            this.objectsToUpdate[i].mesh.children[j].position.x += 1 / 20;
+                            if (this.objectsToUpdate[i].mesh.children[j].position.x > this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.x + 5) {
+                                this.objectsToUpdate[i].mesh.children[j].position.y += 1.8;
+                            }
+                        }
+                    }
+                }
+                //########### deal with right convey ############
+                if (this.objectsToUpdate[i].plane_type === 4) {
+                    this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 2].rotation.z = - elapsedTime * 2;
+                    this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 3].rotation.z = -elapsedTime * 2;
+                    for (let j = 0; j < this.objectsToUpdate[i].mesh.children.length - 4; j++) {
+                        if (this.objectsToUpdate[i].mesh.children[j].position.y >= this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.y + .9) {
+                            this.objectsToUpdate[i].mesh.children[j].position.x += 1 / 20;
+                            if (this.objectsToUpdate[i].mesh.children[j].position.x > this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.x + 5) {
+                                this.objectsToUpdate[i].mesh.children[j].position.y -= 1.8;
+                            }
+                        }
+                        else if (this.objectsToUpdate[i].mesh.children[j].position.y <= this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.y - .9) {
+                            this.objectsToUpdate[i].mesh.children[j].position.x -= 1 / 20;
+                            if (this.objectsToUpdate[i].mesh.children[j].position.x < this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.x - 5) {
+                                this.objectsToUpdate[i].mesh.children[j].position.y += 1.8;
+                            }
+                        }
+                    }
+                }
+                //######### deal with remain rotation of fake plane  ###########
+                if (this.objectsToUpdate[i].mesh.rotation.x !== 0) {
+                    if (this.objectsToUpdate[i].mesh.rotation.x < Math.PI * 2)
+                        this.objectsToUpdate[i].mesh.rotation.x += Math.PI / 10;
+                    if (this.objectsToUpdate[i].mesh.rotation.x >= Math.PI * 2)
+                        this.objectsToUpdate[i].mesh.rotation.x = 0
+                }
 
 
             }
@@ -1520,51 +1565,7 @@ class App {
                 this.objectsToUpdate.splice(i, 1);
             }
 
-            //########## deal with left convey ############
-            if (this.objectsToUpdate[i].plane_type === 3) {
-                this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 2].rotation.z = elapsedTime * 2;
-                this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 3].rotation.z = elapsedTime * 2;
-                for (let j = 0; j < this.objectsToUpdate[i].mesh.children.length - 4; j++) {
-                    if (this.objectsToUpdate[i].mesh.children[j].position.y >= this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.y + .9) {
-                        this.objectsToUpdate[i].mesh.children[j].position.x -= 1 / 20;
-                        if (this.objectsToUpdate[i].mesh.children[j].position.x < this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.x - 5) {
-                            this.objectsToUpdate[i].mesh.children[j].position.y -= 1.8;
-                        }
-                    }
-                    else if (this.objectsToUpdate[i].mesh.children[j].position.y <= this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.y - .9) {
-                        this.objectsToUpdate[i].mesh.children[j].position.x += 1 / 20;
-                        if (this.objectsToUpdate[i].mesh.children[j].position.x > this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.x + 5) {
-                            this.objectsToUpdate[i].mesh.children[j].position.y += 1.8;
-                        }
-                    }
-                }
-            }
-            //########### deal with right convey ############
-            if (this.objectsToUpdate[i].plane_type === 4) {
-                this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 2].rotation.z = - elapsedTime * 2;
-                this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 3].rotation.z = -elapsedTime * 2;
-                for (let j = 0; j < this.objectsToUpdate[i].mesh.children.length - 4; j++) {
-                    if (this.objectsToUpdate[i].mesh.children[j].position.y >= this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.y + .9) {
-                        this.objectsToUpdate[i].mesh.children[j].position.x += 1 / 20;
-                        if (this.objectsToUpdate[i].mesh.children[j].position.x > this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.x + 5) {
-                            this.objectsToUpdate[i].mesh.children[j].position.y -= 1.8;
-                        }
-                    }
-                    else if (this.objectsToUpdate[i].mesh.children[j].position.y <= this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.y - .9) {
-                        this.objectsToUpdate[i].mesh.children[j].position.x -= 1 / 20;
-                        if (this.objectsToUpdate[i].mesh.children[j].position.x < this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 1].position.x - 5) {
-                            this.objectsToUpdate[i].mesh.children[j].position.y += 1.8;
-                        }
-                    }
-                }
-            }
-            //######### deal with remain rotation of fake plane  ###########
-            if (this.objectsToUpdate[i].mesh.rotation.x !== 0) {
-                if (this.objectsToUpdate[i].mesh.rotation.x < Math.PI * 2)
-                    this.objectsToUpdate[i].mesh.rotation.x += Math.PI / 10;
-                if (this.objectsToUpdate[i].mesh.rotation.x >= Math.PI * 2)
-                    this.objectsToUpdate[i].mesh.rotation.x = 0
-            }
+
 
         }
         if (this.ready_for_load_model) {
