@@ -1304,7 +1304,7 @@ class App {
                 this.score_time = elapsedTime;
                 console.log(this.fox.position.x)
             }
-            if (elapsedTime - this.score_time > 2 && this.die_sw === 0) {
+            if (elapsedTime - this.score_time > 5 && this.die_sw === 0) {
                 // this.fox_score++;
                 // this.own_score.innerHTML = this.fox_score;
                 //this.score_time = elapsedTime;
