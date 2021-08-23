@@ -1711,9 +1711,9 @@ class App {
                         if (test > 0.15) {
                             this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                         }
-                        else {
-                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                        }
+                        // else {
+                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                        // }
 
 
 
@@ -1748,9 +1748,9 @@ class App {
                                     if (test > 0.15) {
                                         this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     }
-                                    else {
-                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                    }
+                                    // else {
+                                    //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                    // }
 
 
 
@@ -1768,9 +1768,9 @@ class App {
                                         if (test > 0.15) {
                                             this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                         }
-                                        else {
-                                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                        }
+                                        // else {
+                                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                        // }
 
                                         //this.all_player_data[j].mesh.position.y -= 0.15;
                                         // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positiony, 0), 0.15 / test)
@@ -1798,9 +1798,9 @@ class App {
                                     if (test > 0.15) {
                                         this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     }
-                                    else {
-                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                    }
+                                    // else {
+                                    //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                    // }
 
 
 
@@ -1827,9 +1827,9 @@ class App {
                             if (test > 0.15) {
                                 this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                             }
-                            else {
-                                this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            }
+                            // else {
+                            //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                            // }
 
 
 
