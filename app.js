@@ -1304,7 +1304,7 @@ class App {
                 this.score_time = elapsedTime;
                 console.log(this.fox.position.x)
             }
-            if (elapsedTime - this.score_time > 5 && this.die_sw === 0) {
+            if (elapsedTime - this.score_time > 3 && this.die_sw === 0) {
                 // this.fox_score++;
                 // this.own_score.innerHTML = this.fox_score;
                 //this.score_time = elapsedTime;
@@ -1320,7 +1320,8 @@ class App {
                 //     console.log('position', this.all_player_data[0].mesh.position.x, this.all_player_data[0].mesh.position.y)
                 //     console.log('final_position', this.all_player_data[0].final_positionx, this.all_player_data[0].final_positiony)
                 // }
-
+                // if (this.fox && elapsedTime < 10)
+                //     console.log(this.fox.position.x, this.fox.position.y)
                 // this.score_time = elapsedTime;
 
             }
@@ -1456,10 +1457,11 @@ class App {
             this.worker.postMessage(data)
 
         }
+
         for (let i = 0; i < this.objectsToUpdate.length; i++) {
 
             this.objectsToUpdate[i].mesh.position.y += 0.15;
-
+            this.objectsToUpdate[i].mesh.position.y = Math.ceil(this.objectsToUpdate[i].mesh.position.y * 100) / 100;
             if (this.objectsToUpdate[i].mesh.position.y <= 21) {
                 if (this.fox && this.die_sw === 0) {
                     if (Math.abs(this.fox.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.4) {
@@ -1717,10 +1719,10 @@ class App {
                         if (test >= 0.15) {
                             this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                         }
-                        // else {
-                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                        //     //this.all_player_data[j].mesh.position.y -= 0.15;
-                        // }
+                        else {
+                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                            //this.all_player_data[j].mesh.position.y -= 0.15;
+                        }
 
 
 
@@ -1753,11 +1755,11 @@ class App {
                                 if (test >= 0.15) {
                                     this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                 }
-                                // else {
-                                //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                //     //this.all_player_data[j].mesh.position.y -= 0.15;
+                                else {
+                                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                    //this.all_player_data[j].mesh.position.y -= 0.15;
 
-                                // }
+                                }
                                 if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1) {
 
                                     this.all_player_data[j].onplane = null;
@@ -1815,10 +1817,10 @@ class App {
                                     if (test >= 0.15) {
                                         this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     }
-                                    // else {
-                                    //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                    //     //this.all_player_data[j].mesh.position.y -= 0.15;
-                                    // }
+                                    else {
+                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                        //this.all_player_data[j].mesh.position.y -= 0.15;
+                                    }
 
 
 
@@ -1845,10 +1847,10 @@ class App {
                             if (test >= 0.15) {
                                 this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                             }
-                            // else {
-                            //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            //     //this.all_player_data[j].mesh.position.y -= 0.15;
-                            // }
+                            else {
+                                this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                //this.all_player_data[j].mesh.position.y -= 0.15;
+                            }
 
 
 
@@ -1966,8 +1968,8 @@ class App {
                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                     this.all_player_data[j].name_mesh.style.transform = `translateX(10000px) translateY(10000px)`
                 }
-                this.all_player_data[j].mesh.position.y = Math.floor(this.all_player_data[j].mesh.position.y * 100) / 100;
-                this.all_player_data[j].mesh.position.x = Math.floor(this.all_player_data[j].mesh.position.x * 100) / 100;
+                this.all_player_data[j].mesh.position.y = Math.ceil(this.all_player_data[j].mesh.position.y * 100) / 100;
+                this.all_player_data[j].mesh.position.x = Math.ceil(this.all_player_data[j].mesh.position.x * 100) / 100;
 
 
             }
@@ -2215,8 +2217,8 @@ class App {
             }
 
 
-            this.fox.position.y = Math.floor(this.fox.position.y * 100) / 100;
-            this.fox.position.x = Math.floor(this.fox.position.x * 100) / 100;
+            this.fox.position.y = Math.ceil(this.fox.position.y * 100) / 100;
+            this.fox.position.x = Math.ceil(this.fox.position.x * 100) / 100;
 
             this.calculate_life(this.fox_life);
             let data = {

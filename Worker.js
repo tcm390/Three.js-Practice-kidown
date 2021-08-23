@@ -15,6 +15,7 @@ self.addEventListener('message', function (e) {
         test_plane_size = e.data.test_plane_size;
         for (let i = 0; i < objectsToUpdate.length; i++) {
             objectsToUpdate[i].positiony += 0.15;
+            objectsToUpdate[i].positiony = Math.ceil(objectsToUpdate[i].positiony * 100) / 100;
             if (objectsToUpdate[i].positiony <= 21) {
                 for (let j = 0; j < all_player_data.length; j++) {
 
