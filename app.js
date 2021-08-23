@@ -1754,8 +1754,8 @@ class App {
 
 
 
-                                    this.all_player_data[j].onplane = null;
-                                    this.all_player_data[j].plane_type = -1;
+                                    // this.all_player_data[j].onplane = null;
+                                    // this.all_player_data[j].plane_type = -1;
                                 }
                                 else {
                                     if (this.all_player_data[j].onplane.position.y - 1 - this.all_player_data[j].final_positiony[1] >= 0.4) {
@@ -1804,8 +1804,8 @@ class App {
 
 
 
-                                    this.all_player_data[j].onplane = null;
-                                    this.all_player_data[j].plane_type = -1;
+                                    // this.all_player_data[j].onplane = null;
+                                    // this.all_player_data[j].plane_type = -1;
 
 
                                 }
