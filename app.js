@@ -1759,7 +1759,7 @@ class App {
                                     this.all_player_data[j].mesh.position.y -= 0.15;
 
                                 }
-                                if (this.all_player_data[j].onplane.position.y + 1 > this.all_player_data[j].mesh.final_positiony[1]) {
+                                if (this.all_player_data[j].onplane.position.y + 1 > this.all_player_data[j].final_positiony[1]) {
                                     this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
                                     this.all_player_data[j].onplane = null;
                                     this.all_player_data[j].plane_type = -1;
