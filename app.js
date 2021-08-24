@@ -1817,7 +1817,11 @@ class App {
 
                     }
 
-
+                    if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3) {
+                        console.log(this.all_player_data[j].onplane.position.y, this.all_player_data[j].final_positiony[1]);
+                        this.all_player_data[j].onplane = null;
+                        this.all_player_data[j].plane_type = -1;
+                    }
 
                     if (this.all_player_data[j].onplane === null) {
 
@@ -1843,11 +1847,7 @@ class App {
 
                     }
                     else if (this.all_player_data[j].onplane) {
-                        if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3) {
-                            console.log(this.all_player_data[j].onplane.position.y, this.all_player_data[j].final_positiony[1]);
-                            this.all_player_data[j].onplane = null;
-                            this.all_player_data[j].plane_type = -1;
-                        }
+
 
                         if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
                             && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8) {
