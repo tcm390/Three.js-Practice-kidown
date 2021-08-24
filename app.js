@@ -2052,6 +2052,8 @@ class App {
 
                     let test_pos = this.toXYCoords(this.all_player_data[j].mesh);
                     this.all_player_data[j].name_mesh.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`
+                    this.all_player_data[j].name_mesh.style.top = window.innerHeight / 2 + 'px';
+                    this.all_player_data[j].name_mesh.style.left = window.innerWidth / 2 + 'px';
                     if (this.all_player_data[j].rank === 1) {
                         //console.log(this.all_player_data[j].name_mesh.style.color)
                         this.all_player_data[j].name_mesh.style.color = 'gold';
@@ -2352,9 +2354,12 @@ class App {
 
             let test_pos = this.toXYCoords(this.fox);
             this.fox_name.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`;
+            this.fox_name.style.top = window.innerHeight / 2 + 'px';
+            this.fox_name.style.left = window.innerWidth / 2 + 'px';
+
             if (this.fox_rank === 1) {
                 this.fox_name.style.color = 'gold';
-                this.fox_name.innerHTML = '<font size="6">👑</font>' + document.querySelector('.Name').value;
+                this.fox_name.innerHTML = '<font size="6vmax">👑</font>' + document.querySelector('.Name').value;
             }
             else {
                 this.fox_name.style.color = 'white';
