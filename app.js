@@ -1818,7 +1818,7 @@ class App {
                     }
 
                     if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3) {
-                        console.log(this.all_player_data[j].onplane.position.y, this.all_player_data[j].final_positiony[1]);
+                        console.log(this.all_player_data[j].plane_type, this.all_player_data[j].onplane.position.y, this.all_player_data[j].final_positiony[1]);
                         this.all_player_data[j].onplane = null;
                         this.all_player_data[j].plane_type = -1;
                     }
