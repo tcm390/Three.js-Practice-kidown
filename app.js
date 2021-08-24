@@ -1518,52 +1518,52 @@ class App {
 
                         }
                     }
-                    if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id) {
-                        //&& Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 1.5) {
-                        // if (this.all_player_data[j].onplane) {
-                        //     if (this.objectsToUpdate[i].mesh !== this.all_player_data[j].onplane
-                        //         && this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
-                        //         //if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
-                        //         this.all_player_data[j].onplane_time = elapsedTime;
-                        //         this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                        //         this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                        //         this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
-                        //     }
-                        // }
-                        // else {
-                        //     // if (this.all_player_data[j].mesh.position.y >= this.objectsToUpdate[i].mesh.position.y + 1) {
-                        //     this.all_player_data[j].onplane_time = elapsedTime;
-                        //     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                        //     this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                        //     this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
-                        //     //}
+                    // if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id) {
+                    //     //&& Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 1.5) {
+                    //     // if (this.all_player_data[j].onplane) {
+                    //     //     if (this.objectsToUpdate[i].mesh !== this.all_player_data[j].onplane
+                    //     //         && this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
+                    //     //         //if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
+                    //     //         this.all_player_data[j].onplane_time = elapsedTime;
+                    //     //         this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                    //     //         this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                    //     //         this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
+                    //     //     }
+                    //     // }
+                    //     // else {
+                    //     //     // if (this.all_player_data[j].mesh.position.y >= this.objectsToUpdate[i].mesh.position.y + 1) {
+                    //     //     this.all_player_data[j].onplane_time = elapsedTime;
+                    //     //     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                    //     //     this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                    //     //     this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
+                    //     //     //}
 
 
-                        // }
-                        if (this.all_player_data[j].onplane !== null) {
-                            if (this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
+                    //     // }
+                    //     if (this.all_player_data[j].onplane !== null) {
+                    //         if (this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
 
-                                if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
-                                    this.all_player_data[j].onplane_time = elapsedTime;
-                                this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                                this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                    //             if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
+                    //                 this.all_player_data[j].onplane_time = elapsedTime;
+                    //             this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                    //             this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
 
-                            }
+                    //         }
 
-                        }
-                        else {
-                            if (this.objectsToUpdate[i].mesh.position.y - this.all_player_data[j].final_positiony[1] < 3) {
-                                this.all_player_data[j].onplane_time = elapsedTime;
-                                this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                                this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                                if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1) {
-                                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
-                                }
-                            }
-                        }
+                    //     }
+                    //     else {
+                    //         if (this.objectsToUpdate[i].mesh.position.y - this.all_player_data[j].final_positiony[1] < 3) {
+                    //             this.all_player_data[j].onplane_time = elapsedTime;
+                    //             this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                    //             this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                    //             if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1) {
+                    //                 this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
+                    //             }
+                    //         }
+                    //     }
 
 
-                    }
+                    // }
 
                 }
                 //########## deal with left convey ############
