@@ -1626,11 +1626,7 @@ class App {
                 if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
                     && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth) {
 
-                    if (this.all_player_data[j].onplane) {
-                        if (this.all_player_data[j].onplane.position.y > 21) {
-                            this.all_player_data[j].onplane = null;
-                        }
-                    }
+
                     if (this.all_player_data[j].plane_type !== 3 && this.all_player_data[j].plane_type !== 4) {
 
 
@@ -1949,6 +1945,12 @@ class App {
                             this.fox.position.x += 0.25
                         }
 
+                    }
+
+                    if (this.all_player_data[j].onplane) {
+                        if (this.all_player_data[j].onplane.position.y > 21) {
+                            this.all_player_data[j].onplane = null;
+                        }
                     }
 
                     this.Animate_Character(this.all_player_data[j].mesh, this.all_player_data[j].animation, elapsedTime, this.all_player_data[j].emoji);
