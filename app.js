@@ -2256,9 +2256,9 @@ class App {
             this.fox.position.y = Math.ceil(this.fox.position.y * 100) / 100;
             this.fox.position.x = Math.ceil(this.fox.position.x * 100) / 100;
 
-            if (this.fox_plane === null) {
-                this.fox_plane_id = -1;
-            }
+            // if (this.fox_plane === null) {
+            //     this.fox_plane_id = -1;
+            // }
             this.calculate_life(this.fox_life);
             let data = {
                 title: 'player_position_update',
