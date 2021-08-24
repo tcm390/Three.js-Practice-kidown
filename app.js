@@ -1328,16 +1328,16 @@ class App {
 
             }
         }
-        if (this.all_player_data.length > 0) {
-            if (this.all_player_data[0].onplane !== this.previousid) {
-                //console.log(this.all_player_data[0].plane_type);
-                if (this.all_player_data[0].onplane) {
-                    console.log(this.all_player_data[0].plane_type, this.all_player_data[0].onplane.position.y, this.all_player_data[0].final_positiony);
-                }
-                console.log(this.all_player_data[0].plane_type, 'null', this.all_player_data[0].final_positiony);
-                this.previousid = this.all_player_data[0].onplane;
-            }
-        }
+        // if (this.all_player_data.length > 0) {
+        //     if (this.all_player_data[0].onplane !== this.previousid) {
+        //         //console.log(this.all_player_data[0].plane_type);
+        //         if (this.all_player_data[0].onplane) {
+        //             console.log(this.all_player_data[0].plane_type, this.all_player_data[0].onplane.position.y, this.all_player_data[0].final_positiony);
+        //         }
+        //         console.log(this.all_player_data[0].plane_type, 'null', this.all_player_data[0].final_positiony);
+        //         this.previousid = this.all_player_data[0].onplane;
+        //     }
+        // }
         if (this.die_sw === 1) {
             if (elapsedTime - this.die_time > 1.5 && this.fox.position.y < -27) {
                 // for (let i = 0; i < this.all_player_data.length; i++) {
@@ -1843,11 +1843,15 @@ class App {
 
                     }
                     else if (this.all_player_data[j].onplane) {
-
+                        if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3) {
+                            console.log(this.all_player_data[j].onplane.position.y, this.all_player_data[j].final_positiony[1]);
+                            this.all_player_data[j].onplane = null;
+                            this.all_player_data[j].plane_type = -1;
+                        }
 
                         if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
-                            && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
-                            && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3) {
+                            && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8) {
+                            //&& this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3) {
                             if (this.all_player_data[j].plane_type === 1) {
 
                                 this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
