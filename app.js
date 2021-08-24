@@ -1482,7 +1482,7 @@ class App {
 
                 for (let j = 0; j < this.all_player_data.length; j++) {
 
-                    if (Math.abs(this.all_player_data[j].mesh.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.4) {
+                    if (Math.abs(this.all_player_data[j].mesh.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.8) {
                         if (this.all_player_data[j].mesh.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
                             && this.all_player_data[j].mesh.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
 
@@ -1651,13 +1651,13 @@ class App {
                     }
 
                 }
-                if (this.all_player_data[j].onplane) {
-                    if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3
-                        && this.all_player_data[j].object_id === this.all_player_data[j].plane_id) {
-                        this.all_player_data[j].onplane = null;
-                        this.all_player_data[j].plane_type = -1;
-                    }
-                }
+                // if (this.all_player_data[j].onplane) {
+                //     if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3
+                //         && this.all_player_data[j].object_id === this.all_player_data[j].plane_id) {
+                //         this.all_player_data[j].onplane = null;
+                //         this.all_player_data[j].plane_type = -1;
+                //     }
+                // }
 
 
                 if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
@@ -1777,8 +1777,8 @@ class App {
 
 
                         if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
-                            && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8) {
-                            //&& this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3) {
+                            && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
+                            && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3) {
                             if (this.all_player_data[j].plane_type === 1) {
 
                                 this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
