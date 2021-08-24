@@ -38,6 +38,8 @@ class App {
         // document.body.appendChild(this.text2);
         //##################################
 
+        this.previousid = -1;
+
         this.clock = new THREE.Clock();
         this.previousTime = 0;
         this.last_stabbed_time = 0;
@@ -1324,6 +1326,12 @@ class App {
                 //     console.log(this.fox.position.x, this.fox.position.y)
                 // this.score_time = elapsedTime;
 
+            }
+        }
+        if (this.all_player_data.length > 0) {
+            if (this.all_player_data[0].onplane !== this.previousid) {
+                console.log(this.all_player_data[0].onplane, this.all_player_data[0].plane_type);
+                this.previousid = this.all_player_data[0].onplane;
             }
         }
         if (this.die_sw === 1) {
