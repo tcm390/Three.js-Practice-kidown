@@ -1501,7 +1501,9 @@ class App {
                                         this.all_player_data[j].onplane_time = elapsedTime;
                                     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                                     this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-
+                                    if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1) {
+                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
+                                    }
                                 }
 
                             }
@@ -1547,7 +1549,9 @@ class App {
                                     this.all_player_data[j].onplane_time = elapsedTime;
                                 this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                                 this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-
+                                if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1) {
+                                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
+                                }
                             }
 
                         }
