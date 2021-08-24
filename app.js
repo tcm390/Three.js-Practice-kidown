@@ -1509,7 +1509,7 @@ class App {
                                         this.all_player_data[j].onplane_time = elapsedTime;
                                     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                                     this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                                    if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1
+                                    if (this.all_player_data[j].mesh.position.y <= this.all_player_data[j].onplane.position.y + 1.4
                                         && this.all_player_data[j].plane_type !== 2) {
                                         this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
                                     }
@@ -1521,7 +1521,7 @@ class App {
                                     this.all_player_data[j].onplane_time = elapsedTime;
                                     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                                     this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                                    if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1
+                                    if (this.all_player_data[j].mesh.position.y <= this.all_player_data[j].onplane.position.y + 1.4
                                         && this.all_player_data[j].plane_type !== 2) {
                                         this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
                                     }
@@ -1559,7 +1559,7 @@ class App {
                                     this.all_player_data[j].onplane_time = elapsedTime;
                                 this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                                 this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                                if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1
+                                if (this.all_player_data[j].mesh.position.y <= this.all_player_data[j].onplane.position.y + 1.4
                                     && this.all_player_data[j].plane_type !== 2) {
                                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
                                 }
@@ -1571,7 +1571,7 @@ class App {
                                 this.all_player_data[j].onplane_time = elapsedTime;
                                 this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                                 this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                                if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1
+                                if (this.all_player_data[j].mesh.position.y <= this.all_player_data[j].onplane.position.y + 1.4
                                     && this.all_player_data[j].plane_type !== 2) {
                                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
                                 }
@@ -1834,8 +1834,8 @@ class App {
 
 
 
-                        this.all_player_data[j].onplane = null;
-                        this.all_player_data[j].plane_type = -1;
+                        // this.all_player_data[j].onplane = null;
+                        // this.all_player_data[j].plane_type = -1;
 
                     }
                     else if (this.all_player_data[j].onplane) {
