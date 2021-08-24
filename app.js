@@ -1331,7 +1331,7 @@ class App {
         if (this.all_player_data.length > 0) {
             if (this.all_player_data[0].onplane !== this.previousid) {
                 //console.log(this.all_player_data[0].plane_type);
-                if (this.all_player_data[j].onplane) {
+                if (this.all_player_data[0].onplane) {
                     console.log(this.all_player_data[0].plane_type, this.all_player_data[0].onplane.position.y, this.all_player_data[0].final_positiony);
                 }
                 console.log(this.all_player_data[0].plane_type, 'null', this.all_player_data[0].final_positiony);
