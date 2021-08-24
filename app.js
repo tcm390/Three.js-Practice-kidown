@@ -1490,6 +1490,7 @@ class App {
                                 this.all_player_data[j].onplane_time = elapsedTime;
                             this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                             this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                            this.all_player_data[j].mesh.position.y = this.objectsToUpdate[i].mesh.position.y + 1;
 
                         }
                     }
