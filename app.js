@@ -1642,18 +1642,23 @@ class App {
             // }
             //########### handel remote player ##############
             for (let j = 0; j < this.all_player_data.length; j++) {
+
+
                 if (this.all_player_data[j].onplane) {
                     if (this.all_player_data[j].onplane.position.y > 21) {
                         this.all_player_data[j].onplane = null;
                         this.all_player_data[j].plane_type = -1;
                     }
+
+                }
+                if (this.all_player_data[j].onplane) {
                     if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3
                         && this.all_player_data[j].object_id === this.all_player_data[j].plane_id) {
                         this.all_player_data[j].onplane = null;
                         this.all_player_data[j].plane_type = -1;
                     }
-
                 }
+
 
                 if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
                     && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth) {
