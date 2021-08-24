@@ -2057,7 +2057,7 @@ class App {
                     if (this.all_player_data[j].rank === 1) {
                         //console.log(this.all_player_data[j].name_mesh.style.color)
                         this.all_player_data[j].name_mesh.style.color = 'gold';
-                        this.all_player_data[j].name_mesh.innerHTML = '<font size="6vmin">👑</font>' + this.all_player_data[j].name;
+                        this.all_player_data[j].name_mesh.innerHTML = '<font size="6vh 6vw">👑</font>' + this.all_player_data[j].name;
                     }
                     else {
                         this.all_player_data[j].name_mesh.style.color = 'white';
@@ -2359,7 +2359,7 @@ class App {
 
             if (this.fox_rank === 1) {
                 this.fox_name.style.color = 'gold';
-                this.fox_name.innerHTML = '<font size="6vmin">👑</font>' + document.querySelector('.Name').value;
+                this.fox_name.innerHTML = '<font size="6vh 6vw">👑</font>' + document.querySelector('.Name').value;
             }
             else {
                 this.fox_name.style.color = 'white';
