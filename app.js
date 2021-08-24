@@ -1905,14 +1905,7 @@ class App {
                         // }
 
 
-                        if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 10) {
-                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                            console.log('moderx');
-                        }
-                        if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 10) {
-                            this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            console.log('modery');
-                        }
+
 
                         // if (this.all_player_data[j].plane_type === 3) {
                         //     this.all_player_data[j].mesh.position.x -= 0.15;
@@ -1971,11 +1964,7 @@ class App {
 
                     }
 
-                    if (this.all_player_data[j].onplane) {
-                        if (this.all_player_data[j].onplane.position.y > 21) {
-                            this.all_player_data[j].onplane = null;
-                        }
-                    }
+
 
                     this.Animate_Character(this.all_player_data[j].mesh, this.all_player_data[j].animation, elapsedTime, this.all_player_data[j].emoji);
 
@@ -2003,6 +1992,21 @@ class App {
                     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                     this.all_player_data[j].name_mesh.style.transform = `translateX(10000px) translateY(10000px)`
+                }
+
+
+                if (this.all_player_data[j].onplane) {
+                    if (this.all_player_data[j].onplane.position.y > 21) {
+                        this.all_player_data[j].onplane = null;
+                    }
+                }
+                if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 10) {
+                    this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                    console.log('moderx');
+                }
+                if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 10) {
+                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                    console.log('modery');
                 }
                 this.all_player_data[j].mesh.position.y = Math.ceil(this.all_player_data[j].mesh.position.y * 100) / 100;
                 this.all_player_data[j].mesh.position.x = Math.ceil(this.all_player_data[j].mesh.position.x * 100) / 100;
