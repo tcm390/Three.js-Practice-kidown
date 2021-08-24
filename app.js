@@ -1856,11 +1856,11 @@ class App {
 
                                 }
                                 if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1.4) {
-
-                                    this.all_player_data[j].onplane = null;
-                                    this.all_player_data[j].plane_type = -1;
                                     if (this.all_player_data[j].onplane.rotation.x === 0)
                                         this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
+                                    this.all_player_data[j].onplane = null;
+                                    this.all_player_data[j].plane_type = -1;
+
                                 }
 
                                 else {
