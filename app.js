@@ -1490,7 +1490,8 @@ class App {
                                 this.all_player_data[j].onplane_time = elapsedTime;
                             this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                             this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                            this.all_player_data[j].mesh.position.y = this.objectsToUpdate[i].mesh.position.y + 1;
+                            if (this.objectsToUpdate[i].plane_type !== 2)
+                                this.all_player_data[j].mesh.position.y = this.objectsToUpdate[i].mesh.position.y + 1;
 
                         }
                     }
@@ -1893,20 +1894,20 @@ class App {
                         //     this.all_player_data[j].onplane = null;
                         //     this.all_player_data[j].plane_type = -1;
                         // }
-                        // if (new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
-                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                        //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                        //     this.all_player_data[j].onplane = null;
-                        //     this.all_player_data[j].plane_type = -1;
-                        // }
-
-
-                        if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 10) {
-                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                        }
-                        if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 10) {
+                        if (new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(this.all_player_data[j].mesh.position) > 10) {
                             this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                            this.all_player_data[j].onplane = null;
+                            this.all_player_data[j].plane_type = -1;
                         }
+
+
+                        // if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 10) {
+                        //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                        // }
+                        // if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 10) {
+                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                        // }
 
                         // if (this.all_player_data[j].plane_type === 3) {
                         //     this.all_player_data[j].mesh.position.x -= 0.15;
