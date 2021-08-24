@@ -1482,7 +1482,7 @@ class App {
 
                 for (let j = 0; j < this.all_player_data.length; j++) {
 
-                    if (Math.abs(this.all_player_data[j].mesh.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.8) {
+                    if (Math.abs(this.all_player_data[j].mesh.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.4) {
                         if (this.all_player_data[j].mesh.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
                             && this.all_player_data[j].mesh.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
 
@@ -1509,12 +1509,12 @@ class App {
                             }
                         }
                         else {
-                            if (this.all_player_data[j].mesh.position.y >= this.objectsToUpdate[i].mesh.position.y + 1) {
-                                this.all_player_data[j].onplane_time = elapsedTime;
-                                this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                                this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                                this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
-                            }
+                            // if (this.all_player_data[j].mesh.position.y >= this.objectsToUpdate[i].mesh.position.y + 1) {
+                            this.all_player_data[j].onplane_time = elapsedTime;
+                            this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                            this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                            this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
+                            //}
 
 
                         }
