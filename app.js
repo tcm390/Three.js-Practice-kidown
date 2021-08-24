@@ -1330,7 +1330,11 @@ class App {
         }
         if (this.all_player_data.length > 0) {
             if (this.all_player_data[0].onplane !== this.previousid) {
-                console.log(this.all_player_data[0].onplane, this.all_player_data[0].plane_type);
+                //console.log(this.all_player_data[0].plane_type);
+                if (this.all_player_data[j].onplane) {
+                    console.log(this.all_player_data[0].plane_type, this.all_player_data[0].onplane.position.y, this.all_player_data[0].final_positiony);
+                }
+                console.log(this.all_player_data[0].plane_type, 'null', this.all_player_data[0].final_positiony);
                 this.previousid = this.all_player_data[0].onplane;
             }
         }
@@ -1843,7 +1847,7 @@ class App {
 
                         if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
                             && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
-                            && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 4) {
+                            && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3) {
                             if (this.all_player_data[j].plane_type === 1) {
 
                                 this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
