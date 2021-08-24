@@ -1495,13 +1495,21 @@ class App {
                     }
                     if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id) {
                         //&& Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 1.5) {
-                        if (this.objectsToUpdate[i].mesh !== this.all_player_data[j].onplane
-                            && this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
-                            //if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
+                        if (this.all_player_data[j].onplane) {
+                            if (this.objectsToUpdate[i].mesh !== this.all_player_data[j].onplane
+                                && this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
+                                //if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
+                                this.all_player_data[j].onplane_time = elapsedTime;
+                                this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
+                                this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
+                            }
+                        }
+                        else {
                             this.all_player_data[j].onplane_time = elapsedTime;
                             this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                             this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
                         }
+
 
                     }
 
