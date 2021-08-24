@@ -1050,9 +1050,7 @@ class App {
         final_positiony.push(positiony);
         final_positiony.push(positiony);
 
-
-
-        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3, final_positionx: final_positionx, final_positiony: final_positiony, name: name, object_id: -1 });
+        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3, final_positionx: final_positionx, final_positiony: final_positiony, name: name });
 
         this.scene.add(model);
 
@@ -1492,7 +1490,6 @@ class App {
                                 this.all_player_data[j].onplane_time = elapsedTime;
                             this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                             this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                            this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
                             // if (this.objectsToUpdate[i].plane_type !== 2)
                             //     this.all_player_data[j].mesh.position.y = this.objectsToUpdate[i].mesh.position.y + 1;
 
@@ -1507,7 +1504,6 @@ class App {
                                 this.all_player_data[j].onplane_time = elapsedTime;
                                 this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
                                 this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                                this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
                             }
                         }
                         else {
@@ -1643,17 +1639,6 @@ class App {
             // }
             //########### handel remote player ##############
             for (let j = 0; j < this.all_player_data.length; j++) {
-                if (this.all_player_data[j].onplane) {
-                    if (this.all_player_data[j].onplane.position.y > 21) {
-                        this.all_player_data[j].onplane = null;
-                        this.all_player_data[j].plane_type = -1;
-                    }
-                    if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3
-                        && this.all_player_data[j].plane_id === this.all_player_data[j].object_id) {
-                        this.all_player_data[j].onplane = null;
-                        this.all_player_data[j].plane_type = -1;
-                    }
-                }
 
                 if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
                     && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth) {
@@ -1986,8 +1971,11 @@ class App {
 
                     }
 
-
-
+                    if (this.all_player_data[j].onplane) {
+                        if (this.all_player_data[j].onplane.position.y > 21) {
+                            this.all_player_data[j].onplane = null;
+                        }
+                    }
 
                     this.Animate_Character(this.all_player_data[j].mesh, this.all_player_data[j].animation, elapsedTime, this.all_player_data[j].emoji);
 
@@ -2268,7 +2256,9 @@ class App {
             this.fox.position.y = Math.ceil(this.fox.position.y * 100) / 100;
             this.fox.position.x = Math.ceil(this.fox.position.x * 100) / 100;
 
-
+            if (this.fox_plane === null) {
+                this.fox_plane_id = -1;
+            }
             this.calculate_life(this.fox_life);
             let data = {
                 title: 'player_position_update',
