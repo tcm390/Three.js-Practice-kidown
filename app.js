@@ -2061,6 +2061,7 @@ class App {
                         }
                         else {
                             this.all_player_data[j].mesh.final_positionx[1] -= 0.25;
+                            this.all_player_data[j].mesh.position.x -= 0.25;
                             // if (this.all_player_data[j].animation === 2)
                             //     this.fox.position.x += 0.5;
                             // else
