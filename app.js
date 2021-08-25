@@ -2046,12 +2046,12 @@ class App {
                     //     }
                     // }
                     if (this.fox
-                        && Math.abs(this.fox.final_positionx - this.all_player_data[j].mesh.final_positionx[1]) <= 2
-                        && Math.abs(this.fox.final_positiony - this.all_player_data[j].mesh.final_positiony[1]) <= 2
+                        && Math.abs(this.fox.final_positionx - this.all_player_data[j].final_positionx[1]) <= 2
+                        && Math.abs(this.fox.final_positiony - this.all_player_data[j].final_positiony[1]) <= 2
                         && this.all_player_data[j].onplane
                         && this.fox_plane) {
 
-                        if (this.all_player_data[j].mesh.final_positionx[1] > this.fox_finalpositionx) {
+                        if (this.all_player_data[j].final_positionx[1] > this.fox_finalpositionx) {
                             this.all_player_data[j].mesh.position.x += 0.25;
                             // if (this.all_player_data[j].animation === 1)
                             //     this.fox.position.x -= 0.5;
