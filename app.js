@@ -1762,7 +1762,7 @@ class App {
                         // }
                         // else
                         //if (test >= 0.25) {
-                        this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 1 / lerptime);
+                        this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 1 / lerptime);
                         // }
                         // else if (test < 0.25) {
                         //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
