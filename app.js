@@ -1383,27 +1383,29 @@ class App {
                 // material.matcap = this.plane_texture;
                 let cube;
                 let plane_type;
-                if (Math.floor(this.plane_data[i].id) % 6 === 1) {
+                let test = Math.abs(this.plane_data[i].id.substring(this.plane_data[i].id.length - 4, this.plane_data[i].id.length));
+
+                if (test % 6 === 1) {
                     cube = this.trampoline.clone();
                     plane_type = 1;
                 }
 
-                else if (Math.floor(this.plane_data[i].id) % 6 === 2) {
+                else if (test % 6 === 2) {
                     cube = new THREE.Mesh(this.planegeometry, this.planematerial2);
                     plane_type = 2;
                 }
 
-                else if (Math.floor(this.plane_data[i].id) % 6 === 3) {
+                else if (test % 6 === 3) {
                     cube = this.convey.clone();
                     plane_type = 3;
                 }
 
-                else if (Math.floor(this.plane_data[i].id) % 6 === 4) {
+                else if (test % 6 === 4) {
                     cube = this.convey.clone();
                     cube.rotation.z = Math.PI;
                     plane_type = 4;
                 }
-                else if (Math.floor(this.plane_data[i].id) % 6 === 5) {
+                else if (test % 6 === 5) {
                     cube = this.sting_plane.clone();
                     plane_type = 5;
                 }
@@ -1432,6 +1434,10 @@ class App {
             }
             this.plane_data = null;
         }
+
+        // if (this.objectsToUpdate.length > 1 && elapsedTime < 10) {
+        //     console.log(this.objectsToUpdate[0].id)
+        // }
 
         //if (this.fox) {
         if (elapsedTime - this.last_stabbed_time > 0.05)
@@ -1471,6 +1477,7 @@ class App {
         // }
 
         for (let i = 0; i < this.objectsToUpdate.length; i++) {
+
 
             this.objectsToUpdate[i].mesh.position.y += 0.15;
             this.objectsToUpdate[i].mesh.position.y = Math.ceil(this.objectsToUpdate[i].mesh.position.y * 100) / 100;
