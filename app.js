@@ -1761,8 +1761,33 @@ class App {
                         //     this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test);
                         // }
                         // else
+                        let test2 = this.all_player_data[j].mesh.position.x - this.myLerp(this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 1 / lerptime);
+                        if (test2 >= 0.4) {
+                            this.all_player_data[j].mesh.position.x -= 0.4
+                        }
+                        else if (test2 <= -0.4) {
+                            this.all_player_data[j].mesh.position.x += 0.4
+                        }
+                        if (test2 >= 0.25) {
+                            this.all_player_data[j].mesh.position.x -= 0.25
+                        }
+                        else if (test2 <= -0.25) {
+                            this.all_player_data[j].mesh.position.x += 0.25
+                        }
+                        if (test2 >= 0.15) {
+                            this.all_player_data[j].mesh.position.x -= 0.15
+                        }
+                        else if (test2 <= -0.15) {
+                            this.all_player_data[j].mesh.position.x += 0.15
+                        }
+                        if (test2 >= 0.1) {
+                            this.all_player_data[j].mesh.position.x -= 0.1
+                        }
+                        else if (test2 <= -0.1) {
+                            this.all_player_data[j].mesh.position.x += 0.1
+                        }
                         //if (test >= 0.25) {
-                        this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 1 / lerptime);
+
                         // }
                         // else if (test < 0.25) {
                         //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
