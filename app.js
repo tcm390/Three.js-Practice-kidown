@@ -1368,7 +1368,7 @@ class App {
                         this.all_player_data[j].final_positionx[1] = this.receive_player_data[i].positionx;
                         this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
                         this.all_player_data[j].final_positiony[1] = this.receive_player_data[i].positiony;
-                        //this.all_player_data[j].past_timestamp = this.all_player_data[j].final_timestamp;
+                        this.all_player_data[j].past_timestamp = this.all_player_data[j].final_timestamp;
                         this.all_player_data[j].final_timestamp = this.receive_player_data[i].timestamp;
                         this.all_player_data[j].animation = this.receive_player_data[i].animation;
                         this.all_player_data[j].plane_id = this.receive_player_data[i].plane_id;
@@ -1728,7 +1728,6 @@ class App {
 
                 if (this.all_player_data[j].final_timestamp !== this.all_player_data[j].past_timestamp) {
                     lerptime = 1 / (this.all_player_data[j].final_timestamp - this.all_player_data[j].past_timestamp);
-                    this.all_player_data[j].past_timestamp += lerptime;
                 }
                 else
                     lerptime = 1;
