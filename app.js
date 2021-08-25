@@ -2048,9 +2048,9 @@ class App {
                     //         this.all_player_data[j].mesh.rotation.y = 0;
                     //     }
                     // }
+
                     if (this.fox
-                        && Math.abs(this.fox.final_positionx - this.all_player_data[j].final_positionx[1]) <= 4
-                        && Math.abs(this.fox.final_positiony - this.all_player_data[j].final_positiony[1]) <= 2
+                        && new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0).distanceTo(new THREE.Vector3(this.fox_finalpositionx, this.fox_finalpositiony, 0)) <= 3.7
                         && this.all_player_data[j].onplane
                         && this.fox_plane) {
 
