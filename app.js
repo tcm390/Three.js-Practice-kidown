@@ -62,6 +62,7 @@ class App {
         this.die_sw = 0;
 
         this.fox_finalpositionx = 0;
+        this.fox_finalpositiony = 0;
 
         this.mixer = [];
 
@@ -1372,6 +1373,7 @@ class App {
             }
             else if (this.receive_player_data[i].id === this.myID) {
                 this.fox_finalpositionx = this.receive_player_data[i].positionx;
+                this.fox_finalpositiony = this.receive_player_data[i].positiony;
             }
         }
 
