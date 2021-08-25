@@ -1435,9 +1435,7 @@ class App {
             this.plane_data = null;
         }
 
-        if (this.objectsToUpdate.length > 1 && elapsedTime < 10) {
-            console.log(this.objectsToUpdate[0].id)
-        }
+
 
         //if (this.fox) {
         if (elapsedTime - this.last_stabbed_time > 0.05)
@@ -1743,18 +1741,18 @@ class App {
                         //     this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test);
                         // }
                         // else
-                        if (test > 5) {
+                        if (test >= 0.25) {
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
                         }
                         else if (test < 0.25) {
                             this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
                         }
-                        else {
-                            if (this.all_player_data[j].final_positionx[1] > this.all_player_data[j].mesh.position.x)
-                                this.all_player_data[j].mesh.position.x += 0.25;
-                            else
-                                this.all_player_data[j].mesh.position.x -= 0.25;
-                        }
+                        // else {
+                        //     if (this.all_player_data[j].final_positionx[1] > this.all_player_data[j].mesh.position.x)
+                        //         this.all_player_data[j].mesh.position.x += 0.25;
+                        //     else
+                        //         this.all_player_data[j].mesh.position.x -= 0.25;
+                        // }
 
 
 
