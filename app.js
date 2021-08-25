@@ -2050,7 +2050,7 @@ class App {
                     // }
 
                     if (this.fox
-                        && new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].mesh.position.y, 0).distanceTo(new THREE.Vector3(this.fox_finalpositionx, this.fox_finalpositiony, 0)) <= 3
+                        && new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].mesh.position.y, 0).distanceTo(new THREE.Vector3(this.fox.position.x, this.fox.position.y, 0)) <= 3.7
                         && this.all_player_data[j].onplane
                         && this.fox_plane) {
 
