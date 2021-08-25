@@ -1435,9 +1435,9 @@ class App {
             this.plane_data = null;
         }
 
-        // if (this.objectsToUpdate.length > 1 && elapsedTime < 10) {
-        //     console.log(this.objectsToUpdate[0].id)
-        // }
+        if (this.objectsToUpdate.length > 1 && elapsedTime < 10) {
+            console.log(this.objectsToUpdate[0].id)
+        }
 
         //if (this.fox) {
         if (elapsedTime - this.last_stabbed_time > 0.05)
