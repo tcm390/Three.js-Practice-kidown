@@ -1786,6 +1786,9 @@ class App {
                         else if (test2 <= -0.1) {
                             this.all_player_data[j].mesh.position.x += 0.1
                         }
+                        else {
+                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx;
+                        }
 
                         //if (test >= 0.25) {
 
