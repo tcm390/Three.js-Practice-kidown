@@ -2104,11 +2104,11 @@ class App {
 
 
 
-                if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 20) {
+                if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 9) {
                     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
                     console.log('moderx');
                 }
-                if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 20) {
+                if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 9) {
                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                     console.log('modery');
                 }
