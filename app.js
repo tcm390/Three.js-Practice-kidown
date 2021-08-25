@@ -2048,9 +2048,9 @@ class App {
                     if (this.fox
                         && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
                         && Math.abs(this.fox.position.y - this.all_player_data[j].mesh.position.y) <= 2
-                        && this.all_player_data[j].onplane
-                        && this.fox_plane) {
-
+                        // && this.all_player_data[j].onplane
+                        // && this.fox_plane) {
+                    ) {
                         if (this.all_player_data[j].mesh.position.x > this.fox_finalpositionx) {
                             this.all_player_data[j].mesh.position.x += 0.25;
                             // if (this.all_player_data[j].animation === 1)
