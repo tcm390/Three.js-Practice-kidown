@@ -1725,7 +1725,10 @@ class App {
                 if (this.all_player_data[j].timestamp[0] > this.all_player_data[j].timestamp[1]) {
                     this.all_player_data[j].timestamp[0] -= 10000;
                 }
-                lerptime = this.all_player_data[j].timestamp[1] - this.all_player_data[j].timestamp[0];
+                if (this.all_player_data[j].timestamp[0] < this.all_player_data[j].timestamp[1])
+                    lerptime = this.all_player_data[j].timestamp[1] - this.all_player_data[j].timestamp[0];
+                else
+                    lerptime = 1;
 
 
 
