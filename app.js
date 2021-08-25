@@ -1725,9 +1725,17 @@ class App {
                 let lerptime;
                 if (this.all_player_data[j].final_timestamp < this.all_player_data[j].past_timestamp)
                     this.all_player_data[j].past_timestamp -= 10000;
+                let predict_time;
+                if (this.timestamp > this.receive_timestamp) {
+                    predict_time = this.timestamp - this.receive_timestamp;
+                }
+                else {
+                    predict_time = this.timestamp - (this.receive_timestamp - 10000);
+                }
 
-                if (this.all_player_data[j].final_timestamp !== this.all_player_data[j].past_timestamp) {
-                    lerptime = 1 / (this.all_player_data[j].final_timestamp - this.all_player_data[j].past_timestamp);
+                if (this.all_player_data[j].final_timestamp !== this.all_player_data[j].past_timestamp
+                    && this.receive_timestamp !== this.timestamp) {
+                    lerptime = (this.all_player_data[j].final_timestamp - this.all_player_data[j].past_timestamp) / (this.all_player_data[j].final_timestamp + (predict_time) - this.all_player_data[j].past_timestamp);
                 }
                 else
                     lerptime = 1;
@@ -1763,7 +1771,7 @@ class App {
                         // }
                         // else
                         //if (test >= 0.25) {
-                        this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], lerptime);
+                        this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], lerptime);
                         //}
                         // else if (test < 0.25) {
                         //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
