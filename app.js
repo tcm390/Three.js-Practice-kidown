@@ -1725,20 +1725,21 @@ class App {
                 let lerptime;
                 if (this.all_player_data[j].final_timestamp < this.all_player_data[j].past_timestamp)
                     this.all_player_data[j].past_timestamp -= 10000;
-                let predict_time;
-                if (this.timestamp > this.receive_timestamp) {
-                    predict_time = this.timestamp - this.receive_timestamp;
-                }
-                else {
-                    predict_time = this.timestamp - (this.receive_timestamp - 10000);
-                }
+                lerptime = this.all_player_data[j].final_timestamp - this.all_player_data[j].past_timestamp;
+                // let predict_time;
+                // if (this.timestamp > this.receive_timestamp) {
+                //     predict_time = this.timestamp - this.receive_timestamp;
+                // }
+                // else {
+                //     predict_time = this.timestamp - (this.receive_timestamp - 10000);
+                // }
 
-                if (this.all_player_data[j].final_timestamp !== this.all_player_data[j].past_timestamp
-                    && this.receive_timestamp !== this.timestamp) {
-                    lerptime = (this.all_player_data[j].final_timestamp - this.all_player_data[j].past_timestamp) / (this.all_player_data[j].final_timestamp + (predict_time) - this.all_player_data[j].past_timestamp);
-                }
-                else
-                    lerptime = 1;
+                // if (this.all_player_data[j].final_timestamp !== this.all_player_data[j].past_timestamp
+                //     && this.receive_timestamp !== this.timestamp) {
+                //     lerptime = (this.all_player_data[j].final_timestamp - this.all_player_data[j].past_timestamp) / (this.all_player_data[j].final_timestamp + (predict_time) - this.all_player_data[j].past_timestamp);
+                // }
+                // else
+                //     lerptime = 1;
 
 
                 if (this.all_player_data[j].onplane) {
@@ -1771,8 +1772,7 @@ class App {
                         // }
                         // else
                         //if (test >= 0.25) {
-                        let lerptime2 = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) / Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].final_positionx[0]);
-                        this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], lerptime2);
+                        this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 1 / Math.abs(this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1]) * lerptime);
                         //}
                         // else if (test < 0.25) {
                         //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
@@ -1877,9 +1877,8 @@ class App {
                         //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
                         // }
                         // else 
-
                         // if (test >= 3) {
-                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
+                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 1 / Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]) * lerptime);
                         // }
                         // else {
                         //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1915,7 +1914,7 @@ class App {
                                 // }
                                 // else 
                                 // if (test >= 3) {
-                                this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
+                                this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 1 / Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]) * lerptime);
                                 // }
                                 // else {
                                 //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1975,7 +1974,7 @@ class App {
                                     // }
                                     // else 
                                     //if (test >= 3) {
-                                    this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
+                                    this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 1 / Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]) * lerptime);
                                     // }
                                     // else {
                                     //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -2005,7 +2004,7 @@ class App {
                             // }
                             // else
                             //if (test >= 3) {
-                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
+                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 1 / Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]) * lerptime);
                             //}
                             // else {
                             //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
