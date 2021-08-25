@@ -1772,7 +1772,7 @@ class App {
                         // else
                         //if (test >= 0.25) {
                         let lerptime2 = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) / Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].final_positionx[0]);
-                        this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], lerptime2);
+                        this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], lerptime2);
                         //}
                         // else if (test < 0.25) {
                         //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
@@ -1879,7 +1879,7 @@ class App {
                         // else 
 
                         // if (test >= 3) {
-                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
+                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
                         // }
                         // else {
                         //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1915,7 +1915,7 @@ class App {
                                 // }
                                 // else 
                                 // if (test >= 3) {
-                                this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
+                                this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
                                 // }
                                 // else {
                                 //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -1975,7 +1975,7 @@ class App {
                                     // }
                                     // else 
                                     //if (test >= 3) {
-                                    this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
+                                    this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
                                     // }
                                     // else {
                                     //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
@@ -2005,7 +2005,7 @@ class App {
                             // }
                             // else
                             //if (test >= 3) {
-                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
+                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) / Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].final_positiony[0]));
                             //}
                             // else {
                             //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
