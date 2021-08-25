@@ -45,6 +45,7 @@ class App {
         this.last_stabbed_time = 0;
         this.die_time = 0;
         this.score_time = -1;
+        this.timestamp = 0;
 
         this.all_player_data = [];
         this.receive_player_data = [];
@@ -2382,7 +2383,8 @@ class App {
                 // action: this.fox_action,
                 score: this.fox_score,
                 emoji: this.emoji,
-                rank: this.fox_rank
+                rank: this.fox_rank,
+                timestamp: this.timestamp
             }
             this.socket.send(JSON.stringify(data));
 
