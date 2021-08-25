@@ -1725,7 +1725,7 @@ class App {
                 let lerptime;
                 if (this.all_player_data[j].final_timestamp < this.all_player_data[j].past_timestamp)
                     this.all_player_data[j].past_timestamp -= 10000;
-                lerptime = this.all_player_data[j].final_timestamp - this.all_player_data[j].past_timestamp;
+                lerptime = 1;
                 // let predict_time;
                 // if (this.timestamp > this.receive_timestamp) {
                 //     predict_time = this.timestamp - this.receive_timestamp;
