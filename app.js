@@ -2003,7 +2003,7 @@ class App {
                             // }
                             // else
                             //if (test >= 3) {
-                            this.all_player_data[j].mesh.position.y = this.myLerp(tthis.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], lerptime);
+                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], lerptime);
                             //}
                             // else {
                             //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
