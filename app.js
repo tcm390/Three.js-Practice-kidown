@@ -46,6 +46,7 @@ class App {
         this.die_time = 0;
         this.score_time = -1;
         this.timestamp = 0;
+        this.receive_timestamp = 0;
 
         this.all_player_data = [];
         this.receive_player_data = [];
@@ -1378,9 +1379,11 @@ class App {
                     }
                 }
             }
-            else if (this.receive_player_data[i].id === this.myID) {
+            else if (this.receive_player_data[i].id === this.myID
+                && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
                 this.fox_finalpositionx = this.receive_player_data[i].positionx;
                 this.fox_finalpositiony = this.receive_player_data[i].positiony;
+                this.receive_timestamp = this.receive_player_data[i].timestamp;
             }
         }
 
