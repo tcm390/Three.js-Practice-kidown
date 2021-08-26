@@ -2060,7 +2060,8 @@ class App {
                             //     this.fox.position.x -= 0.5;
                             // else
                             this.right_block = 1;
-                            this.fox.position.x -= 0.25
+                            this.fox.position.x -= 0.25;
+                            this.fox_finalpositionx -= 0.25;
                         }
                         else {
                             this.all_player_data[j].final_positionx[1] -= 0.25;
@@ -2068,7 +2069,8 @@ class App {
                             //     this.fox.position.x += 0.5;
                             // else
                             this.left_block = 1;
-                            this.fox.position.x += 0.25
+                            this.fox.position.x += 0.25;
+                            this.fox_finalpositionx += 0.25;
                         }
 
                     }
