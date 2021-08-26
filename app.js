@@ -1021,7 +1021,7 @@ class App {
                 self.model.add(heart);
 
                 self.scene.add(self.model);
-                self.model.position.y = 0;
+                self.model.position.y = -26;
                 // self.heart.scale.set(10, 40, 40);
                 // self.heart.rotation.y = -Math.PI / 2;
                 self.setsocketListener();
