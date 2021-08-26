@@ -514,27 +514,40 @@ class App {
             }
             else if (data.title === 'all_player_data_update') {
                 this.receive_player_data = data.data;
-                // for (let i = 0; i < data.data.length; i++) {
-                //     if (data.data[i].id !== this.myID) {
-                //         for (let j = 0; j < this.all_player_data.length; j++) {
-                //             if (data.data[i].id === this.all_player_data[j].id) {
-                //                 this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
-                //                 this.all_player_data[j].final_positionx[1] = data.data[i].positionx;
-                //                 this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
-                //                 this.all_player_data[j].final_positiony[1] = data.data[i].positiony;
-                //                 this.all_player_data[j].animation = data.data[i].animation;
-                //                 this.all_player_data[j].plane_id = data.data[i].plane_id;
-                //                 this.all_player_data[j].emoji = data.data[i].emoji;
-                //                 this.all_player_data[j].rank = data.data[i].rank;
-                //                 //this.all_player_data[j].action = data.data[i].action;
-                //             }
-                //         }
-                //     }
-                //     else if (data.data[i].id === this.myID) {
-                //         this.fox_finalpositionx = data.data[i].positionx;
-                //     }
+                for (let i = 0; i < data.data.length; i++) {
+                    if (data.data[i].id !== this.myID) {
+                        for (let j = 0; j < this.all_player_data.length; j++) {
+                            if (data.data[i].id === this.all_player_data[j].id
+                                && this.all_player_data[j].timestamp !== data.data[i].timestamp) {
+                                this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
+                                this.all_player_data[j].final_positionx[1] = data.data[i].positionx;
+                                this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
+                                this.all_player_data[j].final_positiony[1] = data.data[i].positiony;
+                                this.all_player_data[j].animation = data.data[i].animation;
+                                this.all_player_data[j].plane_id = data.data[i].plane_id;
+                                this.all_player_data[j].emoji = data.data[i].emoji;
+                                this.all_player_data[j].rank = data.data[i].rank;
+                                this.all_player_data[j].timestamp = data.data[i].timestamp;
+                                //this.all_player_data[j].action = data.data[i].action;
+                            }
+                        }
+                    }
+                    else if (data.data[i].id === this.myID
+                        && this.receive_timestamp !== data.data[i].timestamp) {
+                        let temp = this.receive_timestamp;
+                        if (temp > data.data[i].timestamp) {
+                            temp -= 10000;
+                        }
+                        if ((data.data[i].timestamp - temp) > 10)
+                            document.querySelector('.ping').innerHTML = 'Ping: ' + (data.data[i].timestamp - temp);
 
-                // }
+                        this.fox_finalpositionx = data.data[i].positionx;
+                        this.fox_finalpositiony = data.data[i].positiony;
+                        this.receive_timestamp = data.data[i].timestamp;
+
+                    }
+
+                }
 
 
             }
@@ -1352,39 +1365,39 @@ class App {
             }
         }
         //########### update player data ########
-        for (let i = 0; i < this.receive_player_data.length; i++) {
-            if (this.receive_player_data[i].id !== this.myID) {
-                for (let j = 0; j < this.all_player_data.length; j++) {
-                    if (this.receive_player_data[i].id === this.all_player_data[j].id
-                        && this.all_player_data[j].timestamp !== this.receive_player_data[i].timestamp) {
-                        this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
-                        this.all_player_data[j].final_positionx[1] = this.receive_player_data[i].positionx;
-                        this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
-                        this.all_player_data[j].final_positiony[1] = this.receive_player_data[i].positiony;
-                        this.all_player_data[j].animation = this.receive_player_data[i].animation;
-                        this.all_player_data[j].plane_id = this.receive_player_data[i].plane_id;
-                        this.all_player_data[j].emoji = this.receive_player_data[i].emoji;
-                        this.all_player_data[j].rank = this.receive_player_data[i].rank;
-                        this.all_player_data[j].timestamp = this.receive_player_data[i].timestamp;
-                        //this.all_player_data[j].action = data.data[i].action;
-                    }
-                }
-            }
-            else if (this.receive_player_data[i].id === this.myID
-                && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
-                let temp = this.receive_timestamp;
-                if (temp > this.receive_player_data[i].timestamp) {
-                    temp -= 10000;
-                }
-                if ((this.receive_player_data[i].timestamp - temp) > 10)
-                    document.querySelector('.ping').innerHTML = 'Ping: ' + (this.receive_player_data[i].timestamp - temp);
+        // for (let i = 0; i < this.receive_player_data.length; i++) {
+        //     if (this.receive_player_data[i].id !== this.myID) {
+        //         for (let j = 0; j < this.all_player_data.length; j++) {
+        //             if (this.receive_player_data[i].id === this.all_player_data[j].id
+        //                 && this.all_player_data[j].timestamp !== this.receive_player_data[i].timestamp) {
+        //                 this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
+        //                 this.all_player_data[j].final_positionx[1] = this.receive_player_data[i].positionx;
+        //                 this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
+        //                 this.all_player_data[j].final_positiony[1] = this.receive_player_data[i].positiony;
+        //                 this.all_player_data[j].animation = this.receive_player_data[i].animation;
+        //                 this.all_player_data[j].plane_id = this.receive_player_data[i].plane_id;
+        //                 this.all_player_data[j].emoji = this.receive_player_data[i].emoji;
+        //                 this.all_player_data[j].rank = this.receive_player_data[i].rank;
+        //                 this.all_player_data[j].timestamp = this.receive_player_data[i].timestamp;
+        //                 //this.all_player_data[j].action = data.data[i].action;
+        //             }
+        //         }
+        //     }
+        //     else if (this.receive_player_data[i].id === this.myID
+        //         && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
+        //         let temp = this.receive_timestamp;
+        //         if (temp > this.receive_player_data[i].timestamp) {
+        //             temp -= 10000;
+        //         }
+        //         if ((this.receive_player_data[i].timestamp - temp) > 10)
+        //             document.querySelector('.ping').innerHTML = 'Ping: ' + (this.receive_player_data[i].timestamp - temp);
 
-                //console.log('timestamp:', this.receive_player_data[i].timestamp);
-                this.fox_finalpositionx = this.receive_player_data[i].positionx;
-                this.fox_finalpositiony = this.receive_player_data[i].positiony;
-                this.receive_timestamp = this.receive_player_data[i].timestamp;
-            }
-        }
+        //         //console.log('timestamp:', this.receive_player_data[i].timestamp);
+        //         this.fox_finalpositionx = this.receive_player_data[i].positionx;
+        //         this.fox_finalpositiony = this.receive_player_data[i].positiony;
+        //         this.receive_timestamp = this.receive_player_data[i].timestamp;
+        //     }
+        // }
 
         //########## draw plane #############
         if (this.plane_data) {
