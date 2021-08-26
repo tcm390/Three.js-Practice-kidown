@@ -1372,8 +1372,8 @@ class App {
             }
             else if (this.receive_player_data[i].id === this.myID
                 && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
-                if (Math.abs(this.receive_player_data[i].timestam - this.receive_timestamp) > 2)
-                    console.log('2');
+                if (Math.abs(this.receive_player_data[i].timestam - this.receive_timestamp) === 1)
+                    console.log('1');
                 else if (Math.abs(this.receive_player_data[i].timestam - this.receive_timestamp) > 5)
                     console.log('5');
                 //console.log('timestamp:', this.receive_player_data[i].timestamp);
