@@ -1356,7 +1356,7 @@ class App {
             if (elapsedTime - this.die_time > 1.5 && this.fox.position.y < -27) {
 
                 this.scene.remove(this.fox);
-                this.gg_board.classList.add('fadeOut');
+                this.gg_board.classList.add('fadeOut2');
                 //window.location.reload();
                 this.die_time = elapsedTime;
             }

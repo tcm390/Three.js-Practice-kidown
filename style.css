@@ -165,6 +165,22 @@ h3{
         transform: translate(-50%, -50%); 
     }
 }
+@-webkit-keyframes fadeOut2 {
+    from {
+        -webkit-transform: translate(-50%, -700%); 
+    }
+    to {
+        -webkit-transform: translate(-50%, 50%); 
+    }
+ }
+ @keyframes fadeOut2 {
+    from {
+        transform: translate(-50%, -700%); 
+    }
+    to {
+        transform: translate(-50%, -50%); 
+    }
+}
 
  .bounceOut {
     -webkit-animation-name: bounceOut;
@@ -175,12 +191,16 @@ h3{
  }
  
  .fadeIn{
-    -webkit-animation: fadeIn 10s forwards;;
-    animation: fadeIn 10s forwards;
+    -webkit-animation: fadeIn 20s forwards;;
+    animation: fadeIn 20s forwards;
  }
  .fadeOut{
-    -webkit-animation: fadeOut 5s forwards;;
-    animation: fadeOut 5s forwards;
+    -webkit-animation: fadeOut 7s forwards;;
+    animation: fadeOut 7s forwards;
+ }
+ .fadeOut2{
+    -webkit-animation: fadeOut2 3s forwards;;
+    animation: fadeOut2 3s forwards;
  }
 .box h1{
     color: rgb(5, 85, 25);
