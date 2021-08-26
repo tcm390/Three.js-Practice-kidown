@@ -1372,18 +1372,10 @@ class App {
             }
             else if (this.receive_player_data[i].id === this.myID
                 && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
-                if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 100)
-                    console.log('100', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
-                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 50)
-                    console.log('50', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
-                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 30)
-                    console.log('30', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
-                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 20)
-                    console.log('20', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
-                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 10)
-                    console.log('10', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
-                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 5)
-                    console.log('5', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
+
+                if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 10)
+                    document.querySelector('.ping').innerHTML = 'Ping: ' + Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp);
+
                 //console.log('timestamp:', this.receive_player_data[i].timestamp);
                 this.fox_finalpositionx = this.receive_player_data[i].positionx;
                 this.fox_finalpositiony = this.receive_player_data[i].positiony;
@@ -1837,22 +1829,22 @@ class App {
                         // }
 
                     }
-                    if (this.all_player_data[j].onplane) {
-                        if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3) {
-                            if (this.all_player_data[j].onplane !== this.previousid) {
-                                console.log('>3', this.all_player_data[j].plane_type, this.all_player_data[j].onplane.position.y, this.all_player_data[j].final_positiony[1]);
-                                this.previousid = this.all_player_data[j].onplane;
-                            }
-                        }
-                        if (this.all_player_data[j].mesh.position.x >= this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
-                            || this.all_player_data[j].mesh.position.x <= this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8) {
+                    // if (this.all_player_data[j].onplane) {
+                    //     if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3) {
+                    //         if (this.all_player_data[j].onplane !== this.previousid) {
+                    //             console.log('>3', this.all_player_data[j].plane_type, this.all_player_data[j].onplane.position.y, this.all_player_data[j].final_positiony[1]);
+                    //             this.previousid = this.all_player_data[j].onplane;
+                    //         }
+                    //     }
+                    //     if (this.all_player_data[j].mesh.position.x >= this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
+                    //         || this.all_player_data[j].mesh.position.x <= this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8) {
 
-                            if (this.all_player_data[j].onplane !== this.previousid) {
-                                console.log('bc 1.8', this.all_player_data[j].plane_type, this.all_player_data[j].onplane.position.x, this.all_player_data[j].mesh.position.x);
-                                this.previousid = this.all_player_data[j].onplane;
-                            }
-                        }
-                    }
+                    //         if (this.all_player_data[j].onplane !== this.previousid) {
+                    //             console.log('bc 1.8', this.all_player_data[j].plane_type, this.all_player_data[j].onplane.position.x, this.all_player_data[j].mesh.position.x);
+                    //             this.previousid = this.all_player_data[j].onplane;
+                    //         }
+                    //     }
+                    // }
 
 
                     if (this.all_player_data[j].onplane === null) {

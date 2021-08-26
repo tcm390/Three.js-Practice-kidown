@@ -9,6 +9,17 @@
 html, body{
     font-family: "Comic Sans MS", "Comic Sans", cursive;
 }
+.ping{
+    width: 80px;
+    height: 50px;
+	background:linear-gradient(to top left, rgba(41, 6, 238), rgb(151, 200, 238));
+	color: white;
+	font-size: 17px;
+    position: absolute;
+    opacity: 0.5;
+	top: 50px;
+	left: 0px;
+}
 .leader-board-wrapper{
     
     width: 270px;
