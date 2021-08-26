@@ -72,7 +72,7 @@ class App {
         this.fox_push_power2 = 0;
 
         this.fox_score = 0;
-        this.fox_life = 1000;
+        this.fox_life = 10;
         this.fox_previousPlane = null;
         this.fox_animation = 0;
         this.fox_plane_id = null;
@@ -528,6 +528,7 @@ class App {
                                 this.all_player_data[j].emoji = data.data[i].emoji;
                                 this.all_player_data[j].rank = data.data[i].rank;
                                 this.all_player_data[j].timestamp = data.data[i].timestamp;
+                                this.all_player_data[j].die_sw = data.data[i].die_sw;
                                 //this.all_player_data[j].action = data.data[i].action;
                             }
                         }
@@ -1086,7 +1087,7 @@ class App {
         final_positiony.push(positiony);
         final_positiony.push(positiony);
 
-        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3, final_positionx: final_positionx, final_positiony: final_positiony, name: name });
+        this.all_player_data.push({ mesh: model, id: id, onplane: null, plane_type: 0, onplane_time: 0, last_moving_time: 0, name_mesh: text2, animation: 3, final_positionx: final_positionx, final_positiony: final_positiony, name: name, die_sw: 0 });
 
         this.scene.add(model);
 
@@ -1363,6 +1364,7 @@ class App {
 
             else {
                 this.fox.position.y -= 0.35;
+                this.Animate_Character(this.fox, 3, elapsedTime, -1);
             }
         }
 
@@ -1578,154 +1580,83 @@ class App {
             //########### handel remote player ##############
             for (let j = 0; j < this.all_player_data.length; j++) {
 
-
-                if (this.all_player_data[j].onplane) {
-                    if (this.all_player_data[j].onplane.position.y > 21) {
-                        this.all_player_data[j].onplane = null;
-                        this.all_player_data[j].plane_type = -1;
-                    }
-
+                if (this.all_player_data[j].die_sw === 1) {
+                    this.all_player_data[j].mesh.position.y -= 0.35;
+                    this.Animate_Character(this.all_player_data[j].mesh, 0, elapsedTime, -1);
+                    let test_pos = this.toXYCoords(this.all_player_data[j].mesh);
+                    this.all_player_data[j].name_mesh.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`
+                    this.all_player_data[j].name_mesh.style.top = window.innerHeight / 2 + 'px';
+                    this.all_player_data[j].name_mesh.style.left = window.innerWidth / 2 + 'px';
                 }
-                if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
-                    && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth) {
-
-
-                    if (this.all_player_data[j].plane_type !== 3 && this.all_player_data[j].plane_type !== 4) {
-
-
-                        let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
-
-                        if (test >= 0.25) {
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
-                        }
-                        else if (test < 0.25) {
-                            this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                else {
+                    if (this.all_player_data[j].onplane) {
+                        if (this.all_player_data[j].onplane.position.y > 21) {
+                            this.all_player_data[j].onplane = null;
+                            this.all_player_data[j].plane_type = -1;
                         }
 
                     }
-                    else if (this.all_player_data[j].onplane && this.all_player_data[j].plane_type === 3) {
-                        let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
-                        if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.1) {
-
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.1 / test);
-
-                        }
-                        else if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.8) {
-
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.4 / test);
-
-                        }
-                        else if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.15) {
-
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.15 / test);
-
-                        }
+                    if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
+                        && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth) {
 
 
-                    }
-                    else if (this.all_player_data[j].onplane && this.all_player_data[j].plane_type === 4) {
-                        let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
-                        if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.1) {
-
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.1 / test);
-
-                        }
-                        else if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.8) {
-
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.4 / test);
-
-                        }
-                        else if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.15) {
-
-                            this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.15 / test);
-
-                        }
+                        if (this.all_player_data[j].plane_type !== 3 && this.all_player_data[j].plane_type !== 4) {
 
 
-                    }
+                            let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
 
-
-
-                    if (this.all_player_data[j].onplane === null) {
-
-                        let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-
-                        if (test >= 3) {
-                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                        }
-                        else {
-                            //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                            this.all_player_data[j].mesh.position.y -= 0.15;
-                        }
-
-                        // this.all_player_data[j].onplane = null;
-                        // this.all_player_data[j].plane_type = -1;
-
-                    }
-                    else if (this.all_player_data[j].onplane) {
-
-
-                        if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
-                            && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
-                            && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3) {
-                            if (this.all_player_data[j].plane_type === 1) {
-
-                                this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
-                                this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 2].position.y = .8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.1) * 1.5;
-                                this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + Math.sin(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 2.8)) * 2;
-                                this.all_player_data[j].mesh.position.y += 3;
-
+                            if (test >= 0.25) {
+                                this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
                             }
-                            else if (this.all_player_data[j].plane_type === 2) {
-                                let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-
-                                if (test >= 3) {
-                                    this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                }
-                                else {
-
-                                    this.all_player_data[j].mesh.position.y -= 0.15;
-
-                                }
-                                if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1) {
-                                    if (this.all_player_data[j].onplane.rotation.x === 0)
-                                        this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
-                                    this.all_player_data[j].onplane = null;
-                                    this.all_player_data[j].plane_type = -1;
-
-                                }
-
-                                else {
-
-                                    // this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
-
-                                }
+                            else if (test < 0.25) {
+                                this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
                             }
 
-                            else {
-
-                                if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1.4) {
-                                    let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-
-                                    if (test >= 3) {
-                                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                    }
-                                    else {
-                                        //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                        this.all_player_data[j].mesh.position.y -= 0.15;
-                                    }
-                                    // this.all_player_data[j].onplane = null;
-                                    // this.all_player_data[j].plane_type = -1;
-
-                                }
-                                else {
-
-                                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
-
-                                }
-                            }
                         }
-                        else {
+                        else if (this.all_player_data[j].onplane && this.all_player_data[j].plane_type === 3) {
+                            let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
+                            if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.1) {
+
+                                this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.1 / test);
+
+                            }
+                            else if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.8) {
+
+                                this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.4 / test);
+
+                            }
+                            else if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.15) {
+
+                                this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.15 / test);
+
+                            }
+
+
+                        }
+                        else if (this.all_player_data[j].onplane && this.all_player_data[j].plane_type === 4) {
+                            let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
+                            if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.1) {
+
+                                this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.1 / test);
+
+                            }
+                            else if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.8) {
+
+                                this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.4 / test);
+
+                            }
+                            else if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.15) {
+
+                                this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.15 / test);
+
+                            }
+
+
+                        }
+
+
+
+                        if (this.all_player_data[j].onplane === null) {
 
                             let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
 
@@ -1733,101 +1664,182 @@ class App {
                                 this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                             }
                             else {
+                                //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                                 this.all_player_data[j].mesh.position.y -= 0.15;
                             }
 
+                            // this.all_player_data[j].onplane = null;
+                            // this.all_player_data[j].plane_type = -1;
+
+                        }
+                        else if (this.all_player_data[j].onplane) {
 
 
-                            this.all_player_data[j].onplane = null;
-                            this.all_player_data[j].plane_type = -1;
+                            if (this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
+                                && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8
+                                && this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] < 3) {
+                                if (this.all_player_data[j].plane_type === 1) {
+
+                                    this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 1].position.y = -.8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.04) * 1.5;
+                                    this.all_player_data[j].onplane.children[this.all_player_data[j].onplane.children.length - 2].position.y = .8 + (Math.cos(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 22)) * 0.1) * 1.5;
+                                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + Math.sin(Math.PI * ((elapsedTime - this.all_player_data[j].onplane_time) * 2.8)) * 2;
+                                    this.all_player_data[j].mesh.position.y += 3;
+
+                                }
+                                else if (this.all_player_data[j].plane_type === 2) {
+                                    let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+
+                                    if (test >= 3) {
+                                        this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
+                                    }
+                                    else {
+
+                                        this.all_player_data[j].mesh.position.y -= 0.15;
+
+                                    }
+                                    if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].onplane.position.y + 1) {
+                                        if (this.all_player_data[j].onplane.rotation.x === 0)
+                                            this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
+                                        this.all_player_data[j].onplane = null;
+                                        this.all_player_data[j].plane_type = -1;
+
+                                    }
+
+                                    else {
+
+                                        // this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
+
+                                    }
+                                }
+
+                                else {
+
+                                    if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1.4) {
+                                        let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+
+                                        if (test >= 3) {
+                                            this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
+                                        }
+                                        else {
+                                            //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                                            this.all_player_data[j].mesh.position.y -= 0.15;
+                                        }
+                                        // this.all_player_data[j].onplane = null;
+                                        // this.all_player_data[j].plane_type = -1;
+
+                                    }
+                                    else {
+
+                                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
+
+                                    }
+                                }
+                            }
+                            else {
+
+                                let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
+
+                                if (test >= 3) {
+                                    this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
+                                }
+                                else {
+                                    this.all_player_data[j].mesh.position.y -= 0.15;
+                                }
+
+
+
+                                this.all_player_data[j].onplane = null;
+                                this.all_player_data[j].plane_type = -1;
+
+                            }
 
                         }
 
-                    }
+
+                        if (this.fox
+                            && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
+                            && this.all_player_data[j].onplane
+                            && this.fox_plane
+                            && this.all_player_data[j].onplane === this.fox_plane
+                        ) {
+
+                            if (this.all_player_data[j].final_positionx[1] > this.fox_finalpositionx
+                                && this.all_player_data[j].mesh.position.x > this.fox.position.x) {
+
+                                this.all_player_data[j].final_positionx[1] += 0.25;
+                                this.all_player_data[j].mesh.position.x += 0.25;
 
 
-                    if (this.fox
-                        && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
-                        && this.all_player_data[j].onplane
-                        && this.fox_plane
-                        && this.all_player_data[j].onplane === this.fox_plane
-                    ) {
+                                this.right_block = 1;
+                                this.fox.position.x -= 0.25;
+                                this.fox_finalpositionx -= 0.25;
+                            }
+                            else if (this.all_player_data[j].final_positionx[1] < this.fox_finalpositionx
+                                && this.all_player_data[j].mesh.position.x < this.fox.position.x) {
 
-                        if (this.all_player_data[j].final_positionx[1] > this.fox_finalpositionx
-                            && this.all_player_data[j].mesh.position.x > this.fox.position.x) {
-
-                            this.all_player_data[j].final_positionx[1] += 0.25;
-                            this.all_player_data[j].mesh.position.x += 0.25;
+                                this.all_player_data[j].final_positionx[1] -= 0.25;
+                                this.all_player_data[j].mesh.position.x -= 0.25;
 
 
-                            this.right_block = 1;
-                            this.fox.position.x -= 0.25;
-                            this.fox_finalpositionx -= 0.25;
+                                this.left_block = 1;
+                                this.fox.position.x += 0.25;
+                                this.fox_finalpositionx += 0.25;
+                            }
+
                         }
-                        else if (this.all_player_data[j].final_positionx[1] < this.fox_finalpositionx
-                            && this.all_player_data[j].mesh.position.x < this.fox.position.x) {
-
-                            this.all_player_data[j].final_positionx[1] -= 0.25;
-                            this.all_player_data[j].mesh.position.x -= 0.25;
 
 
-                            this.left_block = 1;
-                            this.fox.position.x += 0.25;
-                            this.fox_finalpositionx += 0.25;
+
+                        this.Animate_Character(this.all_player_data[j].mesh, this.all_player_data[j].animation, elapsedTime, this.all_player_data[j].emoji);
+
+
+
+
+                        let test_pos = this.toXYCoords(this.all_player_data[j].mesh);
+                        this.all_player_data[j].name_mesh.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`
+                        this.all_player_data[j].name_mesh.style.top = window.innerHeight / 2 + 'px';
+                        this.all_player_data[j].name_mesh.style.left = window.innerWidth / 2 + 'px';
+                        if (this.all_player_data[j].rank === 1) {
+                            //console.log(this.all_player_data[j].name_mesh.style.color)
+                            this.all_player_data[j].name_mesh.style.color = 'gold';
+                            this.all_player_data[j].name_mesh.innerHTML = '<font size="6vmin">👑</font>' + this.all_player_data[j].name;
                         }
+                        else if (this.all_player_data[j].rank <= 10) {
+                            this.all_player_data[j].name_mesh.style.color = 'gold';
+                            this.all_player_data[j].name_mesh.innerHTML = this.all_player_data[j].name;
 
-                    }
-
-
-
-                    this.Animate_Character(this.all_player_data[j].mesh, this.all_player_data[j].animation, elapsedTime, this.all_player_data[j].emoji);
-
-
-
-
-                    let test_pos = this.toXYCoords(this.all_player_data[j].mesh);
-                    this.all_player_data[j].name_mesh.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`
-                    this.all_player_data[j].name_mesh.style.top = window.innerHeight / 2 + 'px';
-                    this.all_player_data[j].name_mesh.style.left = window.innerWidth / 2 + 'px';
-                    if (this.all_player_data[j].rank === 1) {
-                        //console.log(this.all_player_data[j].name_mesh.style.color)
-                        this.all_player_data[j].name_mesh.style.color = 'gold';
-                        this.all_player_data[j].name_mesh.innerHTML = '<font size="6vmin">👑</font>' + this.all_player_data[j].name;
-                    }
-                    else if (this.all_player_data[j].rank <= 10) {
-                        this.all_player_data[j].name_mesh.style.color = 'gold';
-                        this.all_player_data[j].name_mesh.innerHTML = this.all_player_data[j].name;
-
+                        }
+                        else {
+                            this.all_player_data[j].name_mesh.style.color = 'white';
+                            this.all_player_data[j].name_mesh.innerHTML = this.all_player_data[j].name;
+                        }
                     }
                     else {
-                        this.all_player_data[j].name_mesh.style.color = 'white';
-                        this.all_player_data[j].name_mesh.innerHTML = this.all_player_data[j].name;
+                        this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                        this.all_player_data[j].name_mesh.style.transform = `translateX(10000px) translateY(10000px)`
+                    }
+
+
+
+                    // if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 9) {
+                    //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                    //     console.log('moderx');
+                    // }
+                    // if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 9) {
+                    //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                    //     console.log('modery');
+                    // }
+                    let modify = new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0);
+                    if (modify.distanceTo(this.all_player_data[j].mesh.position) > 10) {
+                        this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                        this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                        this.all_player_data[j].onplane = null;
+                        this.all_player_data[j].plane_type = -1;
+                        console.log('moder');
                     }
                 }
-                else {
-                    this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                    this.all_player_data[j].name_mesh.style.transform = `translateX(10000px) translateY(10000px)`
-                }
 
-
-
-                // if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 9) {
-                //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                //     console.log('moderx');
-                // }
-                // if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 9) {
-                //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                //     console.log('modery');
-                // }
-                let modify = new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0);
-                if (modify.distanceTo(this.all_player_data[j].mesh.position) > 10) {
-                    this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                    this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                    this.all_player_data[j].onplane = null;
-                    this.all_player_data[j].plane_type = -1;
-                    console.log('moder');
-                }
                 this.all_player_data[j].mesh.position.y = Math.ceil(this.all_player_data[j].mesh.position.y * 100) / 100;
                 this.all_player_data[j].mesh.position.x = Math.ceil(this.all_player_data[j].mesh.position.x * 100) / 100;
 
@@ -2084,7 +2096,8 @@ class App {
                 score: this.fox_score,
                 emoji: this.emoji,
                 rank: this.fox_rank,
-                timestamp: this.timestamp
+                timestamp: this.timestamp,
+                die_sw: this.die_sw
             }
             this.socket.send(JSON.stringify(data));
             this.timestamp++;
