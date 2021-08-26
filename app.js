@@ -1303,6 +1303,10 @@ class App {
         const deltaTime = elapsedTime - this.previousTime
         this.previousTime = elapsedTime;
 
+        if (this.timestamp > 10000) {
+            this.timestamp = 0;
+        }
+
         if (this.fox) {
             if (this.score_time === -1) {
                 this.score_time = elapsedTime;
@@ -1359,7 +1363,8 @@ class App {
         for (let i = 0; i < this.receive_player_data.length; i++) {
             if (this.receive_player_data[i].id !== this.myID) {
                 for (let j = 0; j < this.all_player_data.length; j++) {
-                    if (this.receive_player_data[i].id === this.all_player_data[j].id) {
+                    if (this.receive_player_data[i].id === this.all_player_data[j].id
+                        && this.all_player_data[j].timestamp !== this.receive_player_data[i].timestamp) {
                         this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
                         this.all_player_data[j].final_positionx[1] = this.receive_player_data[i].positionx;
                         this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
@@ -1368,6 +1373,7 @@ class App {
                         this.all_player_data[j].plane_id = this.receive_player_data[i].plane_id;
                         this.all_player_data[j].emoji = this.receive_player_data[i].emoji;
                         this.all_player_data[j].rank = this.receive_player_data[i].rank;
+                        this.all_player_data[j].timestamp = this.receive_player_data[i].timestamp;
                         //this.all_player_data[j].action = data.data[i].action;
                     }
                 }
@@ -2389,6 +2395,7 @@ class App {
                 timestamp: this.timestamp
             }
             this.socket.send(JSON.stringify(data));
+            this.timestamp++;
 
             let test_pos = this.toXYCoords(this.fox);
             this.fox_name.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`;
