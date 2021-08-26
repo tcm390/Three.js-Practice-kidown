@@ -1372,7 +1372,11 @@ class App {
             }
             else if (this.receive_player_data[i].id === this.myID
                 && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
-                console.log('timestamp:', this.receive_player_data[i].timestamp);
+                if (Math.abs(this.receive_player_data[i].timestam - this.receive_timestamp) > 100)
+                    console.log('100');
+                else if (Math.abs(this.receive_player_data[i].timestam - this.receive_timestamp) > 1000)
+                    console.log('1000');
+                //console.log('timestamp:', this.receive_player_data[i].timestamp);
                 this.fox_finalpositionx = this.receive_player_data[i].positionx;
                 this.fox_finalpositiony = this.receive_player_data[i].positiony;
                 this.receive_timestamp = this.receive_player_data[i].timestamp;
