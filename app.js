@@ -1327,21 +1327,6 @@ class App {
                 console.log(this.fox.position.x)
             }
             if (elapsedTime - this.score_time > 3 && this.die_sw === 0) {
-                // this.fox_score++;
-                // this.own_score.innerHTML = this.fox_score;
-                //this.score_time = elapsedTime;
-                //if (this.all_player_data.length >= 1)
-                //console.log('tt', this.fox.position.x);
-                // let data = {
-                //     title: 'score_update',
-                //     id: this.myID,
-                //     score: this.fox_score
-                // }
-                // this.socket.send(JSON.stringify(data));
-                // if (this.all_player_data.length > 0) {
-                //     console.log('position', this.all_player_data[0].mesh.position.x, this.all_player_data[0].mesh.position.y)
-                //     console.log('final_position', this.all_player_data[0].final_positionx, this.all_player_data[0].final_positiony)
-                // }
                 // if (this.fox && elapsedTime < 10)
                 //     console.log(this.fox.position.x, this.fox.position.y)
                 // this.score_time = elapsedTime;
@@ -1351,9 +1336,7 @@ class App {
 
         if (this.die_sw === 1) {
             if (elapsedTime - this.die_time > 1.5 && this.fox.position.y < -27) {
-                // for (let i = 0; i < this.all_player_data.length; i++) {
-                //     this.all_player_data[i].name_mesh.remove();
-                // }
+
                 this.scene.remove(this.fox);
                 this.gg_board.classList.add('fadeOut');
                 //window.location.reload();
@@ -1364,40 +1347,7 @@ class App {
                 this.fox.position.y -= 0.35;
             }
         }
-        //########### update player data ########
-        // for (let i = 0; i < this.receive_player_data.length; i++) {
-        //     if (this.receive_player_data[i].id !== this.myID) {
-        //         for (let j = 0; j < this.all_player_data.length; j++) {
-        //             if (this.receive_player_data[i].id === this.all_player_data[j].id
-        //                 && this.all_player_data[j].timestamp !== this.receive_player_data[i].timestamp) {
-        //                 this.all_player_data[j].final_positionx[0] = this.all_player_data[j].final_positionx[1];
-        //                 this.all_player_data[j].final_positionx[1] = this.receive_player_data[i].positionx;
-        //                 this.all_player_data[j].final_positiony[0] = this.all_player_data[j].final_positiony[1];
-        //                 this.all_player_data[j].final_positiony[1] = this.receive_player_data[i].positiony;
-        //                 this.all_player_data[j].animation = this.receive_player_data[i].animation;
-        //                 this.all_player_data[j].plane_id = this.receive_player_data[i].plane_id;
-        //                 this.all_player_data[j].emoji = this.receive_player_data[i].emoji;
-        //                 this.all_player_data[j].rank = this.receive_player_data[i].rank;
-        //                 this.all_player_data[j].timestamp = this.receive_player_data[i].timestamp;
-        //                 //this.all_player_data[j].action = data.data[i].action;
-        //             }
-        //         }
-        //     }
-        //     else if (this.receive_player_data[i].id === this.myID
-        //         && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
-        //         let temp = this.receive_timestamp;
-        //         if (temp > this.receive_player_data[i].timestamp) {
-        //             temp -= 10000;
-        //         }
-        //         if ((this.receive_player_data[i].timestamp - temp) > 10)
-        //             document.querySelector('.ping').innerHTML = 'Ping: ' + (this.receive_player_data[i].timestamp - temp);
 
-        //         //console.log('timestamp:', this.receive_player_data[i].timestamp);
-        //         this.fox_finalpositionx = this.receive_player_data[i].positionx;
-        //         this.fox_finalpositiony = this.receive_player_data[i].positiony;
-        //         this.receive_timestamp = this.receive_player_data[i].timestamp;
-        //     }
-        // }
 
         //########## draw plane #############
         if (this.plane_data) {
@@ -1521,100 +1471,7 @@ class App {
                     }
                 }
 
-                // for (let j = 0; j < this.all_player_data.length; j++) {
 
-                //     if (Math.abs(this.all_player_data[j].mesh.position.y - this.objectsToUpdate[i].mesh.position.y - 1) < 0.4) {
-                //         if (this.all_player_data[j].mesh.position.x < this.objectsToUpdate[i].mesh.position.x + this.test_plane_size.x / 1.8
-                //             && this.all_player_data[j].mesh.position.x > this.objectsToUpdate[i].mesh.position.x - this.test_plane_size.x / 1.8) {
-
-                //             // if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
-                //             //     this.all_player_data[j].onplane_time = elapsedTime;
-                //             // this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                //             // this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                //             // this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
-                //             // // if (this.objectsToUpdate[i].plane_type !== 2)
-                //             // //     this.all_player_data[j].mesh.position.y = this.objectsToUpdate[i].mesh.position.y + 1;
-
-                //             if (this.all_player_data[j].onplane !== null) {
-                //                 if (this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
-
-                //                     if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
-                //                         this.all_player_data[j].onplane_time = elapsedTime;
-                //                     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                //                     this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                //                     // if (this.all_player_data[j].mesh.position.y <= this.all_player_data[j].onplane.position.y + 1.4
-                //                     //     && this.all_player_data[j].plane_type !== 2) {
-                //                     //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
-                //                     // }
-                //                 }
-
-                //             }
-                //             else {
-                //                 //if (this.objectsToUpdate[i].mesh.position.y - this.all_player_data[j].final_positiony[1] < 3) {
-                //                 this.all_player_data[j].onplane_time = elapsedTime;
-                //                 this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                //                 this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                //                 if (this.all_player_data[j].mesh.position.y <= this.all_player_data[j].onplane.position.y + 1.4
-                //                     && this.all_player_data[j].plane_type !== 2) {
-                //                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
-                //                 }
-                //                 //}
-                //             }
-
-                //         }
-                //     }
-                //     if (this.all_player_data[j].plane_id === this.objectsToUpdate[i].id) {
-                //         //&& Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony) > 1.5) {
-                //         // if (this.all_player_data[j].onplane) {
-                //         //     if (this.objectsToUpdate[i].mesh !== this.all_player_data[j].onplane
-                //         //         && this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
-                //         //         //if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
-                //         //         this.all_player_data[j].onplane_time = elapsedTime;
-                //         //         this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                //         //         this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                //         //         this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
-                //         //     }
-                //         // }
-                //         // else {
-                //         //     // if (this.all_player_data[j].mesh.position.y >= this.objectsToUpdate[i].mesh.position.y + 1) {
-                //         //     this.all_player_data[j].onplane_time = elapsedTime;
-                //         //     this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                //         //     this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                //         //     this.all_player_data[j].object_id = this.objectsToUpdate[i].id;
-                //         //     //}
-
-
-                //         // }
-                //         if (this.all_player_data[j].onplane !== null) {
-                //             if (this.objectsToUpdate[i].mesh.position.y <= this.all_player_data[j].onplane.position.y) {
-
-                //                 if (this.all_player_data[j].onplane !== this.objectsToUpdate[i].mesh)
-                //                     this.all_player_data[j].onplane_time = elapsedTime;
-                //                 this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                //                 this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                //                 // if (this.all_player_data[j].mesh.position.y <= this.all_player_data[j].onplane.position.y + 1.4
-                //                 //     && this.all_player_data[j].plane_type !== 2) {
-                //                 //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
-                //                 // }
-                //             }
-
-                //         }
-                //         else {
-                //             //if (this.objectsToUpdate[i].mesh.position.y - this.all_player_data[j].final_positiony[1] < 3) {
-                //             this.all_player_data[j].onplane_time = elapsedTime;
-                //             this.all_player_data[j].onplane = this.objectsToUpdate[i].mesh;
-                //             this.all_player_data[j].plane_type = this.objectsToUpdate[i].plane_type;
-                //             if (this.all_player_data[j].mesh.position.y <= this.all_player_data[j].onplane.position.y + 1.4
-                //                 && this.all_player_data[j].plane_type !== 2) {
-                //                 this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1
-                //             }
-                //             //}
-                //         }
-
-
-                //     }
-
-                // }
                 //########## deal with left convey ############
                 if (this.objectsToUpdate[i].plane_type === 3) {
                     this.objectsToUpdate[i].mesh.children[this.objectsToUpdate[i].mesh.children.length - 2].rotation.z = elapsedTime * 2;
@@ -1664,17 +1521,6 @@ class App {
 
             }
             else if (this.objectsToUpdate[i].mesh.position.y > 23) {
-                // if (this.objectsToUpdate[i].mesh === this.fox_plane) {
-                //     this.fox_plane_id = null;
-                //     this.fox_plane = null
-                // }
-                // for (let j = 0; j < this.all_player_data.length; j++) {
-                //     if (this.objectsToUpdate[i].mesh === this.all_player_data[j].onplane) {
-                //         this.all_player_data[j].onplane = null;
-                //         this.all_player_data[j].plane_type = -1;
-                //     }
-                // }
-
                 this.scene.remove(this.objectsToUpdate[i].mesh);
                 this.objectsToUpdate.splice(i, 1);
             }
@@ -1689,8 +1535,7 @@ class App {
                 if (e.data.type === 'assign_plane') {
 
                     for (let j = 0; j < e.data.data.length; j++) {
-                        //console.log(e.data.type)
-                        //console.log(e.data.data[j].player, e.data.data[j].plane)
+
                         if (this.all_player_data[e.data.data[j].player].onplane !== null) {
                             if (this.objectsToUpdate[e.data.data[j].plane].mesh.position.y <= this.all_player_data[e.data.data[j].player].onplane.position.y) {
 
@@ -1703,32 +1548,11 @@ class App {
 
                         }
                         else {
-                            //if (this.objectsToUpdate[e.data.data[j].plane].mesh.position.y - this.all_player_data[e.data.data[j].player].final_positiony[1] < 3) {
                             this.all_player_data[e.data.data[j].player].onplane_time = elapsedTime;
                             this.all_player_data[e.data.data[j].player].onplane = this.objectsToUpdate[e.data.data[j].plane].mesh;
                             this.all_player_data[e.data.data[j].player].plane_type = this.objectsToUpdate[e.data.data[j].plane].plane_type;
-                            // if (this.all_player_data[e.data.data[j].player].mesh.position.y < this.all_player_data[e.data.data[j].player].onplane.position.y + 1) {
-                            //     this.all_player_data[e.data.data[j].player].mesh.position.y = this.all_player_data[e.data.data[j].player].onplane.position.y + 1
-                            // }
-                            //}
-                            //&& (this.all_player_data[e.data.data[j].player].mesh.position.y - this.objectsToUpdate[e.data.data[j].plane].mesh.position.y - 1) < 0.4) {
-                            //this.all_player_data[e.data.data[j].player].mesh.position.y = this.objectsToUpdate[e.data.data[j].plane].mesh.position.y + 1;
-
-
-                            //}
-                            //if (this.all_player_data[e.data.data[j].player].mesh.position.y >= this.objectsToUpdate[e.data.data[j].plane].mesh.position.y - 0.4) {
-
-                            //}
-
                         }
 
-
-
-
-                        // if (Math.abs(all_player_data[all_player_data[e.data.data[j].player].mesh.position.y - e.data.data[j].player].onplane.position.y - 1) < 0.8
-                        //     && this.all_player_data[e.data.data[j].player].plane_type !== 2) {
-                        //     this.all_player_data[e.data.data[j].player].mesh.position.y = this.all_player_data[e.data.data[j].player].onplane.position.y + 1;
-                        // }
                     }
                 }
             }
@@ -1743,15 +1567,6 @@ class App {
                     }
 
                 }
-                // if (this.all_player_data[j].onplane) {
-                //     if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3
-                //         && this.all_player_data[j].object_id === this.all_player_data[j].plane_id) {
-                //         this.all_player_data[j].onplane = null;
-                //         this.all_player_data[j].plane_type = -1;
-                //     }
-                // }
-
-
                 if (this.all_player_data[j].mesh.position.x > this.camera.position.x - this.screenWidth
                     && this.all_player_data[j].mesh.position.x < this.camera.position.x + this.screenWidth) {
 
@@ -1760,117 +1575,62 @@ class App {
 
 
                         let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
-                        let test1 = Math.abs(this.all_player_data[j].final_positionx[0] - this.all_player_data[j].mesh.position.x);
-                        // if (test > 0.25 && test1 > 0.25) {
-                        //     this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.25 / test);
-                        // }
-                        // else
+
                         if (test >= 0.25) {
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.25 / test);
                         }
                         else if (test < 0.25) {
                             this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
                         }
-                        // else {
-                        //     if (this.all_player_data[j].final_positionx[1] > this.all_player_data[j].mesh.position.x)
-                        //         this.all_player_data[j].mesh.position.x += 0.25;
-                        //     else
-                        //         this.all_player_data[j].mesh.position.x -= 0.25;
-                        // }
-
-
 
                     }
                     else if (this.all_player_data[j].onplane && this.all_player_data[j].plane_type === 3) {
                         let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
                         if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.1) {
-                            // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].mesh.position.y, 0), 0.1 / test)
+
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.1 / test);
-                            // this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.1 / test);
+
                         }
                         else if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.8) {
-                            // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].mesh.position.y, 0), 0.4 / test)
+
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.4 / test);
-                            //this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.4 / test);
+
                         }
                         else if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.15) {
-                            // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].mesh.position.y, 0), 0.15 / test)
+
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.15 / test);
-                            //this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.15 / test);
+
                         }
-                        // if (this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1 < 0.4
-                        //     && this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
-                        //     && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8) {
-                        //     if (this.all_player_data[j].animation == 1) {
-                        //         this.all_player_data[j].mesh.position.x -= 0.4;
-                        //     }
-                        //     else if (this.all_player_data[j].animation == 2) {
-                        //         this.all_player_data[j].mesh.position.x += 0.1;
-                        //     }
-                        //     else if (this.all_player_data[j].animation == 0) {
-                        //         this.all_player_data[j].mesh.position.x -= 0.15;
-                        //     }
-                        // }
+
 
                     }
                     else if (this.all_player_data[j].onplane && this.all_player_data[j].plane_type === 4) {
                         let test = Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x);
                         if (this.all_player_data[j].mesh.position.x - this.all_player_data[j].final_positionx[1] >= 0.1) {
-                            // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].mesh.position.y, 0), 0.1 / test)
+
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.1 / test);
-                            //this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.1 / test);
+
                         }
                         else if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.8) {
-                            // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].mesh.position.y, 0), 0.4 / test)
+
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.4 / test);
-                            //this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.4 / test);
+
                         }
                         else if (this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x >= 0.15) {
-                            // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].final_positionx, this.all_player_data[j].mesh.position.y, 0), 0.15 / test)
+
                             this.all_player_data[j].mesh.position.x = this.myLerp(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[1], 0.15 / test);
-                            //this.all_player_data[j].mesh.position.x = this.myBezier(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positionx[0], this.all_player_data[j].final_positionx[1], 0.15 / test);
+
                         }
-                        // if (this.all_player_data[j].mesh.position.y - this.all_player_data[j].onplane.position.y - 1 < 0.4
-                        //     && this.all_player_data[j].mesh.position.x < this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
-                        //     && this.all_player_data[j].mesh.position.x > this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8) {
-                        //     if (this.all_player_data[j].animation == 1) {
-                        //         this.all_player_data[j].mesh.position.x -= 0.1;
-                        //     }
-                        //     else if (this.all_player_data[j].animation == 2) {
-                        //         this.all_player_data[j].mesh.position.x += 0.4;
-                        //     }
-                        //     else if (this.all_player_data[j].animation == 0) {
-                        //         this.all_player_data[j].mesh.position.x += 0.15;
-                        //     }
-                        // }
+
 
                     }
-                    // if (this.all_player_data[j].onplane) {
-                    //     if (this.all_player_data[j].onplane.position.y - this.all_player_data[j].final_positiony[1] >= 3) {
-                    //         if (this.all_player_data[j].onplane !== this.previousid) {
-                    //             console.log('>3', this.all_player_data[j].plane_type, this.all_player_data[j].onplane.position.y, this.all_player_data[j].final_positiony[1]);
-                    //             this.previousid = this.all_player_data[j].onplane;
-                    //         }
-                    //     }
-                    //     if (this.all_player_data[j].mesh.position.x >= this.all_player_data[j].onplane.position.x + this.test_plane_size.x / 1.8
-                    //         || this.all_player_data[j].mesh.position.x <= this.all_player_data[j].onplane.position.x - this.test_plane_size.x / 1.8) {
 
-                    //         if (this.all_player_data[j].onplane !== this.previousid) {
-                    //             console.log('bc 1.8', this.all_player_data[j].plane_type, this.all_player_data[j].onplane.position.x, this.all_player_data[j].mesh.position.x);
-                    //             this.previousid = this.all_player_data[j].onplane;
-                    //         }
-                    //     }
-                    // }
 
 
                     if (this.all_player_data[j].onplane === null) {
 
                         let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                        let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                        // if (test > 0.15 && test1 > 0.15) {
-                        //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                        // }
-                        // else 
+
                         if (test >= 3) {
                             this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                         }
@@ -1878,9 +1638,6 @@ class App {
                             //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                             this.all_player_data[j].mesh.position.y -= 0.15;
                         }
-
-
-
 
                         // this.all_player_data[j].onplane = null;
                         // this.all_player_data[j].plane_type = -1;
@@ -1902,16 +1659,12 @@ class App {
                             }
                             else if (this.all_player_data[j].plane_type === 2) {
                                 let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                                let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                                // if (test > 0.15 && test1 > 0.15) {
-                                //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                // }
-                                // else 
+
                                 if (test >= 3) {
                                     this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                 }
                                 else {
-                                    //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+
                                     this.all_player_data[j].mesh.position.y -= 0.15;
 
                                 }
@@ -1924,37 +1677,9 @@ class App {
                                 }
 
                                 else {
-                                    // if (this.all_player_data[j].onplane.position.y + 1 - this.all_player_data[j].final_positiony[1] >= 0.4) {
-                                    //     let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                                    //     let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                                    //     // if (test > 0.15 && test1 > 0.15) {
-                                    //     //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                    //     // }
-                                    //     // else 
-                                    //     if (test > 0.15) {
-                                    //         this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                    //     }
-                                    //     else {
-                                    //         //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                                    //         this.all_player_data[j].mesh.position.y -= 0.15;
-                                    //     }
 
-                                    //     //this.all_player_data[j].mesh.position.y -= 0.15;
-                                    //     // this.all_player_data[j].mesh.position.lerp(new THREE.Vector3(this.all_player_data[j].mesh.position.x, this.all_player_data[j].final_positiony, 0), 0.15 / test)
-
-                                    //     this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
-                                    //     this.all_player_data[j].onplane = null;
-                                    //     this.all_player_data[j].plane_type = -1;
-
-                                    // }
-                                    // if (elapsedTime - this.all_player_data[j].onplane_time > 0.1) {
-                                    //     this.all_player_data[j].onplane.rotation.x += Math.PI / 10;
-                                    //     this.all_player_data[j].onplane = null;
-                                    //     this.all_player_data[j].plane_type = -1;
-                                    // }
-                                    // else {
                                     // this.all_player_data[j].mesh.position.y = this.all_player_data[j].onplane.position.y + 1;
-                                    // }
+
                                 }
                             }
 
@@ -1962,11 +1687,7 @@ class App {
 
                                 if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].onplane.position.y + 1.4) {
                                     let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                                    let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                                    // if (test > 0.15 && test1 > 0.15) {
-                                    //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                                    // }
-                                    // else 
+
                                     if (test >= 3) {
                                         this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                                     }
@@ -1974,12 +1695,8 @@ class App {
                                         //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                                         this.all_player_data[j].mesh.position.y -= 0.15;
                                     }
-
-
-
                                     // this.all_player_data[j].onplane = null;
                                     // this.all_player_data[j].plane_type = -1;
-
 
                                 }
                                 else {
@@ -1992,16 +1709,11 @@ class App {
                         else {
 
                             let test = Math.abs(this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                            let test1 = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[0]);
-                            // if (test > 0.15 && test1 > 0.15) {
-                            //     this.all_player_data[j].mesh.position.y = this.myBezier(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[0], this.all_player_data[j].final_positiony[1], 0.15 / test);
-                            // }
-                            // else
+
                             if (test >= 3) {
                                 this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 0.15 / test);
                             }
                             else {
-                                //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
                                 this.all_player_data[j].mesh.position.y -= 0.15;
                             }
 
@@ -2011,64 +1723,9 @@ class App {
                             this.all_player_data[j].plane_type = -1;
 
                         }
-                        // if (this.all_player_data[j].mesh.position.y > 23.5) {
-                        //     this.all_player_data[j].mesh.position.y -= 6.3;
-                        //     //this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                        //     this.all_player_data[j].onplane = null;
-                        //     this.all_player_data[j].plane_type = -1;
-                        // }
-                        // if (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1] >= 6.3) {
-                        //     //this.all_player_data[j].mesh.position.y -= 6.3;
-                        //     // let test = (this.all_player_data[j].mesh.position.y - this.all_player_data[j].final_positiony[1]);
-                        //     // this.all_player_data[j].mesh.position.y = this.myLerp(this.all_player_data[j].mesh.position.y, this.all_player_data[j].final_positiony[1], 6.3 / test);
-                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                        //     this.all_player_data[j].onplane = null;
-                        //     this.all_player_data[j].plane_type = -1;
-                        // }
-                        // let modify = new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0);
-                        // if (modify.distanceTo(this.all_player_data[j].mesh.position) > 10) {
-                        //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                        //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                        //     this.all_player_data[j].onplane = null;
-                        //     this.all_player_data[j].plane_type = -1;
-                        //     console.log('moder');
-                        // }
 
-
-
-
-                        // if (this.all_player_data[j].plane_type === 3) {
-                        //     this.all_player_data[j].mesh.position.x -= 0.15;
-                        // }
-                        // if (this.all_player_data[j].plane_type === 4) {
-                        //     this.all_player_data[j].mesh.position.x += 0.15;
-                        // }
                     }
-                    // if (this.all_player_data[j].mesh.position.y > this.all_player_data[j].final_positiony + 0.5) {
-                    //     //this.all_player_data[j].mesh.position.y -= 0.15
-                    //     //this.all_player_data[j].onplane = null;
-                    //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
-                    // }
-                    // if (this.all_player_data[j].mesh.position.y < this.all_player_data[j].final_positiony - 0.15) {
-                    //     //this.all_player_data[j].mesh.position.y += 0.15
-                    //     if (!this.all_player_data[j].onplane)
-                    //         this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony;
 
-                    // }
-                    // if (this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.95
-                    // ) {
-                    //     if (this.all_player_data[j].mixer[this.all_player_data[j].animation])
-                    //         this.all_player_data[j].mixer[this.all_player_data[j].animation].update(deltaTime);
-                    //     if (this.all_player_data[j].action === 0) {
-                    //         this.all_player_data[j].mesh.rotation.y = -Math.PI / 2;
-                    //     }
-                    //     else if (this.all_player_data[j].action === 1) {
-                    //         this.all_player_data[j].mesh.rotation.y = Math.PI / 2;
-                    //     }
-                    //     else {
-                    //         this.all_player_data[j].mesh.rotation.y = 0;
-                    //     }
-                    // }
 
                     if (this.fox
                         && this.all_player_data[j].mesh.position.distanceTo(this.fox.position) <= 3.7
@@ -2079,22 +1736,22 @@ class App {
 
                         if (this.all_player_data[j].final_positionx[1] > this.fox_finalpositionx
                             && this.all_player_data[j].mesh.position.x > this.fox.position.x) {
+
                             this.all_player_data[j].final_positionx[1] += 0.25;
                             this.all_player_data[j].mesh.position.x += 0.25;
-                            // if (this.all_player_data[j].animation === 1)
-                            //     this.fox.position.x -= 0.5;
-                            // else
+
+
                             this.right_block = 1;
                             this.fox.position.x -= 0.25;
                             this.fox_finalpositionx -= 0.25;
                         }
                         else if (this.all_player_data[j].final_positionx[1] < this.fox_finalpositionx
                             && this.all_player_data[j].mesh.position.x < this.fox.position.x) {
+
                             this.all_player_data[j].final_positionx[1] -= 0.25;
                             this.all_player_data[j].mesh.position.x -= 0.25;
-                            // if (this.all_player_data[j].animation === 2)
-                            //     this.fox.position.x += 0.5;
-                            // else
+
+
                             this.left_block = 1;
                             this.fox.position.x += 0.25;
                             this.fox_finalpositionx += 0.25;
@@ -2107,12 +1764,7 @@ class App {
                     this.Animate_Character(this.all_player_data[j].mesh, this.all_player_data[j].animation, elapsedTime, this.all_player_data[j].emoji);
 
 
-                    // if (this.all_player_data[j].mixer[this.all_player_data[j].animation]) {
-                    //     this.all_player_data[j].mixer[this.all_player_data[j].animation].update(deltaTime)
-                    //     if (this.all_player_data[j].animation !== 1) {
-                    //         this.all_player_data[j].mesh.rotation.y = 0;
-                    //     }
-                    // }
+
 
                     let test_pos = this.toXYCoords(this.all_player_data[j].mesh);
                     this.all_player_data[j].name_mesh.style.transform = `translateX(${test_pos.x}px) translateY(${test_pos.y}px)`
@@ -2157,10 +1809,7 @@ class App {
 
 
             }
-            // if (this.all_player_data[j].onplane && this.all_player_data[j].onplane.position.y > 22.5) {
-            //     this.all_player_data[j].onplane = null;
-            //     this.all_player_data[j].plane_type = -1;
-            // }
+
 
         }
 
@@ -2265,21 +1914,11 @@ class App {
                     this.fox.position.y = this.fox_plane.position.y + Math.sin(Math.PI * ((elapsedTime - this.fox_onplane_time) * 2.8)) * 2;
                     this.fox.position.y += 3;
 
-                    //if (!this.right_sw && !this.left_sw) {
+
                     if (!this.left_sw && !this.right_sw) {
                         this.fox_animation = 3;
                         this.Animate_Character(this.fox, 3, elapsedTime, this.emoji);
                     }
-                    //}
-                    // if (this.fox.position.y > 22) {
-                    //     this.fox_plane = null;
-                    //     //this.fox.position.lerp(new THREE.Vector3(this.fox.position.x, this.fox.position.y - 5, 0), 0.15);
-                    //     this.fox.position.y -= 5;
-                    //     if (this.fox_life > 0) {
-                    //         this.fox_life -= 2;
-                    //     }
-                    // }
-
 
 
                 }
