@@ -1364,7 +1364,7 @@ class App {
 
             else {
                 this.fox.position.y -= 0.35;
-                this.Animate_Character(this.fox, 3, elapsedTime, -1);
+                this.Animate_Character(this.fox, 0, elapsedTime, -1);
             }
         }
 
