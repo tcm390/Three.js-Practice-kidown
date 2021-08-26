@@ -1372,9 +1372,12 @@ class App {
             }
             else if (this.receive_player_data[i].id === this.myID
                 && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
-
-                if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 10)
-                    document.querySelector('.ping').innerHTML = 'Ping: ' + Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp);
+                let temp = this.receive_timestamp;
+                if (temp > this.receive_player_data[i].timestamp) {
+                    temp -= 10000;
+                }
+                if ((this.receive_player_data[i].timestamp - temp) > 10)
+                    document.querySelector('.ping').innerHTML = 'Ping: ' + (this.receive_player_data[i].timestamp - temp);
 
                 //console.log('timestamp:', this.receive_player_data[i].timestamp);
                 this.fox_finalpositionx = this.receive_player_data[i].positionx;
