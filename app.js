@@ -538,8 +538,15 @@ class App {
                         if (temp > data.data[i].timestamp) {
                             temp -= 10000;
                         }
-                        if ((data.data[i].timestamp - temp) > 10)
+                        if ((data.data[i].timestamp - temp) <= 11 && (data.data[i].timestamp - temp) >= 10) {
+                            document.querySelector('.ping').style.color = 'white';
                             document.querySelector('.ping').innerHTML = 'Ping: ' + (data.data[i].timestamp - temp);
+                        }
+
+                        else if ((data.data[i].timestamp - temp) > 11) {
+                            document.querySelector('.ping').style.color = 'red';
+                            document.querySelector('.ping').innerHTML = 'Ping: ' + (data.data[i].timestamp - temp) + '⚠️';
+                        }
 
                         this.fox_finalpositionx = data.data[i].positionx;
                         this.fox_finalpositiony = data.data[i].positiony;
@@ -1411,12 +1418,13 @@ class App {
 
 
 
-        //if (this.fox) {
+
         if (elapsedTime - this.last_stabbed_time > 0.05)
             this.stabbed_plane.visible = false;
         else
             this.stabbed_plane.visible = true;
-        //console.log(this.all_player_data.length)
+
+
         if (this.worker && this.test_plane_size) {
             const worker_plane_data = [];
             const worker_remote_data = [];
