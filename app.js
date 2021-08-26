@@ -1372,10 +1372,18 @@ class App {
             }
             else if (this.receive_player_data[i].id === this.myID
                 && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
-                if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 3)
-                    console.log('3');
+                if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 100)
+                    console.log('100', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
+                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 50)
+                    console.log('50', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
+                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 30)
+                    console.log('30', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
+                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 20)
+                    console.log('20', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
+                else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 10)
+                    console.log('10', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
                 else if (Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp) > 5)
-                    console.log('5');
+                    console.log('5', Math.abs(this.receive_player_data[i].timestamp - this.receive_timestamp));
                 //console.log('timestamp:', this.receive_player_data[i].timestamp);
                 this.fox_finalpositionx = this.receive_player_data[i].positionx;
                 this.fox_finalpositiony = this.receive_player_data[i].positiony;
