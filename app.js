@@ -1372,6 +1372,7 @@ class App {
             }
             else if (this.receive_player_data[i].id === this.myID
                 && this.receive_timestamp !== this.receive_player_data[i].timestamp) {
+                console.log('timestamp:', this.receive_player_data[i].timestamp);
                 this.fox_finalpositionx = this.receive_player_data[i].positionx;
                 this.fox_finalpositiony = this.receive_player_data[i].positiony;
                 this.receive_timestamp = this.receive_player_data[i].timestamp;
