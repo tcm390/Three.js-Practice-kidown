@@ -2136,13 +2136,21 @@ class App {
 
 
 
-                if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 9) {
-                    this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
-                    console.log('moderx');
-                }
-                if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 9) {
+                // if (Math.abs(this.all_player_data[j].final_positionx[1] - this.all_player_data[j].mesh.position.x) >= 9) {
+                //     this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                //     console.log('moderx');
+                // }
+                // if (Math.abs(this.all_player_data[j].final_positiony[1] - this.all_player_data[j].mesh.position.y) >= 9) {
+                //     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
+                //     console.log('modery');
+                // }
+                let modify = new THREE.Vector3(this.all_player_data[j].final_positionx[1], this.all_player_data[j].final_positiony[1], 0);
+                if (modify.distanceTo(this.all_player_data[j].mesh.position) > 10) {
                     this.all_player_data[j].mesh.position.y = this.all_player_data[j].final_positiony[1];
-                    console.log('modery');
+                    this.all_player_data[j].mesh.position.x = this.all_player_data[j].final_positionx[1];
+                    this.all_player_data[j].onplane = null;
+                    this.all_player_data[j].plane_type = -1;
+                    console.log('moder');
                 }
                 this.all_player_data[j].mesh.position.y = Math.ceil(this.all_player_data[j].mesh.position.y * 100) / 100;
                 this.all_player_data[j].mesh.position.x = Math.ceil(this.all_player_data[j].mesh.position.x * 100) / 100;
