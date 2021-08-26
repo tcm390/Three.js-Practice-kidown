@@ -540,12 +540,23 @@ class App {
                         }
                         if ((data.data[i].timestamp - temp) <= 11 && (data.data[i].timestamp - temp) >= 10) {
                             document.querySelector('.ping').style.color = 'white';
-                            document.querySelector('.ping').innerHTML = 'Ping: ' + (data.data[i].timestamp - temp);
+                            document.querySelector('.ping').innerHTML = 'Ping: ' + ((data.data[i].timestamp - temp) * 10);
+                            document.querySelector('.ping').innerHTML += '<font size="1vmin">ms</font>';
                         }
 
-                        else if ((data.data[i].timestamp - temp) > 11) {
+                        else if ((data.data[i].timestamp - temp) > 11 && (data.data[i].timestamp - temp) <= 13) {
+                            document.querySelector('.ping').style.color = 'orange';
+                            document.querySelector('.ping').innerHTML = 'Ping: ' + ((data.data[i].timestamp - temp) * 10);
+                            document.querySelector('.ping').innerHTML += '<font size="1vmin">ms</font>';
+
+
+                        }
+                        else if ((data.data[i].timestamp - temp) > 13) {
                             document.querySelector('.ping').style.color = 'red';
-                            document.querySelector('.ping').innerHTML = 'Ping: ' + (data.data[i].timestamp - temp) + '⚠️';
+                            document.querySelector('.ping').innerHTML = 'Ping: ' + ((data.data[i].timestamp - temp) * 10);
+                            document.querySelector('.ping').innerHTML += '<font size="1vmin">ms</font>';
+                            document.querySelector('.ping').innerHTML += ' ⚠️'
+
                         }
 
                         this.fox_finalpositionx = data.data[i].positionx;
