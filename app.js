@@ -97,6 +97,10 @@ class App {
             this.mobile = 1;
             document.querySelector('.mobile-left-button').classList.remove('hidden');
             document.querySelector('.mobile-right-button').classList.remove('hidden');
+            document.querySelector('.mobile-q-button').classList.remove('hidden');
+            document.querySelector('.mobile-w-button').classList.remove('hidden');
+            document.querySelector('.mobile-e-button').classList.remove('hidden');
+
         }
 
         const container = document.createElement('div');
@@ -657,6 +661,24 @@ class App {
                 .addEventListener('touchstart', () => {
                     this.right_sw = 1;
                 });
+            document.getElementsByClassName('mobile-q-button')[0]
+                .addEventListener('touchstart', () => {
+                    this.emoji_sw = 1;
+                    this.emoji_button_sw = 1;
+                });
+            document.getElementsByClassName('mobile-w-button')[0]
+                .addEventListener('touchstart', () => {
+                    this.emoji_sw = 2;
+                    this.emoji_button_sw = 1;
+                });
+            document.getElementsByClassName('mobile-e-button')[0]
+                .addEventListener('touchstart', () => {
+                    this.emoji_sw = 3;
+                    this.emoji_button_sw = 1;
+                });
+
+
+
             document.getElementsByClassName('mobile-left-button')[0]
                 .addEventListener('touchend', () => {
                     this.left_sw = 0;
@@ -664,6 +686,21 @@ class App {
             document.getElementsByClassName('mobile-right-button')[0]
                 .addEventListener('touchend', () => {
                     this.right_sw = 0;
+                });
+            document.getElementsByClassName('mobile-q-button')[0]
+                .addEventListener('touchend', () => {
+                    this.emoji_sw = -1;
+                    this.emoji_button_sw = 0;
+                });
+            document.getElementsByClassName('mobile-w-button')[0]
+                .addEventListener('touchend', () => {
+                    this.emoji_sw = -1;
+                    this.emoji_button_sw = 0;
+                });
+            document.getElementsByClassName('mobile-e-button')[0]
+                .addEventListener('touchend', () => {
+                    this.emoji_sw = -1;
+                    this.emoji_button_sw = 0;
                 });
         }
 

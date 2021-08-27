@@ -37,6 +37,57 @@ input { -webkit-user-select:text;}
     right: 5%;
     
 }
+.button_container{
+    display: flex;
+    
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+	bottom: 0%;
+    left: 50%;
+}
+.mobile-q-button{
+    width: 50px; 
+    height: 50px; 
+    background:rgb(244, 248, 244);
+    opacity: 0.3;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+   
+    
+}
+.mobile-w-button{
+    width: 50px; 
+    height: 50px; 
+    background:rgb(244, 248, 244);
+    opacity: 0.3;
+    margin-right: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    
+    
+}
+.mobile-e-button{
+    width: 50px; 
+    height: 50px; 
+    background:rgb(244, 248, 244);
+    opacity: 0.3;
+    margin-right: 10px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  
+    
+}
+
 .ping{
     width: 100px;
     height: 50px;
