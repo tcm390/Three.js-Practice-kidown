@@ -95,7 +95,7 @@ class App {
 
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             this.mobile = 1;
-            document.querySelector('.leader-board-wrapper').style.fontSize = "5px";
+            document.querySelector('.leader-board-wrapper').style.fontSize = "7px";
             document.querySelector('.leader-board-wrapper').style.top = "20px";
             document.querySelector('.leader-board-wrapper').style.width = "135px";
             document.querySelector('.leader-board-wrapper').style.height = "140px";
@@ -1867,7 +1867,11 @@ class App {
                         if (this.all_player_data[j].rank === 1) {
                             //console.log(this.all_player_data[j].name_mesh.style.color)
                             this.all_player_data[j].name_mesh.style.color = 'gold';
-                            this.all_player_data[j].name_mesh.innerHTML = '<font size="6vmin">👑</font>' + this.all_player_data[j].name;
+                            if (this.mobile === 0)
+                                this.all_player_data[j].name_mesh.innerHTML = '<font size="6vmin">👑</font>' + this.all_player_data[j].name;
+                            else
+                                this.all_player_data[j].name_mesh.innerHTML = '<font size="3vmin">👑</font>' + this.all_player_data[j].name;
+
                         }
                         else if (this.all_player_data[j].rank <= 10) {
                             this.all_player_data[j].name_mesh.style.color = 'gold';
