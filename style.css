@@ -44,7 +44,7 @@ input { -webkit-user-select:text;}
     position: absolute;
     transform: translate(-50%, -50%);
 	bottom: 0%;
-    left: 5%;
+    left: 15%;
 }
 .mobile-q-button{
     width: 35px; 
