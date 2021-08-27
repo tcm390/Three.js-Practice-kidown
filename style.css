@@ -87,6 +87,7 @@ input { -webkit-user-select:text;}
   
     
 }
+.button-img {max-width:100%;}
 
 .ping{
     width: 100px;
