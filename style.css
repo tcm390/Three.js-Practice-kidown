@@ -44,16 +44,16 @@ input { -webkit-user-select:text;}
     position: absolute;
     transform: translate(-50%, -50%);
 	bottom: 0%;
-    left: 50%;
+    left: 5%;
 }
 .mobile-q-button{
-    width: 25px; 
-    height: 25px; 
+    width: 35px; 
+    height: 35px; 
     background:rgb(244, 248, 244);
     opacity: 0.3;
     margin-right: 15px;
     border-radius: 50%;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,8 +62,8 @@ input { -webkit-user-select:text;}
     
 }
 .mobile-w-button{
-    width: 25px; 
-    height: 25px; 
+    width: 35px; 
+    height: 35px; 
     background:rgb(244, 248, 244);
     opacity: 0.3;
     margin-right: 15px;
@@ -77,8 +77,8 @@ input { -webkit-user-select:text;}
     
 }
 .mobile-e-button{
-    width: 25px; 
-    height: 25px; 
+    width: 35px; 
+    height: 35px; 
     background:rgb(244, 248, 244);
     opacity: 0.3;
     margin-right: 15px;
