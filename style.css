@@ -47,9 +47,9 @@ input { -webkit-user-select:text;}
     left: 15%;
 }
 .mobile-q-button{
-    width: 35px; 
-    height: 35px; 
-    background:rgb(244, 248, 244);
+    width: 40px; 
+    height: 40px; 
+    background:linear-gradient(to top left, rgb(25, 238, 6), rgb(151, 200, 238));
     opacity: 0.3;
     margin-right: 15px;
     border-radius: 50%;
@@ -62,9 +62,9 @@ input { -webkit-user-select:text;}
     
 }
 .mobile-w-button{
-    width: 35px; 
-    height: 35px; 
-    background:rgb(244, 248, 244);
+    width: 40px; 
+    height: 40px; 
+    background:linear-gradient(to top left, rgb(25, 238, 6), rgb(151, 200, 238));
     opacity: 0.3;
     margin-right: 15px;
     border-radius: 50%;
@@ -77,9 +77,9 @@ input { -webkit-user-select:text;}
     
 }
 .mobile-e-button{
-    width: 35px; 
-    height: 35px; 
-    background:rgb(244, 248, 244);
+    width: 40px; 
+    height: 40px; 
+    background:linear-gradient(to top left, rgb(25, 238, 6), rgb(151, 200, 238));
     opacity: 0.3;
     margin-right: 15px;
     border-radius: 50%;
