@@ -21,7 +21,7 @@ input { -webkit-user-select:text;}
 
     position: absolute;
 	top: 50%;
-    left: 10%;
+    left: 5%;
     
 }
 .mobile-right-button{
@@ -34,7 +34,7 @@ input { -webkit-user-select:text;}
 
     position: absolute;
 	top: 50%;
-    right: 10%;
+    right: 5%;
     
 }
 .ping{
