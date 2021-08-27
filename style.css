@@ -7,18 +7,18 @@
     user-select:none;
 }
 
-@media screen and (min-width: 601px) {
+/* @media screen and (min-width: 601px) { */
    html, body, .gg_board h2, .gg_board button,.box input[type="text"],.box button{
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    font-family: "Comic Sans MS", "Comic Sans", arial, helvetica, tahoma, verdana, cursive;
    }
-}
+/* }
   
   
 @media screen and (max-width: 600px) {
     html, body{
         font-family: "sans-serif", cursive;
     }
-}
+} */
 input { -webkit-user-select:text;}
 .mobile-left-button{
     width: 0; 
