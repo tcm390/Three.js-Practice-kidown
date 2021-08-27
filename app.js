@@ -95,6 +95,8 @@ class App {
 
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             this.mobile = 1;
+            document.querySelector('.mobile-left-button').classList.remove('hidden');
+            document.querySelector('.mobile-right-button').classList.remove('hidden');
         }
 
         const container = document.createElement('div');
@@ -665,22 +667,7 @@ class App {
                 });
         }
 
-        // window.addEventListener('touchstart', (e) => {
-        //     //alert(e.touches.length)
-        //     if (e.touches[0].clientX < 100) {
-        //         this.left_sw = 1;
-        //     }
-        //     else if (e.touches[0].clientX > 300) {
-        //         this.right_sw = 1;
-        //     }
 
-
-        // })
-        // window.addEventListener('touchend', () => {
-        //     this.left_sw = 0;
-        //     this.right_sw = 0;
-
-        // })
 
 
         window.addEventListener('keydown', (e) => {
