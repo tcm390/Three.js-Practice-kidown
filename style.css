@@ -6,10 +6,19 @@
     -ms-user-select:none;
     user-select:none;
 }
-html, body{
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-}
 
+@media screen and (min-width: 601px) {
+   html, body, .gg_board h2, .gg_board button,.box input[type="text"],.box button{
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+   }
+}
+  
+  
+@media screen and (max-width: 600px) {
+    html, body{
+        font-family: "sans-serif", cursive;
+    }
+}
 input { -webkit-user-select:text;}
 .mobile-left-button{
     width: 0; 
@@ -185,7 +194,7 @@ h3{
     text-align: center;
     padding: 14px 10px;
     width: 400px;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    /* font-family: "Comic Sans MS", "Comic Sans", cursive; */
 }
 .gg_board button{
     border: 0;
@@ -200,7 +209,7 @@ h3{
     border-radius: 25px;
     transition: 0.25s;
     cursor: pointer;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    /* font-family: "Comic Sans MS", "Comic Sans", cursive; */
     font-size: 15px;
     font-weight: bold;
 }
@@ -303,7 +312,7 @@ h3{
     color: rgb(253, 253, 253);
     border-radius: 25px;
     transition: 0.25s;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    /* font-family: "Comic Sans MS", "Comic Sans", cursive; */
 }
 .box input[type="text"]:focus{
     width: 220px;
@@ -322,7 +331,7 @@ h3{
     border-radius: 25px;
     transition: 0.25s;
     cursor: pointer;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    /* font-family: "Comic Sans MS", "Comic Sans", cursive; */
     font-size: 15px;
     font-weight: bold;
 }
