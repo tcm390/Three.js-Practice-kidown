@@ -95,11 +95,7 @@ class App {
 
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             this.mobile = 1;
-            document.querySelector('.mobile-left-button').classList.remove('hidden');
-            document.querySelector('.mobile-right-button').classList.remove('hidden');
-            document.querySelector('.mobile-q-button').classList.remove('hidden');
-            document.querySelector('.mobile-w-button').classList.remove('hidden');
-            document.querySelector('.mobile-e-button').classList.remove('hidden');
+
 
         }
 
@@ -652,6 +648,11 @@ class App {
         // })
 
         if (this.mobile === 1) {
+            document.querySelector('.mobile-left-button').classList.remove('hidden');
+            document.querySelector('.mobile-right-button').classList.remove('hidden');
+            document.querySelector('.mobile-q-button').classList.remove('hidden');
+            document.querySelector('.mobile-w-button').classList.remove('hidden');
+            document.querySelector('.mobile-e-button').classList.remove('hidden');
             //console.log('hi')
             document.getElementsByClassName('mobile-left-button')[0]
                 .addEventListener('touchstart', () => {
