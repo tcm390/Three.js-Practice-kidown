@@ -96,6 +96,9 @@ class App {
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             this.mobile = 1;
             document.querySelector('.leader-board-wrapper').style.fontSize = "5px";
+            //document.querySelector('.leader-board-wrapper').style.opacity = 0;
+            document.querySelector('.leader-board-wrapper').style.width = "135px";
+            document.querySelector('.leader-board-wrapper').style.height = "140px";
 
 
         }
