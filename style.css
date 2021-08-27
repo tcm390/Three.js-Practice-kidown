@@ -101,7 +101,17 @@ input { -webkit-user-select:text;}
     
 }
 .button-img {max-width:100%;}
-
+.current-position{
+    width: 150px;
+    height: 50px;
+	/* background:linear-gradient(to top left, rgba(41, 6, 238), rgb(151, 200, 238)); */
+	color: white;
+	font-size: 17px;
+    position: absolute;
+    opacity: 0.8;
+	top: 5px;
+	left: 100px;
+}
 .ping{
     width: 100px;
     height: 50px;
