@@ -11,6 +11,32 @@ html, body{
 }
 
 input { -webkit-user-select:text;}
+.mobile-left-button{
+    width: 0; 
+    height: 0; 
+    border-top: 80px solid transparent;
+    border-bottom: 80px solid transparent;
+    border-right: 80px solid rgb(244, 248, 244);
+    opacity: 0.3;
+
+    position: absolute;
+	top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+}
+.mobile-right-button{
+    width: 0; 
+    height: 0; 
+    border-top: 80px solid transparent;
+    border-bottom: 80px solid transparent;
+    border-left: 80px solid rgb(244, 248, 244);
+    opacity: 0.3;
+
+    position: absolute;
+	top: 50%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+}
 .ping{
     width: 100px;
     height: 50px;

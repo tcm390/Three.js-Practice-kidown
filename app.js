@@ -81,6 +81,8 @@ class App {
         this.fox_action = -1;
         this.spring_sound_play = 0;
 
+        this.mobile = 0;
+
 
         this.gltfloader = new GLTFLoader().setPath('./assets/model/');
 
@@ -92,7 +94,7 @@ class App {
         this.die_audio = document.getElementById("dieMusic");
 
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            alert('no')
+            this.mobile = 1;
         }
 
         const container = document.createElement('div');
@@ -643,22 +645,42 @@ class App {
         //     window.location.reload();
         // })
 
-        window.addEventListener('touchstart', (e) => {
-            //alert(e.touches.length)
-            if (e.touches[0].clientX < 100) {
-                this.left_sw = 1;
-            }
-            else if (e.touches[0].clientX > 300) {
-                this.right_sw = 1;
-            }
+        if (this.mobile === 1) {
+            //console.log('hi')
+            document.getElementsByClassName('mobile-left-button')[0]
+                .addEventListener('touchstart', () => {
+                    this.left_sw = 1;
+                });
+            document.getElementsByClassName('mobile-right-button')[0]
+                .addEventListener('touchstart', () => {
+                    this.right_sw = 1;
+                });
+            document.getElementsByClassName('mobile-left-button')[0]
+                .addEventListener('touchend', () => {
+                    this.left_sw = 0;
+                });
+            document.getElementsByClassName('mobile-right-button')[0]
+                .addEventListener('touchend', () => {
+                    this.right_sw = 0;
+                });
+        }
+
+        // window.addEventListener('touchstart', (e) => {
+        //     //alert(e.touches.length)
+        //     if (e.touches[0].clientX < 100) {
+        //         this.left_sw = 1;
+        //     }
+        //     else if (e.touches[0].clientX > 300) {
+        //         this.right_sw = 1;
+        //     }
 
 
-        })
-        window.addEventListener('touchend', () => {
-            this.left_sw = 0;
-            this.right_sw = 0;
+        // })
+        // window.addEventListener('touchend', () => {
+        //     this.left_sw = 0;
+        //     this.right_sw = 0;
 
-        })
+        // })
 
 
         window.addEventListener('keydown', (e) => {
