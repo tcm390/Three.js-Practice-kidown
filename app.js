@@ -95,6 +95,7 @@ class App {
 
         if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             this.mobile = 1;
+            document.querySelector('.leader-board-wrapper').style.fontSize = "5px";
 
 
         }
@@ -2170,7 +2171,10 @@ class App {
 
             if (this.fox_rank === 1) {
                 this.fox_name.style.color = 'gold';
-                this.fox_name.innerHTML = '<font size="6vmin">👑</font>' + document.querySelector('.Name').value;
+                if (this.mobile === 0)
+                    this.fox_name.innerHTML = '<font size="6vmin">👑</font>' + document.querySelector('.Name').value;
+                else
+                    this.fox_name.innerHTML = '<font size="3vmin">👑</font>' + document.querySelector('.Name').value;
             }
             else if (this.fox_rank <= 10) {
                 this.fox_name.style.color = 'gold';
