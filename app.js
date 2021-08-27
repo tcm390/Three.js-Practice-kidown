@@ -47,6 +47,7 @@ class App {
         this.score_time = -1;
         this.timestamp = 0;
         this.receive_timestamp = 0;
+        this.high_ping_time = -1;
 
         this.all_player_data = [];
         this.receive_player_data = [];
@@ -90,6 +91,10 @@ class App {
         this.spring_audio = document.getElementById("springMusic");
         this.die_audio = document.getElementById("dieMusic");
 
+        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            alert('no')
+        }
+
         const container = document.createElement('div');
         document.body.appendChild(container);
 
@@ -115,9 +120,9 @@ class App {
 
         container.appendChild(this.renderer.domElement);
 
-        this.stats = new Stats()
-        this.stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
-        document.body.appendChild(this.stats.dom)
+        //this.stats = new Stats()
+        // this.stats.showPanel(0) // 0: fps, 1: ms, 2: mb, 3+: custom
+        // document.body.appendChild(this.stats.dom)
         this.leaderboard = document.querySelector('.leader-board-wrapper');
         this.own_score = document.querySelector('.own_score');
 
@@ -539,13 +544,21 @@ class App {
                         if (temp > data.data[i].timestamp) {
                             temp -= 10000;
                         }
-                        if ((data.data[i].timestamp - temp) <= 11 && (data.data[i].timestamp - temp) >= 10) {
+                        if ((data.data[i].timestamp - temp) < 10 && this.clock.getElapsedTime() - this.high_ping_time > 2) {
+                            document.querySelector('.ping').style.color = 'white';
+                            document.querySelector('.ping').innerHTML = 'Ping: ' + ((data.data[i].timestamp - temp) * 10);
+                            document.querySelector('.ping').innerHTML += '<font size="1vmin">ms</font>';
+                            this.high_ping_time = -1;
+                        }
+                        else if ((data.data[i].timestamp - temp) <= 11 && (data.data[i].timestamp - temp) >= 10) {
+                            this.high_ping_time = this.clock.getElapsedTime();
                             document.querySelector('.ping').style.color = 'white';
                             document.querySelector('.ping').innerHTML = 'Ping: ' + ((data.data[i].timestamp - temp) * 10);
                             document.querySelector('.ping').innerHTML += '<font size="1vmin">ms</font>';
                         }
 
                         else if ((data.data[i].timestamp - temp) > 11 && (data.data[i].timestamp - temp) <= 13) {
+                            this.high_ping_time = this.clock.getElapsedTime();
                             document.querySelector('.ping').style.color = 'orange';
                             document.querySelector('.ping').innerHTML = 'Ping: ' + ((data.data[i].timestamp - temp) * 10);
                             document.querySelector('.ping').innerHTML += '<font size="1vmin">ms</font>';
@@ -553,6 +566,7 @@ class App {
 
                         }
                         else if ((data.data[i].timestamp - temp) > 13) {
+                            this.high_ping_time = this.clock.getElapsedTime();
                             document.querySelector('.ping').style.color = 'red';
                             document.querySelector('.ping').innerHTML = 'Ping: ' + ((data.data[i].timestamp - temp) * 10);
                             document.querySelector('.ping').innerHTML += '<font size="1vmin">ms</font>';
@@ -1329,7 +1343,7 @@ class App {
 
     render() {
 
-        this.stats.begin()
+        //this.stats.begin()
         this.right_block = 0;
         this.left_block = 0;
         const elapsedTime = this.clock.getElapsedTime();
@@ -2145,7 +2159,7 @@ class App {
         this.renderer.render(this.scene, this.camera);
 
 
-        this.stats.end()
+        //this.stats.end()
     }
 }
 
