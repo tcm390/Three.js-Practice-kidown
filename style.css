@@ -58,7 +58,7 @@ input { -webkit-user-select:text;}
 .mobile-q-button{
     width: 40px; 
     height: 40px; 
-    background:linear-gradient(to top left, rgb(25, 238, 6), rgb(151, 200, 238));
+    background:linear-gradient(to top left, rgb(6, 29, 238), rgb(151, 200, 238));
     opacity: 0.3;
     margin-right: 15px;
     border-radius: 50%;
@@ -73,7 +73,7 @@ input { -webkit-user-select:text;}
 .mobile-w-button{
     width: 40px; 
     height: 40px; 
-    background:linear-gradient(to top left, rgb(25, 238, 6), rgb(151, 200, 238));
+    background:linear-gradient(to top left, rgb(6, 29, 238), rgb(151, 200, 238));
     opacity: 0.3;
     margin-right: 15px;
     border-radius: 50%;
@@ -88,7 +88,7 @@ input { -webkit-user-select:text;}
 .mobile-e-button{
     width: 40px; 
     height: 40px; 
-    background:linear-gradient(to top left, rgb(25, 238, 6), rgb(151, 200, 238));
+    background:linear-gradient(to top left, rgb(6, 29, 238), rgb(151, 200, 238));
     opacity: 0.3;
     margin-right: 15px;
     border-radius: 50%;
