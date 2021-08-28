@@ -61,7 +61,7 @@ input { -webkit-user-select:text;}
     /* background:linear-gradient(to top left, rgb(6, 29, 238), rgb(151, 200, 238)); */
     opacity: 0.3;
     margin-right: 15px;
-    border-radius: 2%;
+    border-radius: 0.25rem;
     border-style:solid;
     border-color:white;
     color: white;
@@ -79,7 +79,7 @@ input { -webkit-user-select:text;}
     /* background:linear-gradient(to top left, rgb(6, 29, 238), rgb(151, 200, 238)); */
     opacity: 0.3;
     margin-right: 15px;
-    border-radius: 2%;
+    border-radius: 0.25rem;
     border-style:solid;
     border-color:white;
     color: white;
@@ -98,7 +98,7 @@ input { -webkit-user-select:text;}
     
     opacity: 0.3;
     margin-right: 15px;
-    border-radius: 2%;
+    border-radius: 0.25rem;
     border-style:solid;
     border-color:white;
     color: white;
