@@ -61,8 +61,10 @@ input { -webkit-user-select:text;}
     /* background:linear-gradient(to top left, rgb(6, 29, 238), rgb(151, 200, 238)); */
     opacity: 0.3;
     margin-right: 15px;
+    border-radius: 2%;
     border-style:solid;
     border-color:white;
+    color: white;
 
     display: flex;
     justify-content: center;
@@ -77,8 +79,10 @@ input { -webkit-user-select:text;}
     /* background:linear-gradient(to top left, rgb(6, 29, 238), rgb(151, 200, 238)); */
     opacity: 0.3;
     margin-right: 15px;
+    border-radius: 2%;
     border-style:solid;
     border-color:white;
+    color: white;
     
     display: flex;
     justify-content: center;
@@ -94,8 +98,10 @@ input { -webkit-user-select:text;}
     
     opacity: 0.3;
     margin-right: 15px;
+    border-radius: 2%;
     border-style:solid;
     border-color:white;
+    color: white;
     
     display: flex;
     justify-content: center;
