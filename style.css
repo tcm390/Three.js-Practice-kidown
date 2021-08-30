@@ -19,6 +19,17 @@ html, body, .gg_board h2, .gg_board button,.box input[type="text"],.box button{
 @media screen and (max-width: 600px) {
    
 } */
+.io_game_space{
+    
+    width: 27px;
+    height: 28px;
+    position: absolute;
+    opacity: 0.5;
+	bottom: 5px;
+	right: 30px;
+    cursor: pointer;
+    
+}
 input { -webkit-user-select:text;}
 .mobile-left-button{
     width: 0; 
