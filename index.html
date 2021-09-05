@@ -1,1 +1,184 @@
-system is under maintenance
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>kidown.io</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="./assets/favicon.ico" sizes="32x32" type="image/icon type">
+    <meta name="google-site-verification" content="7y_zs2UPlxbJEQr8RAVlN2a4nc45OVRrpWokKYqzZLM" />
+
+</head>
+
+<body>
+    <audio id="sackMusic">
+        <source src="./assets/sound/sack.mp3" type="audio/ogg">
+        <source src="./assets/sound/sack.mp3" type="audio/mp3">
+    </audio>
+    <audio id="chestMusic">
+        <source src="./assets/sound/chest.mp3" type="audio/ogg">
+        <source src="./assets/sound/chest.mp3" type="audio/mp3">
+    </audio>
+    <audio id="biteMusic">
+        <source src="./assets/sound/bite.mp3" type="audio/ogg">
+        <source src="./assets/sound/bite.mp3" type="audio/mp3">
+    </audio>
+    <audio id="devilMusic">
+        <source src="./assets/sound/devil.mp3" type="audio/ogg">
+        <source src="./assets/sound/devil.mp3" type="audio/mp3">
+    </audio>
+    <audio id="dieMusic">
+        <source src="./assets/sound/die.mp3" type="audio/ogg">
+        <source src="./assets/sound/die.mp3" type="audio/mp3">
+    </audio>
+    <audio id="springMusic">
+        <source src="./assets/sound/spring.mp3" type="audio/ogg">
+        <source src="./assets/sound/spring.mp3" type="audio/mp3">
+    </audio>
+    <audio id="fakeMusic">
+        <source src="./assets/sound/fake.mp3" type="audio/ogg">
+        <source src="./assets/sound/fake.mp3" type="audio/mp3">
+    </audio>
+    <audio id="conveyMusic">
+        <source src="./assets/sound/convey.mp3" type="audio/ogg">
+        <source src="./assets/sound/convey.mp3" type="audio/mp3">
+    </audio>
+    <audio id="stabbedMusic">
+        <source src="./assets/sound/stabbed.mp3" type="audio/ogg">
+        <source src="./assets/sound/stabbed.mp3" type="audio/mp3">
+    </audio>
+    <audio id="planeMusic">
+        <source src="./assets/sound/plane.mp3" type="audio/ogg">
+        <source src="./assets/sound/plane.mp3" type="audio/mp3">
+    </audio>
+    <!-- <script src="/socket.io/socket.io.js"></script> -->
+
+    <style type="text/css">
+        html,
+        body {
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+    <div class="modal fadeIn">
+    </div>
+    <form class="box fadeOut">
+        <img src="./assets/20.png" class="rock" alt="">
+        <img src="./assets/22.png" class="title" alt="">
+        <input type="text" class="Name" name="" placeholder="Name" maxlength="10">
+        <button type="button" class="send_name">Play</button>
+    </form>
+
+    <form class="gg_board ">
+        <img src="./assets/20.png" class="rock" alt="">
+        <img src="./assets/22.png" class="title" alt="">
+        <h2 class="final_score">Your final score was:</h2>
+        <button type="button" class="restart">Restart</button>
+    </form>
+
+    <div class="leader-board-wrapper hidden">
+        <h2 class="text-center">🐐GOAT</h2>
+        <div class="goat-board">
+            <div class="goat-player-name"></div>
+            <div class="goat-player-score"></div>
+        </div>
+
+        <hr>
+        <h2 class="text-center">LeaderBoard</h2>
+        <!-- <hr> -->
+        <div id="leader-board">
+            <div class="name-wrapper">
+
+                <div class="leaderboard-player1">#1</div>
+                <div class="leaderboard-player2">#2</div>
+                <div class="leaderboard-player3">#3</div>
+                <div class="leaderboard-player4">#4</div>
+                <div class="leaderboard-player5">#5</div>
+                <div class="leaderboard-player6">#6</div>
+                <div class="leaderboard-player7">#7</div>
+                <div class="leaderboard-player8">#8</div>
+                <div class="leaderboard-player9">#9</div>
+                <div class="leaderboard-player10">#10</div>
+
+            </div>
+            <div class="score-wrapper">
+                <div class="score1">0</div>
+                <div class="score2">0</div>
+                <div class="score3">0</div>
+                <div class="score4">0</div>
+                <div class="score5">0</div>
+                <div class="score6">0</div>
+                <div class="score7">0</div>
+                <div class="score8">0</div>
+                <div class="score9">0</div>
+                <div class="score10">0</div>
+            </div>
+        </div>
+        <hr>
+        <h3>your score: </h3>
+        <h3 class="own_score">0</h3>
+        <div></div>
+        <h3>your rank: </h3>
+        <h3 class="own_rank">0</h3>
+
+    </div>
+
+    <div class="ping">
+
+    </div>
+    <div class="current-position">
+
+    </div>
+    <div class="mobile-left-button hidden">
+
+    </div>
+    <div class="mobile-right-button hidden">
+
+    </div>
+    <div class="button_container">
+        <div class="mobile-q-button hidden">
+            Q
+        </div>
+        <div class="mobile-w-button hidden">
+            W
+        </div>
+        <div class="mobile-e-button hidden">
+            E
+        </div>
+    </div>
+
+    <div class="io_game_space">
+        <a href="https://iogames.space/"><img src="./assets/iogamespace.png" style="width:6rem;height:3rem"
+                class="title" alt=""></a>
+    </div>
+
+    <div class="ghost-modal hidden">
+        <img src="./assets/bat.png" class="rock" style="width:90%;height:90%" alt="">
+    </div>
+
+    <script type="module">
+        import { App } from './app.js';
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const app = new App();
+            window.app = app;
+        });
+    </script>
+
+
+
+
+
+
+
+
+</body>
+
+</html>
