@@ -725,7 +725,7 @@ class App {
         // })
 
         if (this.mobile === 1) {
-            window.ontouchstart = function(e) { e.preventDefault(); };
+            // window.ontouchstart = function(e) { e.preventDefault(); };
             document.querySelector('.mobile-left-button').classList.remove('hidden');
             document.querySelector('.mobile-right-button').classList.remove('hidden');
             document.querySelector('.mobile-q-button').classList.remove('hidden');
