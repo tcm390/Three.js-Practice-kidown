@@ -7,7 +7,15 @@
     user-select:none;
     -webkit-text-size-adjust: none;
 }
-
+body{
+    -webkit-touch-callout:none;
+    -webkit-user-select:none;
+    -khtml-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+    -webkit-text-size-adjust: none;
+}
  
 html, body, .gg_board h2, .gg_board button,.box input[type="text"],.box button{
     font-family: "Comic Sans MS", "Comic Sans", arial, helvetica, tahoma, verdana, cursive;
